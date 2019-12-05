@@ -153,6 +153,7 @@ namespace SIGESDOC.Contexto
         public virtual DbSet<MAE_TUPA> MAE_TUPA { get; set; }
         public virtual DbSet<MAE_DOCUMENTO_ANEXO> MAE_DOCUMENTO_ANEXO { get; set; }
         public virtual DbSet<VW_CONSULTA_EXPEDIENTE_X_EXPEDIENTE> VW_CONSULTA_EXPEDIENTE_X_EXPEDIENTE { get; set; }
+        public virtual DbSet<LOG_UID_ALFRESCO> LOG_UID_ALFRESCO { get; set; }
     
         public virtual ObjectResult<p_MODIFICAR_CONTRASEÑA_Result> p_MODIFICAR_CONTRASEÑA(string ruc, string dni, string clave_ini, string clave_fin)
         {
@@ -1764,6 +1765,27 @@ namespace SIGESDOC.Contexto
                 new ObjectParameter("dni", typeof(string));
     
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<Nullable<int>>("SP_OBTENER_DNI", dniParameter, msg);
+        }
+    
+        public virtual int SP_VALIDA_UID_ALFRESCO(string nOM_DOC, string tIPO_DOC, Nullable<int> vERSION_DOCUMENTO, string uID_ALFRESCO, ObjectParameter mSG, ObjectParameter sALIDA_UID_ALFRESCO)
+        {
+            var nOM_DOCParameter = nOM_DOC != null ?
+                new ObjectParameter("NOM_DOC", nOM_DOC) :
+                new ObjectParameter("NOM_DOC", typeof(string));
+    
+            var tIPO_DOCParameter = tIPO_DOC != null ?
+                new ObjectParameter("TIPO_DOC", tIPO_DOC) :
+                new ObjectParameter("TIPO_DOC", typeof(string));
+    
+            var vERSION_DOCUMENTOParameter = vERSION_DOCUMENTO.HasValue ?
+                new ObjectParameter("VERSION_DOCUMENTO", vERSION_DOCUMENTO) :
+                new ObjectParameter("VERSION_DOCUMENTO", typeof(int));
+    
+            var uID_ALFRESCOParameter = uID_ALFRESCO != null ?
+                new ObjectParameter("UID_ALFRESCO", uID_ALFRESCO) :
+                new ObjectParameter("UID_ALFRESCO", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("SP_VALIDA_UID_ALFRESCO", nOM_DOCParameter, tIPO_DOCParameter, vERSION_DOCUMENTOParameter, uID_ALFRESCOParameter, mSG, sALIDA_UID_ALFRESCO);
         }
     }
 }

@@ -26,20 +26,6 @@ C:\inetpub\wwwroot\sigesdoc\SIGESDOC.Contexto\obj\Debug\SIGESDOC.Contexto.csproj
 C:\inetpub\wwwroot\sigesdoc\SIGESDOC.Contexto\obj\Debug\SIGESDOC.Contexto.csproj.CopyComplete
 C:\inetpub\wwwroot\sigesdoc\SIGESDOC.Contexto\obj\Debug\SIGESDOC.Contexto.dll
 C:\inetpub\wwwroot\sigesdoc\SIGESDOC.Contexto\obj\Debug\SIGESDOC.Contexto.pdb
-C:\Users\PSSPERU069\Documents\Proyecto\sigesdoc_sanipes\sigesdoc\SIGESDOC.Contexto\bin\Debug\SIGESDOC.Contexto.dll.config
-C:\Users\PSSPERU069\Documents\Proyecto\sigesdoc_sanipes\sigesdoc\SIGESDOC.Contexto\bin\Debug\SIGESDOC.Contexto.dll
-C:\Users\PSSPERU069\Documents\Proyecto\sigesdoc_sanipes\sigesdoc\SIGESDOC.Contexto\bin\Debug\SIGESDOC.Contexto.pdb
-C:\Users\PSSPERU069\Documents\Proyecto\sigesdoc_sanipes\sigesdoc\SIGESDOC.Contexto\bin\Debug\EntityFramework.dll
-C:\Users\PSSPERU069\Documents\Proyecto\sigesdoc_sanipes\sigesdoc\SIGESDOC.Contexto\bin\Debug\EntityFramework.SqlServer.dll
-C:\Users\PSSPERU069\Documents\Proyecto\sigesdoc_sanipes\sigesdoc\SIGESDOC.Contexto\bin\Debug\SIGESDOC.Entidades.dll
-C:\Users\PSSPERU069\Documents\Proyecto\sigesdoc_sanipes\sigesdoc\SIGESDOC.Contexto\bin\Debug\SIGESDOC.Entidades.pdb
-C:\Users\PSSPERU069\Documents\Proyecto\sigesdoc_sanipes\sigesdoc\SIGESDOC.Contexto\bin\Debug\EntityFramework.xml
-C:\Users\PSSPERU069\Documents\Proyecto\sigesdoc_sanipes\sigesdoc\SIGESDOC.Contexto\bin\Debug\EntityFramework.SqlServer.xml
-C:\Users\PSSPERU069\Documents\Proyecto\sigesdoc_sanipes\sigesdoc\SIGESDOC.Contexto\obj\Debug\SIGESDOC.Contexto.csprojAssemblyReference.cache
-C:\Users\PSSPERU069\Documents\Proyecto\sigesdoc_sanipes\sigesdoc\SIGESDOC.Contexto\obj\Debug\SIGESDOC.Contexto.csproj.CoreCompileInputs.cache
-C:\Users\PSSPERU069\Documents\Proyecto\sigesdoc_sanipes\sigesdoc\SIGESDOC.Contexto\obj\Debug\SIGESDOC.Contexto.csproj.CopyComplete
-C:\Users\PSSPERU069\Documents\Proyecto\sigesdoc_sanipes\sigesdoc\SIGESDOC.Contexto\obj\Debug\SIGESDOC.Contexto.dll
-C:\Users\PSSPERU069\Documents\Proyecto\sigesdoc_sanipes\sigesdoc\SIGESDOC.Contexto\obj\Debug\SIGESDOC.Contexto.pdb
 C:\Users\andres.albarracin\Desktop\PROYECTO LANDER\sigesdoc\SIGESDOC.Contexto\bin\Debug\SIGESDOC.Contexto.dll.config
 C:\Users\andres.albarracin\Desktop\PROYECTO LANDER\sigesdoc\SIGESDOC.Contexto\bin\Debug\SIGESDOC.Contexto.dll
 C:\Users\andres.albarracin\Desktop\PROYECTO LANDER\sigesdoc\SIGESDOC.Contexto\bin\Debug\SIGESDOC.Contexto.pdb
@@ -53,3 +39,17 @@ C:\Users\andres.albarracin\Desktop\PROYECTO LANDER\sigesdoc\SIGESDOC.Contexto\ob
 C:\Users\andres.albarracin\Desktop\PROYECTO LANDER\sigesdoc\SIGESDOC.Contexto\obj\Debug\SIGESDOC.Contexto.csproj.CopyComplete
 C:\Users\andres.albarracin\Desktop\PROYECTO LANDER\sigesdoc\SIGESDOC.Contexto\obj\Debug\SIGESDOC.Contexto.dll
 C:\Users\andres.albarracin\Desktop\PROYECTO LANDER\sigesdoc\SIGESDOC.Contexto\obj\Debug\SIGESDOC.Contexto.pdb
+C:\Users\PSSPERU069\Documents\Proyecto\sigesdoc_sanipes\sigesdoc\SIGESDOC.Contexto\obj\Debug\SIGESDOC.Contexto.csprojAssemblyReference.cache
+C:\Users\PSSPERU069\Documents\Proyecto\sigesdoc_sanipes\sigesdoc\SIGESDOC.Contexto\obj\Debug\SIGESDOC.Contexto.csproj.CoreCompileInputs.cache
+C:\Users\PSSPERU069\Documents\Proyecto\sigesdoc_sanipes\sigesdoc\SIGESDOC.Contexto\bin\Debug\SIGESDOC.Contexto.dll.config
+C:\Users\PSSPERU069\Documents\Proyecto\sigesdoc_sanipes\sigesdoc\SIGESDOC.Contexto\bin\Debug\SIGESDOC.Contexto.dll
+C:\Users\PSSPERU069\Documents\Proyecto\sigesdoc_sanipes\sigesdoc\SIGESDOC.Contexto\bin\Debug\SIGESDOC.Contexto.pdb
+C:\Users\PSSPERU069\Documents\Proyecto\sigesdoc_sanipes\sigesdoc\SIGESDOC.Contexto\bin\Debug\EntityFramework.dll
+C:\Users\PSSPERU069\Documents\Proyecto\sigesdoc_sanipes\sigesdoc\SIGESDOC.Contexto\bin\Debug\EntityFramework.SqlServer.dll
+C:\Users\PSSPERU069\Documents\Proyecto\sigesdoc_sanipes\sigesdoc\SIGESDOC.Contexto\bin\Debug\SIGESDOC.Entidades.dll
+C:\Users\PSSPERU069\Documents\Proyecto\sigesdoc_sanipes\sigesdoc\SIGESDOC.Contexto\bin\Debug\SIGESDOC.Entidades.pdb
+C:\Users\PSSPERU069\Documents\Proyecto\sigesdoc_sanipes\sigesdoc\SIGESDOC.Contexto\bin\Debug\EntityFramework.xml
+C:\Users\PSSPERU069\Documents\Proyecto\sigesdoc_sanipes\sigesdoc\SIGESDOC.Contexto\bin\Debug\EntityFramework.SqlServer.xml
+C:\Users\PSSPERU069\Documents\Proyecto\sigesdoc_sanipes\sigesdoc\SIGESDOC.Contexto\obj\Debug\SIGESDOC.Contexto.csproj.CopyComplete
+C:\Users\PSSPERU069\Documents\Proyecto\sigesdoc_sanipes\sigesdoc\SIGESDOC.Contexto\obj\Debug\SIGESDOC.Contexto.dll
+C:\Users\PSSPERU069\Documents\Proyecto\sigesdoc_sanipes\sigesdoc\SIGESDOC.Contexto\obj\Debug\SIGESDOC.Contexto.pdb

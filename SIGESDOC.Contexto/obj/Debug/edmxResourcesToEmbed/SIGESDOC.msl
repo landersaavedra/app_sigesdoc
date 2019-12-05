@@ -515,6 +515,7 @@
     <EntitySetMapping Name="DAT_DOCUMENTO_DETALLE">
       <EntityTypeMapping TypeName="DB_GESDOCModel.DAT_DOCUMENTO_DETALLE">
         <MappingFragment StoreEntitySet="DAT_DOCUMENTO_DETALLE">
+          <ScalarProperty Name="FLAG_TIPO_MEMORANDO" ColumnName="FLAG_TIPO_MEMORANDO" />
           <ScalarProperty Name="NOM_OFICINA_DESTINO" ColumnName="NOM_OFICINA_DESTINO" />
           <ScalarProperty Name="NOM_OFICINA_CREA" ColumnName="NOM_OFICINA_CREA" />
           <ScalarProperty Name="OBSERVACION_ATENDIDO" ColumnName="OBSERVACION_ATENDIDO" />
@@ -557,6 +558,7 @@
     <EntitySetMapping Name="DAT_DOCUMENTO_DHCPA_DETALLE">
       <EntityTypeMapping TypeName="DB_GESDOCModel.DAT_DOCUMENTO_DHCPA_DETALLE">
         <MappingFragment StoreEntitySet="DAT_DOCUMENTO_DHCPA_DETALLE">
+          <ScalarProperty Name="FLAG_TIPO_CARTA" ColumnName="FLAG_TIPO_CARTA" />
           <ScalarProperty Name="NOMBRE_PERSONA_DESTINO" ColumnName="NOMBRE_PERSONA_DESTINO" />
           <ScalarProperty Name="FECHA_MODIFICA" ColumnName="FECHA_MODIFICA" />
           <ScalarProperty Name="USUARIO_MODIFICA" ColumnName="USUARIO_MODIFICA" />
@@ -741,6 +743,7 @@
     <EntitySetMapping Name="MAE_DOCUMENTO_DHCPA">
       <EntityTypeMapping TypeName="DB_GESDOCModel.MAE_DOCUMENTO_DHCPA">
         <MappingFragment StoreEntitySet="MAE_DOCUMENTO_DHCPA">
+          <ScalarProperty Name="ID_DET_DOCUMENTO" ColumnName="ID_DET_DOCUMENTO" />
           <ScalarProperty Name="RUC" ColumnName="RUC" />
           <ScalarProperty Name="EXP_O_HT_N_CDL_NOTIF" ColumnName="EXP_O_HT_N_CDL_NOTIF" />
           <ScalarProperty Name="EXP_O_HT_CDL_NOTIF" ColumnName="EXP_O_HT_CDL_NOTIF" />
@@ -2756,5 +2759,18 @@
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
+    <EntitySetMapping Name="LOG_UID_ALFRESCO">
+      <EntityTypeMapping TypeName="DB_GESDOCModel.LOG_UID_ALFRESCO">
+        <MappingFragment StoreEntitySet="LOG_UID_ALFRESCO">
+          <ScalarProperty Name="FECHA_REGISTRO" ColumnName="FECHA_REGISTRO" />
+          <ScalarProperty Name="VERSION_DOCUMENTO" ColumnName="VERSION_DOCUMENTO" />
+          <ScalarProperty Name="UID_ALFRESCO" ColumnName="UID_ALFRESCO" />
+          <ScalarProperty Name="TIPO_DOC" ColumnName="TIPO_DOC" />
+          <ScalarProperty Name="NOM_DOC" ColumnName="NOM_DOC" />
+          <ScalarProperty Name="ID_UID_ALFRESCO" ColumnName="ID_UID_ALFRESCO" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <FunctionImportMapping FunctionImportName="SP_VALIDA_UID_ALFRESCO" FunctionName="DB_GESDOCModel.Store.SP_VALIDA_UID_ALFRESCO" />
   </EntityContainerMapping>
 </Mapping>

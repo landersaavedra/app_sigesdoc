@@ -108,6 +108,9 @@
     </Compile>
     <Compile Include="Dni_Input.cs" />
     <Compile Include="Dni_Output.cs" />
+    <Compile Include="LOG_UID_ALFRESCO.cs">
+      <DependentUpon>SIGESDOC.tt</DependentUpon>
+    </Compile>
     <Compile Include="MAE_ACTA_INSPECCION_DSFPA.cs">
       <DependentUpon>SIGESDOC.tt</DependentUpon>
     </Compile>

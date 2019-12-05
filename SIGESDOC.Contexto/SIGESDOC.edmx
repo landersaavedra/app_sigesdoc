@@ -119,6 +119,7 @@
           <Property Name="OBSERVACION_ATENDIDO" Type="varchar" MaxLength="500" />
           <Property Name="NOM_OFICINA_CREA" Type="varchar" MaxLength="500" />
           <Property Name="NOM_OFICINA_DESTINO" Type="varchar" MaxLength="500" />
+          <Property Name="FLAG_TIPO_MEMORANDO" Type="bit" />
         </EntityType>
         <EntityType Name="DAT_DOCUMENTO_DHCPA_DETALLE">
           <Key>
@@ -134,6 +135,7 @@
           <Property Name="USUARIO_MODIFICA" Type="varchar" MaxLength="50" />
           <Property Name="FECHA_MODIFICA" Type="datetime" />
           <Property Name="NOMBRE_PERSONA_DESTINO" Type="varchar" MaxLength="250" />
+          <Property Name="FLAG_TIPO_CARTA" Type="bit" />
         </EntityType>
         <EntityType Name="DAT_ESPECIES_HABILITACIONES">
           <Key>
@@ -293,6 +295,17 @@
           <Property Name="ID_TIPO_ATENCION" Type="int" />
           <Property Name="INFORME_SDHPA" Type="varchar" MaxLength="250" />
         </EntityType>
+        <EntityType Name="LOG_UID_ALFRESCO">
+          <Key>
+            <PropertyRef Name="ID_UID_ALFRESCO" />
+          </Key>
+          <Property Name="ID_UID_ALFRESCO" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="NOM_DOC" Type="varchar" MaxLength="250" Nullable="false" />
+          <Property Name="TIPO_DOC" Type="varchar" MaxLength="50" />
+          <Property Name="UID_ALFRESCO" Type="varchar" MaxLength="50" />
+          <Property Name="VERSION_DOCUMENTO" Type="int" Nullable="false" />
+          <Property Name="FECHA_REGISTRO" Type="date" Nullable="false" />
+        </EntityType>
         <EntityType Name="MAE_ACTA_INSPECCION_DSFPA">
           <Key>
             <PropertyRef Name="ID_ACTA_INSP" />
@@ -422,6 +435,7 @@
           <Property Name="EXP_O_HT_CDL_NOTIF" Type="varchar" MaxLength="50" />
           <Property Name="EXP_O_HT_N_CDL_NOTIF" Type="varchar" MaxLength="50" />
           <Property Name="RUC" Type="varchar" MaxLength="50" />
+          <Property Name="ID_DET_DOCUMENTO" Type="int" />
         </EntityType>
         <EntityType Name="MAE_DOCUMENTO_INDICADOR">
           <Key>
@@ -2799,6 +2813,14 @@ advertencia 6002: La tabla o vista 'DB_GESDOC.dbo.VW_VER_PEDIENTES_GESDOC' no ti
           <Parameter Name="OFICINA" Type="int" Mode="In" />
           <Parameter Name="INSPECTOR" Type="varchar" Mode="In" />
         </Function>
+        <Function Name="SP_VALIDA_UID_ALFRESCO" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="NOM_DOC" Type="varchar" Mode="In" />
+          <Parameter Name="TIPO_DOC" Type="varchar" Mode="In" />
+          <Parameter Name="VERSION_DOCUMENTO" Type="int" Mode="In" />
+          <Parameter Name="UID_ALFRESCO" Type="varchar" Mode="In" />
+          <Parameter Name="MSG" Type="int" Mode="InOut" />
+          <Parameter Name="SALIDA_UID_ALFRESCO" Type="varchar" Mode="InOut" />
+        </Function>
         <EntityContainer Name="DB_GESDOCModelStoreContainer">
           <EntitySet Name="COUNT_EXPEDIENTE_UNICO" EntityType="Self.COUNT_EXPEDIENTE_UNICO" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="COUNT_HT_EXTERNO" EntityType="Self.COUNT_HT_EXTERNO" Schema="dbo" store:Type="Tables" />
@@ -2821,6 +2843,7 @@ advertencia 6002: La tabla o vista 'DB_GESDOC.dbo.VW_VER_PEDIENTES_GESDOC' no ti
           <EntitySet Name="DAT_PROTOCOLO_LICENCIA_OPERACION" EntityType="Self.DAT_PROTOCOLO_LICENCIA_OPERACION" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="DAT_PROTOCOLO_PLANTA" EntityType="Self.DAT_PROTOCOLO_PLANTA" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="DAT_PROTOCOLO_TRANSPORTE" EntityType="Self.DAT_PROTOCOLO_TRANSPORTE" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="LOG_UID_ALFRESCO" EntityType="Self.LOG_UID_ALFRESCO" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="MAE_ACTA_INSPECCION_DSFPA" EntityType="Self.MAE_ACTA_INSPECCION_DSFPA" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="MAE_ACTIVIDAD_PROTOCOLO" EntityType="Self.MAE_ACTIVIDAD_PROTOCOLO" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="MAE_ARCHIVADOR_DHCPA" EntityType="Self.MAE_ARCHIVADOR_DHCPA" Schema="dbo" store:Type="Tables" />
@@ -4524,6 +4547,15 @@ advertencia 6002: La tabla o vista 'DB_GESDOC.dbo.VW_VER_PEDIENTES_GESDOC' no ti
             <Parameter Name="msg" Mode="InOut" Type="Int16" />
           </FunctionImport>
           <EntitySet Name="VW_CONSULTA_EXPEDIENTE_X_EXPEDIENTE" EntityType="DB_GESDOCModel.VW_CONSULTA_EXPEDIENTE_X_EXPEDIENTE" />
+          <EntitySet Name="LOG_UID_ALFRESCO" EntityType="DB_GESDOCModel.LOG_UID_ALFRESCO" />
+          <FunctionImport Name="SP_VALIDA_UID_ALFRESCO">
+            <Parameter Name="NOM_DOC" Mode="In" Type="String" />
+            <Parameter Name="TIPO_DOC" Mode="In" Type="String" />
+            <Parameter Name="VERSION_DOCUMENTO" Mode="In" Type="Int32" />
+            <Parameter Name="UID_ALFRESCO" Mode="In" Type="String" />
+            <Parameter Name="MSG" Mode="InOut" Type="Int32" />
+            <Parameter Name="SALIDA_UID_ALFRESCO" Mode="InOut" Type="String" />
+          </FunctionImport>
           </EntityContainer>
         <ComplexType Name="p_MODIFICAR_CONTRASEÑA_Result">
           <Property Type="String" Name="ruc" Nullable="false" MaxLength="11" />
@@ -4999,6 +5031,7 @@ advertencia 6002: La tabla o vista 'DB_GESDOC.dbo.VW_VER_PEDIENTES_GESDOC' no ti
           <NavigationProperty Name="MAE_DOCUMENTO" Relationship="DB_GESDOCModel.FK_DAT_DOCUMENTO_DETALLE_MAE_DOCUMENTO" FromRole="DAT_DOCUMENTO_DETALLE" ToRole="MAE_DOCUMENTO" />
           <Property Name="NOM_OFICINA_CREA" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
           <Property Name="NOM_OFICINA_DESTINO" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="FLAG_TIPO_MEMORANDO" Type="Boolean" />
         </EntityType>
         <EntityType Name="DAT_DOCUMENTO_DHCPA_DETALLE">
           <Key>
@@ -5015,6 +5048,7 @@ advertencia 6002: La tabla o vista 'DB_GESDOC.dbo.VW_VER_PEDIENTES_GESDOC' no ti
           <Property Name="FECHA_MODIFICA" Type="DateTime" Precision="3" />
           <Property Name="NOMBRE_PERSONA_DESTINO" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
           <NavigationProperty Name="MAE_DOCUMENTO_DHCPA" Relationship="DB_GESDOCModel.FK_DAT_DOCUMENTO_DHCPA_DETALLE_MAE_DOCUMENTO_DHCPA" FromRole="DAT_DOCUMENTO_DHCPA_DETALLE" ToRole="MAE_DOCUMENTO_DHCPA" />
+          <Property Name="FLAG_TIPO_CARTA" Type="Boolean" />
         </EntityType>
         <EntityType Name="DAT_ESPECIES_HABILITACIONES">
           <Key>
@@ -5216,6 +5250,7 @@ advertencia 6002: La tabla o vista 'DB_GESDOC.dbo.VW_VER_PEDIENTES_GESDOC' no ti
           <Property Name="EXP_O_HT_CDL_NOTIF" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
           <Property Name="EXP_O_HT_N_CDL_NOTIF" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
           <Property Name="RUC" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="ID_DET_DOCUMENTO" Type="Int32" />
         </EntityType>
         <EntityType Name="MAE_DOCUMENTO_INDICADOR">
           <Key>
@@ -7684,6 +7719,17 @@ advertencia 6002: La tabla o vista 'DB_GESDOC.dbo.VW_VER_PEDIENTES_GESDOC' no ti
           <Property Name="DIRECCION" Type="String" MaxLength="359" FixedLength="false" Unicode="false" />
           <Property Name="EVALUADOR" Type="String" MaxLength="152" FixedLength="false" Unicode="false" />
         </EntityType>
+        <EntityType Name="LOG_UID_ALFRESCO">
+          <Key>
+            <PropertyRef Name="ID_UID_ALFRESCO" />
+          </Key>
+          <Property Name="ID_UID_ALFRESCO" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="NOM_DOC" Type="String" Nullable="false" MaxLength="250" FixedLength="false" Unicode="false" />
+          <Property Name="TIPO_DOC" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="UID_ALFRESCO" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="VERSION_DOCUMENTO" Type="Int32" Nullable="false" />
+          <Property Name="FECHA_REGISTRO" Type="DateTime" Nullable="false" Precision="0" />
+        </EntityType>
         </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -8204,6 +8250,7 @@ advertencia 6002: La tabla o vista 'DB_GESDOC.dbo.VW_VER_PEDIENTES_GESDOC' no ti
           <EntitySetMapping Name="DAT_DOCUMENTO_DETALLE">
             <EntityTypeMapping TypeName="DB_GESDOCModel.DAT_DOCUMENTO_DETALLE">
               <MappingFragment StoreEntitySet="DAT_DOCUMENTO_DETALLE">
+                <ScalarProperty Name="FLAG_TIPO_MEMORANDO" ColumnName="FLAG_TIPO_MEMORANDO" />
                 <ScalarProperty Name="NOM_OFICINA_DESTINO" ColumnName="NOM_OFICINA_DESTINO" />
                 <ScalarProperty Name="NOM_OFICINA_CREA" ColumnName="NOM_OFICINA_CREA" />
                 <ScalarProperty Name="OBSERVACION_ATENDIDO" ColumnName="OBSERVACION_ATENDIDO" />
@@ -8246,6 +8293,7 @@ advertencia 6002: La tabla o vista 'DB_GESDOC.dbo.VW_VER_PEDIENTES_GESDOC' no ti
           <EntitySetMapping Name="DAT_DOCUMENTO_DHCPA_DETALLE">
             <EntityTypeMapping TypeName="DB_GESDOCModel.DAT_DOCUMENTO_DHCPA_DETALLE">
               <MappingFragment StoreEntitySet="DAT_DOCUMENTO_DHCPA_DETALLE">
+                <ScalarProperty Name="FLAG_TIPO_CARTA" ColumnName="FLAG_TIPO_CARTA" />
                 <ScalarProperty Name="NOMBRE_PERSONA_DESTINO" ColumnName="NOMBRE_PERSONA_DESTINO" />
                 <ScalarProperty Name="FECHA_MODIFICA" ColumnName="FECHA_MODIFICA" />
                 <ScalarProperty Name="USUARIO_MODIFICA" ColumnName="USUARIO_MODIFICA" />
@@ -8430,6 +8478,7 @@ advertencia 6002: La tabla o vista 'DB_GESDOC.dbo.VW_VER_PEDIENTES_GESDOC' no ti
           <EntitySetMapping Name="MAE_DOCUMENTO_DHCPA">
             <EntityTypeMapping TypeName="DB_GESDOCModel.MAE_DOCUMENTO_DHCPA">
               <MappingFragment StoreEntitySet="MAE_DOCUMENTO_DHCPA">
+                <ScalarProperty Name="ID_DET_DOCUMENTO" ColumnName="ID_DET_DOCUMENTO" />
                 <ScalarProperty Name="RUC" ColumnName="RUC" />
                 <ScalarProperty Name="EXP_O_HT_N_CDL_NOTIF" ColumnName="EXP_O_HT_N_CDL_NOTIF" />
                 <ScalarProperty Name="EXP_O_HT_CDL_NOTIF" ColumnName="EXP_O_HT_CDL_NOTIF" />
@@ -10445,6 +10494,19 @@ advertencia 6002: La tabla o vista 'DB_GESDOC.dbo.VW_VER_PEDIENTES_GESDOC' no ti
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
+          <EntitySetMapping Name="LOG_UID_ALFRESCO">
+            <EntityTypeMapping TypeName="DB_GESDOCModel.LOG_UID_ALFRESCO">
+              <MappingFragment StoreEntitySet="LOG_UID_ALFRESCO">
+                <ScalarProperty Name="FECHA_REGISTRO" ColumnName="FECHA_REGISTRO" />
+                <ScalarProperty Name="VERSION_DOCUMENTO" ColumnName="VERSION_DOCUMENTO" />
+                <ScalarProperty Name="UID_ALFRESCO" ColumnName="UID_ALFRESCO" />
+                <ScalarProperty Name="TIPO_DOC" ColumnName="TIPO_DOC" />
+                <ScalarProperty Name="NOM_DOC" ColumnName="NOM_DOC" />
+                <ScalarProperty Name="ID_UID_ALFRESCO" ColumnName="ID_UID_ALFRESCO" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <FunctionImportMapping FunctionImportName="SP_VALIDA_UID_ALFRESCO" FunctionName="DB_GESDOCModel.Store.SP_VALIDA_UID_ALFRESCO" />
           </EntityContainerMapping>
       </Mapping>
     </edmx:Mappings>

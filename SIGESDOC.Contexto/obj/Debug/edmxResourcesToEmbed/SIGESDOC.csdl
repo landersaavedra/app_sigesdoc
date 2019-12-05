@@ -783,6 +783,15 @@
       <Parameter Name="msg" Mode="InOut" Type="Int16" />
     </FunctionImport>
     <EntitySet Name="VW_CONSULTA_EXPEDIENTE_X_EXPEDIENTE" EntityType="DB_GESDOCModel.VW_CONSULTA_EXPEDIENTE_X_EXPEDIENTE" />
+    <EntitySet Name="LOG_UID_ALFRESCO" EntityType="DB_GESDOCModel.LOG_UID_ALFRESCO" />
+    <FunctionImport Name="SP_VALIDA_UID_ALFRESCO">
+      <Parameter Name="NOM_DOC" Mode="In" Type="String" />
+      <Parameter Name="TIPO_DOC" Mode="In" Type="String" />
+      <Parameter Name="VERSION_DOCUMENTO" Mode="In" Type="Int32" />
+      <Parameter Name="UID_ALFRESCO" Mode="In" Type="String" />
+      <Parameter Name="MSG" Mode="InOut" Type="Int32" />
+      <Parameter Name="SALIDA_UID_ALFRESCO" Mode="InOut" Type="String" />
+    </FunctionImport>
   </EntityContainer>
   <ComplexType Name="p_MODIFICAR_CONTRASEÑA_Result">
     <Property Type="String" Name="ruc" Nullable="false" MaxLength="11" />
@@ -1258,6 +1267,7 @@
     <NavigationProperty Name="MAE_DOCUMENTO" Relationship="DB_GESDOCModel.FK_DAT_DOCUMENTO_DETALLE_MAE_DOCUMENTO" FromRole="DAT_DOCUMENTO_DETALLE" ToRole="MAE_DOCUMENTO" />
     <Property Name="NOM_OFICINA_CREA" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
     <Property Name="NOM_OFICINA_DESTINO" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+    <Property Name="FLAG_TIPO_MEMORANDO" Type="Boolean" />
   </EntityType>
   <EntityType Name="DAT_DOCUMENTO_DHCPA_DETALLE">
     <Key>
@@ -1274,6 +1284,7 @@
     <Property Name="FECHA_MODIFICA" Type="DateTime" Precision="3" />
     <Property Name="NOMBRE_PERSONA_DESTINO" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
     <NavigationProperty Name="MAE_DOCUMENTO_DHCPA" Relationship="DB_GESDOCModel.FK_DAT_DOCUMENTO_DHCPA_DETALLE_MAE_DOCUMENTO_DHCPA" FromRole="DAT_DOCUMENTO_DHCPA_DETALLE" ToRole="MAE_DOCUMENTO_DHCPA" />
+    <Property Name="FLAG_TIPO_CARTA" Type="Boolean" />
   </EntityType>
   <EntityType Name="DAT_ESPECIES_HABILITACIONES">
     <Key>
@@ -1475,6 +1486,7 @@
     <Property Name="EXP_O_HT_CDL_NOTIF" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
     <Property Name="EXP_O_HT_N_CDL_NOTIF" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
     <Property Name="RUC" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="ID_DET_DOCUMENTO" Type="Int32" />
   </EntityType>
   <EntityType Name="MAE_DOCUMENTO_INDICADOR">
     <Key>
@@ -3942,5 +3954,16 @@
     <Property Name="EXTERNO" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
     <Property Name="DIRECCION" Type="String" MaxLength="359" FixedLength="false" Unicode="false" />
     <Property Name="EVALUADOR" Type="String" MaxLength="152" FixedLength="false" Unicode="false" />
+  </EntityType>
+  <EntityType Name="LOG_UID_ALFRESCO">
+    <Key>
+      <PropertyRef Name="ID_UID_ALFRESCO" />
+    </Key>
+    <Property Name="ID_UID_ALFRESCO" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="NOM_DOC" Type="String" Nullable="false" MaxLength="250" FixedLength="false" Unicode="false" />
+    <Property Name="TIPO_DOC" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="UID_ALFRESCO" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="VERSION_DOCUMENTO" Type="Int32" Nullable="false" />
+    <Property Name="FECHA_REGISTRO" Type="DateTime" Nullable="false" Precision="0" />
   </EntityType>
 </Schema>

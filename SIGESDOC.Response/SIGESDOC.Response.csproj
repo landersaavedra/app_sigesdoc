@@ -668,6 +668,9 @@
     <Compile Include="TupaResponse.cs">
       <DependentUpon>ResponseObjects.tt</DependentUpon>
     </Compile>
+    <Compile Include="UidAlfrescoResponse.cs">
+      <DependentUpon>ResponseObjects.tt</DependentUpon>
+    </Compile>
     <Compile Include="UnionentidadpersonaResponse.cs" />
     <Compile Include="VerPedientesGesdocResponse.cs">
       <DependentUpon>ResponseObjects.tt</DependentUpon>

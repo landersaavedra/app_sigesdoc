@@ -50,6 +50,7 @@ namespace SIGESDOC.Response
         public string observacion_atendido { get; set; }
         public string nom_oficina_crea { get; set; }
         public string nom_oficina_destino { get; set; }
+        public Nullable<bool> flag_tipo_memorando { get; set; }
     
         public virtual EstadoTramiteResponse estado_tramite { get; set; }
         public virtual List<LogDesarchivoDesatendidoResponse> log_desarchivo_desatendido { get; set; }
