@@ -33,5 +33,7 @@ namespace SIGESDOC.IRepositorio
         public Nullable<int> numero_documento { get; set; }
         public string nom_doc { get; set; }
         public string ruta_pdf { get; set; }
+        public string nombre_tipo_documento { get; set; }
+
     }
 }

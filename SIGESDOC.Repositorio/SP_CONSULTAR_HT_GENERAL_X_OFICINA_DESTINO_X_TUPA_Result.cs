@@ -27,5 +27,6 @@ namespace SIGESDOC.Repositorio
         public Nullable<int> id_tupa { get; set; }
         public string tupa { get; set; }
         public string estado { get; set; }
+        public string nombre_tipo_documento { get; set; }
     }
 }

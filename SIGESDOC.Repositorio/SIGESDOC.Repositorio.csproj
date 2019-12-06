@@ -670,6 +670,9 @@
     <Compile Include="TupaRepositorio.cs">
       <DependentUpon>RepositorioObjects.tt</DependentUpon>
     </Compile>
+    <Compile Include="UidAlfrescoRepositorio.cs">
+      <DependentUpon>RepositorioObjects.tt</DependentUpon>
+    </Compile>
     <Compile Include="VerPedientesGesdocRepositorio.cs">
       <DependentUpon>RepositorioObjects.tt</DependentUpon>
     </Compile>

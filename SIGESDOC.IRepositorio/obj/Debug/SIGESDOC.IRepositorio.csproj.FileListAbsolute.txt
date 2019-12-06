@@ -54,8 +54,6 @@ C:\Users\andres.albarracin\Desktop\PROYECTO LANDER\sigesdoc\SIGESDOC.IRepositori
 C:\Users\andres.albarracin\Desktop\PROYECTO LANDER\sigesdoc\SIGESDOC.IRepositorio\obj\Debug\SIGESDOC.IRepositorio.csproj.CopyComplete
 C:\Users\andres.albarracin\Desktop\PROYECTO LANDER\sigesdoc\SIGESDOC.IRepositorio\obj\Debug\SIGESDOC.IRepositorio.dll
 C:\Users\andres.albarracin\Desktop\PROYECTO LANDER\sigesdoc\SIGESDOC.IRepositorio\obj\Debug\SIGESDOC.IRepositorio.pdb
-C:\Users\PSSPERU069\Documents\Proyecto\sigesdoc_sanipes\sigesdoc\SIGESDOC.IRepositorio\obj\Debug\SIGESDOC.IRepositorio.csprojAssemblyReference.cache
-C:\Users\PSSPERU069\Documents\Proyecto\sigesdoc_sanipes\sigesdoc\SIGESDOC.IRepositorio\obj\Debug\SIGESDOC.IRepositorio.csproj.CoreCompileInputs.cache
 C:\Users\PSSPERU069\Documents\Proyecto\sigesdoc_sanipes\sigesdoc\SIGESDOC.IRepositorio\bin\Debug\SIGESDOC.IRepositorio.dll.config
 C:\Users\PSSPERU069\Documents\Proyecto\sigesdoc_sanipes\sigesdoc\SIGESDOC.IRepositorio\bin\Debug\SIGESDOC.IRepositorio.dll
 C:\Users\PSSPERU069\Documents\Proyecto\sigesdoc_sanipes\sigesdoc\SIGESDOC.IRepositorio\bin\Debug\SIGESDOC.IRepositorio.pdb
@@ -70,6 +68,8 @@ C:\Users\PSSPERU069\Documents\Proyecto\sigesdoc_sanipes\sigesdoc\SIGESDOC.IRepos
 C:\Users\PSSPERU069\Documents\Proyecto\sigesdoc_sanipes\sigesdoc\SIGESDOC.IRepositorio\bin\Debug\SIGESDOC.Response.pdb
 C:\Users\PSSPERU069\Documents\Proyecto\sigesdoc_sanipes\sigesdoc\SIGESDOC.IRepositorio\bin\Debug\EntityFramework.xml
 C:\Users\PSSPERU069\Documents\Proyecto\sigesdoc_sanipes\sigesdoc\SIGESDOC.IRepositorio\bin\Debug\EntityFramework.SqlServer.xml
+C:\Users\PSSPERU069\Documents\Proyecto\sigesdoc_sanipes\sigesdoc\SIGESDOC.IRepositorio\obj\Debug\SIGESDOC.IRepositorio.csprojAssemblyReference.cache
+C:\Users\PSSPERU069\Documents\Proyecto\sigesdoc_sanipes\sigesdoc\SIGESDOC.IRepositorio\obj\Debug\SIGESDOC.IRepositorio.csproj.CoreCompileInputs.cache
 C:\Users\PSSPERU069\Documents\Proyecto\sigesdoc_sanipes\sigesdoc\SIGESDOC.IRepositorio\obj\Debug\SIGESDOC.IRepositorio.csproj.CopyComplete
 C:\Users\PSSPERU069\Documents\Proyecto\sigesdoc_sanipes\sigesdoc\SIGESDOC.IRepositorio\obj\Debug\SIGESDOC.IRepositorio.dll
 C:\Users\PSSPERU069\Documents\Proyecto\sigesdoc_sanipes\sigesdoc\SIGESDOC.IRepositorio\obj\Debug\SIGESDOC.IRepositorio.pdb

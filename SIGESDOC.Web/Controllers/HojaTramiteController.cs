@@ -1753,6 +1753,7 @@ namespace SIGESDOC.Web.Controllers
                     ViewBag.Crear = true;
 
                     DataTable tbl = new DataTable();
+                    tbl.Columns.Add("NOMBRE_TIPO_DOCUMENTO");
                     tbl.Columns.Add("NOMBRE_DOCUMENTO");
                     tbl.Columns.Add("FECHA_CREA");
                     tbl.Columns.Add("HOJA_TRAMITE");
@@ -1777,6 +1778,8 @@ namespace SIGESDOC.Web.Controllers
                         if (result.ruta_pdf == "" || result.ruta_pdf == null)
                         {
                             tbl.Rows.Add(
+                             result.nombre_tipo_documento,
+                            //result.hoja_tramite.nombre_tipo_documento,
                             result.nom_doc,
                             result.fecha_envio,
                             result.hoja_tramite.hoja_tramite,
@@ -1795,6 +1798,8 @@ namespace SIGESDOC.Web.Controllers
                         else
                         {
                             tbl.Rows.Add(
+                            result.nombre_tipo_documento,
+                           //result.hoja_tramite.nombre_tipo_documento,
                             result.nom_doc,
                             result.fecha_envio,
                             result.hoja_tramite.hoja_tramite,
@@ -1933,6 +1938,7 @@ namespace SIGESDOC.Web.Controllers
                     ViewBag.Crear = true;
 
                     DataTable tbl = new DataTable();
+                    tbl.Columns.Add("NOMBRE_TIPO_DOCUMENTO");
                     tbl.Columns.Add("HOJA_TRAMITE");
                     tbl.Columns.Add("NOMBRE_TIPO_TRAMITE");
                     tbl.Columns.Add("TUPA");
@@ -1952,6 +1958,7 @@ namespace SIGESDOC.Web.Controllers
                     foreach (var result in documento)
                     {
                         tbl.Rows.Add(
+                            result.hoja_tramite.nombre_tipo_documento,
                             result.hoja_tramite.hoja_tramite,
                             result.hoja_tramite.nombre_tipo_tramite,
                             result.hoja_tramite.nom_tupa,

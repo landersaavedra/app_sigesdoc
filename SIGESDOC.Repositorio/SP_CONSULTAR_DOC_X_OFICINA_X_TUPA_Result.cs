@@ -13,6 +13,7 @@ namespace SIGESDOC.Repositorio
     
     public partial class SP_CONSULTAR_DOC_X_OFICINA_X_TUPA_Result
     {
+        public string nombre_tipo_documento { get; set; }
         public int id_documento { get; set; }
         public string anexos { get; set; }
         public System.DateTime fecha_envio { get; set; }

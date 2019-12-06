@@ -57,8 +57,6 @@ C:\Users\andres.albarracin\Desktop\PROYECTO LANDER\sigesdoc\SIGESDOC.AplicacionS
 C:\Users\andres.albarracin\Desktop\PROYECTO LANDER\sigesdoc\SIGESDOC.AplicacionService\obj\Debug\SIGESDOC.AplicacionService.csproj.CopyComplete
 C:\Users\andres.albarracin\Desktop\PROYECTO LANDER\sigesdoc\SIGESDOC.AplicacionService\obj\Debug\SIGESDOC.AplicacionService.dll
 C:\Users\andres.albarracin\Desktop\PROYECTO LANDER\sigesdoc\SIGESDOC.AplicacionService\obj\Debug\SIGESDOC.AplicacionService.pdb
-C:\Users\PSSPERU069\Documents\Proyecto\sigesdoc_sanipes\sigesdoc\SIGESDOC.AplicacionService\obj\Debug\SIGESDOC.AplicacionService.csprojAssemblyReference.cache
-C:\Users\PSSPERU069\Documents\Proyecto\sigesdoc_sanipes\sigesdoc\SIGESDOC.AplicacionService\obj\Debug\SIGESDOC.AplicacionService.csproj.CoreCompileInputs.cache
 C:\Users\PSSPERU069\Documents\Proyecto\sigesdoc_sanipes\sigesdoc\SIGESDOC.AplicacionService\bin\Debug\SIGESDOC.AplicacionService.dll
 C:\Users\PSSPERU069\Documents\Proyecto\sigesdoc_sanipes\sigesdoc\SIGESDOC.AplicacionService\bin\Debug\SIGESDOC.AplicacionService.pdb
 C:\Users\PSSPERU069\Documents\Proyecto\sigesdoc_sanipes\sigesdoc\SIGESDOC.AplicacionService\bin\Debug\SIGESDOC.Entidades.dll
@@ -74,6 +72,8 @@ C:\Users\PSSPERU069\Documents\Proyecto\sigesdoc_sanipes\sigesdoc\SIGESDOC.Aplica
 C:\Users\PSSPERU069\Documents\Proyecto\sigesdoc_sanipes\sigesdoc\SIGESDOC.AplicacionService\bin\Debug\SIGESDOC.Request.pdb
 C:\Users\PSSPERU069\Documents\Proyecto\sigesdoc_sanipes\sigesdoc\SIGESDOC.AplicacionService\bin\Debug\SIGESDOC.Response.pdb
 C:\Users\PSSPERU069\Documents\Proyecto\sigesdoc_sanipes\sigesdoc\SIGESDOC.AplicacionService\bin\Debug\EntityFramework.xml
+C:\Users\PSSPERU069\Documents\Proyecto\sigesdoc_sanipes\sigesdoc\SIGESDOC.AplicacionService\obj\Debug\SIGESDOC.AplicacionService.csprojAssemblyReference.cache
+C:\Users\PSSPERU069\Documents\Proyecto\sigesdoc_sanipes\sigesdoc\SIGESDOC.AplicacionService\obj\Debug\SIGESDOC.AplicacionService.csproj.CoreCompileInputs.cache
 C:\Users\PSSPERU069\Documents\Proyecto\sigesdoc_sanipes\sigesdoc\SIGESDOC.AplicacionService\obj\Debug\SIGESDOC.AplicacionService.csproj.CopyComplete
 C:\Users\PSSPERU069\Documents\Proyecto\sigesdoc_sanipes\sigesdoc\SIGESDOC.AplicacionService\obj\Debug\SIGESDOC.AplicacionService.dll
 C:\Users\PSSPERU069\Documents\Proyecto\sigesdoc_sanipes\sigesdoc\SIGESDOC.AplicacionService\obj\Debug\SIGESDOC.AplicacionService.pdb

@@ -552,6 +552,9 @@
       <DependentUpon>IRepositorioObjects.tt</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="IUidAlfrescoRepositorio.cs">
+      <DependentUpon>IRepositorioObjects.tt</DependentUpon>
+    </Compile>
     <Compile Include="IVerPedientesGesdocRepositorio.cs">
       <DependentUpon>IRepositorioObjects.tt</DependentUpon>
     </Compile>

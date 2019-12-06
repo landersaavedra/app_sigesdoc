@@ -27,5 +27,6 @@ namespace SIGESDOC.Entidades
         public Nullable<int> ID_TUPA { get; set; }
         public string TUPA { get; set; }
         public string ESTADO { get; set; }
+        public string NOMBRE_TIPO_DOCUMENTO { get; set; }
     }
 }

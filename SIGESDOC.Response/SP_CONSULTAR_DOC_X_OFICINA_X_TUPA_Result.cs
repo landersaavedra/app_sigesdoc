@@ -13,6 +13,7 @@ namespace SIGESDOC.Response
     
     public partial class SP_CONSULTAR_DOC_X_OFICINA_X_TUPA_Result
     {
+        public string nombre_tipo_documento { get; set; }
         public int id_documento { get; set; }
         public string anexos { get; set; }
         public System.DateTime fecha_envio { get; set; }
@@ -33,5 +34,7 @@ namespace SIGESDOC.Response
         public Nullable<int> numero_documento { get; set; }
         public string nom_doc { get; set; }
         public string ruta_pdf { get; set; }
+      
+
     }
 }

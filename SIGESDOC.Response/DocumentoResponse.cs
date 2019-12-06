@@ -29,6 +29,8 @@ namespace SIGESDOC.Response
         public string ruta_pdf { get; set; }
         public Nullable<int> num_ext { get; set; }
         public string nom_oficina_crea { get; set; }
+
+        public string nombre_tipo_documento { get; set; }
     
         public virtual List<DocumentoDetalleResponse> documento_detalle { get; set; }
         public virtual DocumentoIndicadorResponse documento_indicador { get; set; }
