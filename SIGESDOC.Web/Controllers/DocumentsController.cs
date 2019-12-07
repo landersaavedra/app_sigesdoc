@@ -10,6 +10,10 @@ using System.Configuration;
 using System.IO;
 using System.Diagnostics;
 using RazorPDF;
+using System.Text;
+using Newtonsoft.Json;
+using System.Net;
+using Newtonsoft.Json.Linq;
 
 namespace SIGESDOC.Web.Controllers
 {
@@ -639,14 +643,43 @@ namespace SIGESDOC.Web.Controllers
         public void MemorandoWord(CargaMemorandoWord tableData)
         {
             DateTime fecha_PATH = DateTime.Now;
+            DocExtGetProperties docExt = new DocExtGetProperties();
 
             DateTime fecha = DateTime.Now;
             tableData.FECHA_ACTUAL = fecha.ToString("dd MMMM yyyy");
-            //desarrollo
-            //string path  = @"C:\Users\PSSPERU069\Documents\Proyecto\sigesdoc_sanipes\sigesdoc\documentos externos";
 
-            string path = ConfigurationManager.AppSettings["memorando"];
-            byte[] byteArray = System.IO.File.ReadAllBytes(path + @"/MODELO_DE_MEMORANDO.docx");
+            //conexion a alfresco
+            string login = "login";
+            string ticket = DevuelveTicket(login);
+                                   
+            //string path = ConfigurationManager.AppSettings["memorando"];
+            string pathAlfresco = ConfigurationManager.AppSettings["alfresco"];
+            
+            string uuid = @"45036dfe-8cfe-4099-a531-49218df2212f";
+            var servicio = pathAlfresco+ "getProperties?alf_ticket="+ticket;
+
+            HttpWebRequest request = (HttpWebRequest)WebRequest.Create(servicio);
+            request.KeepAlive = true;
+            request.Method = "POST";
+            byte[] postbytes = Encoding.UTF8.GetBytes(uuid);
+            //request.Accept = "application/json";
+            request.ContentType = "multipart/form-data; uuid="+ uuid;
+            //request.MediaType = "application/json";
+            request.ContentLength = postbytes.Length;
+            Stream requestStream = request.GetRequestStream();
+            requestStream.Write(postbytes, 0, postbytes.Length);
+            requestStream.Close();
+            HttpWebResponse response = (HttpWebResponse)request.GetResponse();
+
+            if(response.StatusCode == HttpStatusCode.OK)
+            {
+                Stream resStream = response.GetResponseStream();
+                var sr = new StreamReader(response.GetResponseStream());
+                string responseText = sr.ReadToEnd();
+            }
+
+
+            byte[] byteArray = System.IO.File.ReadAllBytes(pathAlfresco + @"MODELO_DE_MEMORANDO.docx");
 
             using (MemoryStream stream = new MemoryStream())
             {
@@ -681,7 +714,7 @@ namespace SIGESDOC.Web.Controllers
                     wordDocument.Close();
                 }
 
-                string nuevopath = Path.Combine(path, "MEMORANDO_" + fecha_PATH.ToString("ddMMyy") + ".docx");
+                string nuevopath = Path.Combine(servicio, "MEMORANDO_" + fecha_PATH.ToString("ddMMyy") + ".docx");
                 stream.Close();
                 System.IO.File.WriteAllBytes(nuevopath, stream.ToArray());
 
@@ -792,6 +825,89 @@ namespace SIGESDOC.Web.Controllers
         }
 
         #endregion
+
+        public string DevuelveTicket(string connection)
+        {
+            //variable de salida del token
+            string salida_token = string.Empty;
+
+            //variable de desearealizacion de Username y Password de ALfresco
+            string connect = ConfigurationManager.AppSettings[connection].ToString();
+            login acceso = new login();
+            acceso = JsonConvert.DeserializeObject<login>(System.IO.File.ReadAllText(connect));
+            string outjson = JsonConvert.SerializeObject(acceso, Formatting.Indented);
+
+            //path de alfresco para el servicio
+            string connectAlfresco = ConfigurationManager.AppSettings["Alfresco"].ToString();
+
+            //path de llamado Alfresco para token
+            string pathAlfresco = connectAlfresco + "api/login";
+
+            //configuracion de llamado de servicio 
+            HttpWebRequest request = (HttpWebRequest)WebRequest.Create(pathAlfresco);
+            request.KeepAlive = true;
+            request.Method = "POST";
+            byte[] postBytes = Encoding.UTF8.GetBytes(outjson);
+            request.Accept = "application/json";
+            request.ContentType = "application/json";
+            request.MediaType = "application/json";
+            request.ContentLength = postBytes.Length;
+
+            Stream requestStream = request.GetRequestStream();
+            requestStream.Write(postBytes, 0, postBytes.Length);
+            requestStream.Close();
+
+            HttpWebResponse response = (HttpWebResponse)request.GetResponse();
+
+            if(response.StatusCode == HttpStatusCode.OK)
+            {
+                Stream reStream = response.GetResponseStream();
+                var sr = new StreamReader(response.GetResponseStream());
+                string salida = sr.ReadToEnd();
+                var data = ToObject(salida) as IDictionary<string, object>;
+
+                foreach(var token in data)
+                {
+                    var tikets = data[token.Key] as IDictionary<string, object>;
+
+                    foreach(var tiket in tikets)
+                    { 
+                        acceso.token = tiket.Value.ToString();
+                    }
+
+                    salida_token = acceso.token;
+                }
+
+            }
+
+            return salida_token;
+        }
+
+        public static object ToObject(string json)
+        {
+            if (string.IsNullOrEmpty(json))
+                return null;
+            return ToObject(JToken.Parse(json));
+        }
+
+        public static object ToObject(JToken token)
+        {
+            switch (token.Type)
+            {
+                case JTokenType.Object:
+                    return token.Children<JProperty>()
+                                .ToDictionary(prop => prop.Name,
+                                              prop => ToObject(prop.Value),
+                                              StringComparer.OrdinalIgnoreCase);
+
+                case JTokenType.Array:
+                    return token.Select(ToObject).ToList();
+
+                default:
+                    return ((JValue)token).Value;
+            }
+        }
+
 
     }
 }
