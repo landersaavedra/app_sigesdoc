@@ -140,7 +140,7 @@ namespace SIGESDOC.Repositorio
                               nom_doc = r.DOCUMENTO,
                               hoja_tramite = new HojaTramiteResponse
                               {
-                                  nombre_tipo_documento = r.NOMBRE_TIPO_DOCUMENTO,
+                                 // nombre_tipo_documento = r.NOMBRE_TIPO_DOCUMENTO,
                                   numero = r.NUMERO,
                                   nombre_tipo_tramite = r.TIPO_TRAMITE,
                                   asunto = r.ASUNTO,
@@ -196,7 +196,7 @@ namespace SIGESDOC.Repositorio
                           select new DocumentoResponse()
                           {
 
-                              nombre_tipo_documento = r.NOMBRE_TIPO_DOCUMENTO,
+                              //nombre_tipo_documento = r.NOMBRE_TIPO_DOCUMENTO,
                               id_documento = r.ID_DOCUMENTO,
                               nom_doc = r.DOCUMENTO,
                               anexos = r.ANEXOS,
@@ -204,7 +204,7 @@ namespace SIGESDOC.Repositorio
                               ruta_pdf = r.RUTA_PDF,
                               hoja_tramite = new HojaTramiteResponse
                               {
-                                  nombre_tipo_documento = r.NOMBRE_TIPO_DOCUMENTO,
+                                 // nombre_tipo_documento = r.NOMBRE_TIPO_DOCUMENTO,
                                   numero = r.NUMERO,
                                   nombre_tipo_tramite = r.TIPO_TRAMITE,
                                   asunto = r.ASUNTO,

@@ -16,14 +16,14 @@ namespace SIGESDOC.Entidades
     {
         public MAE_ESTADO_TRAMITE()
         {
-            this.DAT_DOCUMENTO_DETALLE = new HashSet<DAT_DOCUMENTO_DETALLE>();
             this.DAT_LOG_DESARCHIVO_DESATENDIDO = new HashSet<DAT_LOG_DESARCHIVO_DESATENDIDO>();
+            this.DAT_DOCUMENTO_DETALLE = new HashSet<DAT_DOCUMENTO_DETALLE>();
         }
     
         public byte ID_EST_TRAMITE { get; set; }
         public string NOMBRE { get; set; }
     
-        public virtual ICollection<DAT_DOCUMENTO_DETALLE> DAT_DOCUMENTO_DETALLE { get; set; }
         public virtual ICollection<DAT_LOG_DESARCHIVO_DESATENDIDO> DAT_LOG_DESARCHIVO_DESATENDIDO { get; set; }
+        public virtual ICollection<DAT_DOCUMENTO_DETALLE> DAT_DOCUMENTO_DETALLE { get; set; }
     }
 }

@@ -19,7 +19,7 @@ namespace SIGESDOC.Response
         public int id_doc_dhcpa { get; set; }
         public string activo { get; set; }
     
-        public virtual DocumentoDhcpaResponse documento_dhcpa { get; set; }
         public virtual SeguimientoDhcpaResponse seguimiento_dhcpa { get; set; }
+        public virtual DocumentoDhcpaResponse documento_dhcpa { get; set; }
     }
 }

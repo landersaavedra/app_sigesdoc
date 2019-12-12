@@ -4,15 +4,13 @@
   <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
     <!-- Diagram content (shape and connector positions) -->
     <edmx:Diagrams>
-      <Diagram DiagramId="f1758584dce54273b5959a3cb191ced0" Name="Diagram1" ZoomLevel="125">
+      <Diagram DiagramId="f1758584dce54273b5959a3cb191ced0" Name="Diagram1" ZoomLevel="40">
         <EntityTypeShape EntityType="DB_GESDOCModel.COUNT_HT_EXTERNO" Width="1.5" PointX="5.75" PointY="0.75" />
         <EntityTypeShape EntityType="DB_GESDOCModel.COUNT_HT_INTERNO" Width="1.5" PointX="5.75" PointY="3.75" />
         <EntityTypeShape EntityType="DB_GESDOCModel.DAT_DET_DOC_FACT" Width="1.5" PointX="3" PointY="32.25" />
         <EntityTypeShape EntityType="DB_GESDOCModel.DAT_DET_SEG_DOC" Width="1.5" PointX="3" PointY="25.25" />
         <EntityTypeShape EntityType="DB_GESDOCModel.DAT_DET_SEG_DOC_DHCPA" Width="1.5" PointX="3" PointY="22.25" />
         <EntityTypeShape EntityType="DB_GESDOCModel.DAT_DET_SEG_EVALUADOR" Width="1.5" PointX="3" PointY="45.625" />
-        <EntityTypeShape EntityType="DB_GESDOCModel.DAT_DOCUMENTO_DETALLE" Width="1.5" PointX="6" PointY="33.625" />
-        <EntityTypeShape EntityType="DB_GESDOCModel.DAT_DOCUMENTO_DHCPA_DETALLE" Width="2.625" PointX="2.375" PointY="11.75" />
         <EntityTypeShape EntityType="DB_GESDOCModel.DAT_ESPECIES_HABILITACIONES" Width="1.5" PointX="9" PointY="28.375" />
         <EntityTypeShape EntityType="DB_GESDOCModel.DAT_LOG_DESARCHIVO_DESATENDIDO" Width="1.5" PointX="8.25" PointY="33.75" />
         <EntityTypeShape EntityType="DB_GESDOCModel.DAT_PROTOCOLO_ALMACEN" Width="1.5" PointX="11.25" PointY="22.5" />
@@ -26,7 +24,6 @@
         <EntityTypeShape EntityType="DB_GESDOCModel.MAE_ARCHIVADOR_DHCPA" Width="1.5" PointX="5.75" PointY="6.75" />
         <EntityTypeShape EntityType="DB_GESDOCModel.MAE_CLASIFICACION_TRAMITE" Width="1.5" PointX="7.75" PointY="0.75" />
         <EntityTypeShape EntityType="DB_GESDOCModel.MAE_CONSTANCIA_HACCP" Width="1.5" PointX="3" PointY="39.625" />
-        <EntityTypeShape EntityType="DB_GESDOCModel.MAE_DOCUMENTO_DHCPA" Width="2.375" PointX="0.5" PointY="18.5" />
         <EntityTypeShape EntityType="DB_GESDOCModel.MAE_DOCUMENTO_INDICADOR" Width="1.5" PointX="1.5" PointY="16" />
         <EntityTypeShape EntityType="DB_GESDOCModel.MAE_ESTADO_SEGUIMIENTO_DHCPA" Width="1.5" PointX="7.75" PointY="3.75" />
         <EntityTypeShape EntityType="DB_GESDOCModel.MAE_ESTADO_TRAMITE" Width="1.5" PointX="3.75" PointY="51.375" />
@@ -82,10 +79,6 @@
         <EntityTypeShape EntityType="DB_GESDOCModel.VW_DB_GENERAL_MAE_CODIGO_DESEMBARCADERO" Width="1.5" PointX="20.375" PointY="0.75" />
         <EntityTypeShape EntityType="DB_GESDOCModel.VW_DB_GENERAL_MAE_DESEMBARCADERO" Width="1.5" PointX="20.625" PointY="3.75" />
         <EntityTypeShape EntityType="DB_GESDOCModel.VW_DB_GENERAL_MAE_TIPO_DESEMBARCADERO" Width="1.5" PointX="19.75" PointY="7.75" />
-        <AssociationConnector Association="DB_GESDOCModel.FK_DAT_DET_SEG_DOC_DHCPA_MAE_DOCUMENTO_DHCPA" />
-        <AssociationConnector Association="DB_GESDOCModel.FK_DAT_DOCUMENTO_DETALLE_MAE_ESTADO_TRAMITE" />
-        <AssociationConnector Association="DB_GESDOCModel.FK_DAT_LOG_DESARCHIVO_DESATENDIDO_DAT_DOCUMENTO_DETALLE" />
-        <AssociationConnector Association="DB_GESDOCModel.FK_DAT_DOCUMENTO_DHCPA_DETALLE_MAE_DOCUMENTO_DHCPA" />
         <AssociationConnector Association="DB_GESDOCModel.FK_DAT_PROTOCOLO_ESPECIE_DAT_ESPECIES_HABILITACIONES" />
         <AssociationConnector Association="DB_GESDOCModel.FK_DAT_LOG_DESARCHIVO_DESATENDIDO_OLD_MAE_ESTADO_TRAMITE" />
         <AssociationConnector Association="DB_GESDOCModel.FK_DAT_PROTOCOLO_ALMACEN_MAE_PROTOCOLO" />
@@ -123,18 +116,15 @@
         <EntityTypeShape EntityType="DB_GESDOCModel.MAE_DESTINO_SOLICITUD_INSPECCION" Width="1.5" PointX="22.375" PointY="9.75" />
         <EntityTypeShape EntityType="DB_GESDOCModel.MAE_SOLICITUD_INSPECCION" Width="1.5" PointX="11" PointY="34" />
         <AssociationConnector Association="DB_GESDOCModel.FK_MAE_SOLICITUD_INSPECCION_MAE_VERSION_SOLICITUD" />
-<<<<<<< HEAD
         <EntityTypeShape EntityType="DB_GESDOCModel.VW_CONSULTAR_DNI_PERSONAL_LEGAL" Width="1.5" PointX="13.75" PointY="20.75" />
-=======
-        
-&gt;&gt;&gt;&gt;&gt;&gt;&gt; 2e0f6057428ff88c90b327d2a051304182478bba
+
+
         <EntityTypeShape EntityType="DB_GESDOCModel.MAE_ACTIVIDAD_PROTOCOLO" Width="1.5" PointX="14.25" PointY="25.5" />
         <EntityTypeShape EntityType="DB_GESDOCModel.MAE_ESTADOS_DEL_PROTOCOLO" Width="1.5" PointX="12" PointY="31.625" />
         <AssociationConnector Association="DB_GESDOCModel.FK_MAE_ACTIVIDAD_PROTOCOLO_MAE_ESTADOS_DEL_PROTOCOLO" />
         <AssociationConnector Association="DB_GESDOCModel.FK_MAE_ACTIVIDAD_PROTOCOLO_MAE_PROTOCOLO" />
         <EntityTypeShape EntityType="DB_GESDOCModel.VW_CONSULTAR_RUC" Width="2" PointX="20" PointY="12.375" />
         <EntityTypeShape EntityType="DB_GESDOCModel.DAT_DOC_DET_OBSERVACIONES" Width="1.5" PointX="8.25" PointY="57.125" />
-        <AssociationConnector Association="DB_GESDOCModel.FK_DAT_DOC_DET_OBSERVACIONES_DAT_DOCUMENTO_DETALLE" />
         <EntityTypeShape EntityType="DB_GESDOCModel.MAE_FIRMAS_SDHPA" Width="1.5" PointX="22.375" PointY="12.75" />
         <EntityTypeShape EntityType="DB_GESDOCModel.VW_CONSULTAR_DB_GENERAL_MAE_CONCESION" Width="1.875" PointX="22.375" PointY="15.75" />
         <EntityTypeShape EntityType="DB_GESDOCModel.MAE_ACTA_INSPECCION_DSFPA" Width="1.5" PointX="13.25" PointY="34.125" />
@@ -153,7 +143,6 @@
         <EntityTypeShape EntityType="DB_GESDOCModel.MAE_TIPO_TUPA" Width="1.5" PointX="24.375" PointY="11.75" />
         <EntityTypeShape EntityType="DB_GESDOCModel.VW_CONSULTA_FACTURAS" Width="2.125" PointX="25" PointY="14.75" />
         <EntityTypeShape EntityType="DB_GESDOCModel.MAE_DOCUMENTO" Width="1.5" PointX="10.75" PointY="40.375" />
-        <AssociationConnector Association="DB_GESDOCModel.FK_DAT_DOCUMENTO_DETALLE_MAE_DOCUMENTO" />
         <AssociationConnector Association="DB_GESDOCModel.FK_MAE_DOCUMENTO_MAE_DOCUMENTO_INDICADOR" />
         <AssociationConnector Association="DB_GESDOCModel.FK_MAE_DOCUMENTO_MAE_HOJA_TRAMITE" />
         <AssociationConnector Association="DB_GESDOCModel.FK_MAE_DOCUMENTO_MAE_TIPO_DOCUMENTO" />
@@ -186,7 +175,17 @@
         <EntityTypeShape EntityType="DB_GESDOCModel.MAE_DOCUMENTO_ANEXO" Width="1.5" PointX="13" PointY="48.25" />
         <AssociationConnector Association="DB_GESDOCModel.FK_MAE_DOCUMENTO_ANEXO_MAE_DOCUMENTO" />
         <EntityTypeShape EntityType="DB_GESDOCModel.VW_CONSULTA_EXPEDIENTE_X_EXPEDIENTE" Width="1.5" PointX="28.375" PointY="0.75" />
-        <EntityTypeShape EntityType="DB_GESDOCModel.LOG_UID_ALFRESCO" Width="1.5" PointX="5.8005746555517312" PointY="30.475212126260256" />
+        <EntityTypeShape EntityType="DB_GESDOCModel.LOG_UID_ALFRESCO" Width="1.5" PointX="20.375" PointY="28.75" />
+        <EntityTypeShape EntityType="DB_GESDOCModel.DAT_DOCUMENTO_DETALLE" Width="1.5" PointX="16" PointY="42.25" />
+        <AssociationConnector Association="DB_GESDOCModel.FK_DAT_DOC_DET_OBSERVACIONES_DAT_DOCUMENTO_DETALLE" />
+        <AssociationConnector Association="DB_GESDOCModel.FK_DAT_DOCUMENTO_DETALLE_MAE_DOCUMENTO" />
+        <AssociationConnector Association="DB_GESDOCModel.FK_DAT_DOCUMENTO_DETALLE_MAE_ESTADO_TRAMITE" />
+        <AssociationConnector Association="DB_GESDOCModel.FK_DAT_LOG_DESARCHIVO_DESATENDIDO_DAT_DOCUMENTO_DETALLE" />
+        <EntityTypeShape EntityType="DB_GESDOCModel.MAE_DOCUMENTO_DHCPA" Width="1.5" PointX="0.75" PointY="15.125" />
+        <AssociationConnector Association="DB_GESDOCModel.FK_DAT_DET_SEG_DOC_DHCPA_MAE_DOCUMENTO_DHCPA" />
+        <EntityTypeShape EntityType="DB_GESDOCModel.DAT_DOCUMENTO_DHCPA_DETALLE" Width="1.5" PointX="3" PointY="11.375" />
+        <AssociationConnector Association="DB_GESDOCModel.FK_DAT_DOCUMENTO_DHCPA_DETALLE_MAE_DOCUMENTO_DHCPA" />
+        <EntityTypeShape EntityType="DB_GESDOCModel.Consulta_Detalle_Mae_Documento" Width="1.5" PointX="28.375" PointY="23.75" />
         </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

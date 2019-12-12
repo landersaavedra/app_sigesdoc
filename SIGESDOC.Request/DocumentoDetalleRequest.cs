@@ -51,10 +51,11 @@ namespace SIGESDOC.Request
         public string nom_oficina_crea { get; set; }
         public string nom_oficina_destino { get; set; }
         public Nullable<bool> flag_tipo_memorando { get; set; }
+        public Nullable<bool> flag_destino_principal { get; set; }
     
-        public virtual EstadoTramiteRequest estado_tramite { get; set; }
-        public virtual List<LogDesarchivoDesatendidoRequest> log_desarchivo_desatendido { get; set; }
         public virtual List<DocDetObservacionesRequest> doc_det_observaciones { get; set; }
         public virtual DocumentoRequest documento { get; set; }
+        public virtual EstadoTramiteRequest estado_tramite { get; set; }
+        public virtual List<LogDesarchivoDesatendidoRequest> log_desarchivo_desatendido { get; set; }
     }
 }

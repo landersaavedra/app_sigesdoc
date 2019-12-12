@@ -30,10 +30,10 @@ namespace SIGESDOC.Request
         public Nullable<int> num_ext { get; set; }
         public string nom_oficina_crea { get; set; }
     
-        public virtual List<DocumentoDetalleRequest> documento_detalle { get; set; }
         public virtual DocumentoIndicadorRequest documento_indicador { get; set; }
         public virtual HojaTramiteRequest hoja_tramite { get; set; }
         public virtual TipoDocumentoRequest tipo_documento { get; set; }
         public virtual List<DocumentoAnexoRequest> documento_anexo { get; set; }
+        public virtual List<DocumentoDetalleRequest> documento_detalle { get; set; }
     }
 }

@@ -13,7 +13,6 @@ namespace SIGESDOC.Request
     
     public partial class SP_CONSULTAR_HT_GENERAL_X_OFICINA_DESTINO_X_TUPA_Result
     {
-        public string nombre_tipo_documento { get; set; }
         public int numero { get; set; }
         public string hoja_tramite { get; set; }
         public string tipo_tramite { get; set; }

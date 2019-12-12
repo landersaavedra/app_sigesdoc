@@ -115,6 +115,7 @@
     <Property Name="NOM_OFICINA_CREA" Type="varchar" MaxLength="500" />
     <Property Name="NOM_OFICINA_DESTINO" Type="varchar" MaxLength="500" />
     <Property Name="FLAG_TIPO_MEMORANDO" Type="bit" />
+    <Property Name="FLAG_DESTINO_PRINCIPAL" Type="bit" />
   </EntityType>
   <EntityType Name="DAT_DOCUMENTO_DHCPA_DETALLE">
     <Key>
@@ -909,6 +910,26 @@
     <Property Name="ACTIVO" Type="char" MaxLength="1" />
     <Property Name="FECHA_CREA" Type="datetime" />
     <Property Name="USUARIO_CREA" Type="varchar" MaxLength="50" />
+  </EntityType>
+  <!--Errores durante la generación:
+advertencia 6002: La tabla o vista 'DB_GESDOC.dbo.Consulta_Detalle_Mae_Documento' no tiene definida ninguna clave principal. Se ha inferido la clave y la definición se creado como una vista o tabla de solo lectura.-->
+  <EntityType Name="Consulta_Detalle_Mae_Documento">
+    <Key>
+      <PropertyRef Name="ID_DOCUMENTO" />
+      <PropertyRef Name="OFICINA_DESTINO" />
+      <PropertyRef Name="OFICINA_CREA" />
+      <PropertyRef Name="NOM_DOC" />
+    </Key>
+    <Property Name="NOMBRES" Type="varchar" MaxLength="153" />
+    <Property Name="ID_DOCUMENTO" Type="int" Nullable="false" />
+    <Property Name="OFICINA_DESTINO" Type="int" Nullable="false" />
+    <Property Name="OBSERVACION" Type="varchar" MaxLength="500" />
+    <Property Name="ID_CAB_DET_DOCUMENTO" Type="int" />
+    <Property Name="OFICINA_CREA" Type="int" Nullable="false" />
+    <Property Name="FLAG_DESTINO_PRINCIPAL" Type="bit" />
+    <Property Name="NUMERO_DOCUMENTO" Type="int" />
+    <Property Name="NOM_DOC" Type="varchar" MaxLength="250" Nullable="false" />
+    <Property Name="ASUNTO" Type="varchar" MaxLength="500" />
   </EntityType>
   <!--Errores durante la generación:
 advertencia 6002: La tabla o vista 'DB_GESDOC.dbo.Consultar_ptocolo_transporte_x_id_transporte_2018_v1' no tiene definida ninguna clave principal. Se ha inferido la clave y la definición se creado como una vista o tabla de solo lectura.-->
@@ -2794,10 +2815,6 @@ advertencia 6002: La tabla o vista 'DB_GESDOC.dbo.VW_VER_PEDIENTES_GESDOC' no ti
     <Parameter Name="nueva_unidad_medida" Type="int" Mode="In" />
     <Parameter Name="usuario" Type="varchar" Mode="In" />
   </Function>
-  <Function Name="SP_OBTENER_DNI" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
-    <Parameter Name="dni" Type="varchar" Mode="In" />
-    <Parameter Name="msg" Type="smallint" Mode="InOut" />
-  </Function>
   <Function Name="SP_PLANTA_PROTOCOLO_EXCEL" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
   <Function Name="SP_RECIBIR_MAE_SOLICITUD_INSPECCION" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
     <Parameter Name="USUARIO" Type="varchar" Mode="In" />
@@ -2807,14 +2824,6 @@ advertencia 6002: La tabla o vista 'DB_GESDOC.dbo.VW_VER_PEDIENTES_GESDOC' no ti
     <Parameter Name="USUARIO" Type="varchar" Mode="In" />
     <Parameter Name="OFICINA" Type="int" Mode="In" />
     <Parameter Name="INSPECTOR" Type="varchar" Mode="In" />
-  </Function>
-  <Function Name="SP_VALIDA_UID_ALFRESCO" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
-    <Parameter Name="NOM_DOC" Type="varchar" Mode="In" />
-    <Parameter Name="TIPO_DOC" Type="varchar" Mode="In" />
-    <Parameter Name="VERSION_DOCUMENTO" Type="int" Mode="In" />
-    <Parameter Name="UID_ALFRESCO" Type="varchar" Mode="In" />
-    <Parameter Name="MSG" Type="int" Mode="InOut" />
-    <Parameter Name="SALIDA_UID_ALFRESCO" Type="varchar" Mode="InOut" />
   </Function>
   <EntityContainer Name="DB_GESDOCModelStoreContainer">
     <EntitySet Name="COUNT_EXPEDIENTE_UNICO" EntityType="Self.COUNT_EXPEDIENTE_UNICO" Schema="dbo" store:Type="Tables" />
@@ -2889,6 +2898,20 @@ advertencia 6002: La tabla o vista 'DB_GESDOC.dbo.VW_VER_PEDIENTES_GESDOC' no ti
     <EntitySet Name="MAE_TIPO_TUPA" EntityType="Self.MAE_TIPO_TUPA" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="MAE_TUPA" EntityType="Self.MAE_TUPA" Schema="dbo" store:Type="Tables" />
     <EntitySet Name="MAE_VERSION_SOLICITUD" EntityType="Self.MAE_VERSION_SOLICITUD" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Consulta_Detalle_Mae_Documento" EntityType="Self.Consulta_Detalle_Mae_Documento" store:Type="Views" store:Schema="dbo">
+      <DefiningQuery>SELECT 
+    [Consulta_Detalle_Mae_Documento].[NOMBRES] AS [NOMBRES], 
+    [Consulta_Detalle_Mae_Documento].[ID_DOCUMENTO] AS [ID_DOCUMENTO], 
+    [Consulta_Detalle_Mae_Documento].[OFICINA_DESTINO] AS [OFICINA_DESTINO], 
+    [Consulta_Detalle_Mae_Documento].[OBSERVACION] AS [OBSERVACION], 
+    [Consulta_Detalle_Mae_Documento].[ID_CAB_DET_DOCUMENTO] AS [ID_CAB_DET_DOCUMENTO], 
+    [Consulta_Detalle_Mae_Documento].[OFICINA_CREA] AS [OFICINA_CREA], 
+    [Consulta_Detalle_Mae_Documento].[FLAG_DESTINO_PRINCIPAL] AS [FLAG_DESTINO_PRINCIPAL], 
+    [Consulta_Detalle_Mae_Documento].[NUMERO_DOCUMENTO] AS [NUMERO_DOCUMENTO], 
+    [Consulta_Detalle_Mae_Documento].[NOM_DOC] AS [NOM_DOC], 
+    [Consulta_Detalle_Mae_Documento].[ASUNTO] AS [ASUNTO]
+    FROM [dbo].[Consulta_Detalle_Mae_Documento] AS [Consulta_Detalle_Mae_Documento]</DefiningQuery>
+    </EntitySet>
     <EntitySet Name="Consultar_ptocolo_transporte_x_id_transporte_2018_v1" EntityType="Self.Consultar_ptocolo_transporte_x_id_transporte_2018_v1" store:Type="Views" store:Schema="dbo">
       <DefiningQuery>SELECT 
     [Consultar_ptocolo_transporte_x_id_transporte_2018_v1].[ID_PROTOCOLO] AS [ID_PROTOCOLO], 

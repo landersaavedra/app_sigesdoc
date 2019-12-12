@@ -13,8 +13,6 @@ namespace SIGESDOC.Entidades
     
     public partial class SP_CONSULTAR_DOC_X_OFICINA_X_TUPA_Result
     {
-
-        public string NOMBRE_TIPO_DOCUMENTO { get; set; }
         public int ID_DOCUMENTO { get; set; }
         public string ANEXOS { get; set; }
         public System.DateTime FECHA_ENVIO { get; set; }
@@ -35,6 +33,5 @@ namespace SIGESDOC.Entidades
         public Nullable<int> NUMERO_DOCUMENTO { get; set; }
         public string NOM_DOC { get; set; }
         public string RUTA_PDF { get; set; }
-
     }
 }

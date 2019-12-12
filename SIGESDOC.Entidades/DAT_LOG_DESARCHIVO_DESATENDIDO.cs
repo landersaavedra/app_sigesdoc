@@ -24,7 +24,7 @@ namespace SIGESDOC.Entidades
         public string USUARIO_DESACTIVO { get; set; }
         public string OBSERVACION { get; set; }
     
-        public virtual DAT_DOCUMENTO_DETALLE DAT_DOCUMENTO_DETALLE { get; set; }
         public virtual MAE_ESTADO_TRAMITE MAE_ESTADO_TRAMITE { get; set; }
+        public virtual DAT_DOCUMENTO_DETALLE DAT_DOCUMENTO_DETALLE { get; set; }
     }
 }

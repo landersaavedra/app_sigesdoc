@@ -34,8 +34,6 @@ namespace SIGESDOC.Contexto
         public virtual DbSet<DAT_DET_SEG_DOC> DAT_DET_SEG_DOC { get; set; }
         public virtual DbSet<DAT_DET_SEG_DOC_DHCPA> DAT_DET_SEG_DOC_DHCPA { get; set; }
         public virtual DbSet<DAT_DET_SEG_EVALUADOR> DAT_DET_SEG_EVALUADOR { get; set; }
-        public virtual DbSet<DAT_DOCUMENTO_DETALLE> DAT_DOCUMENTO_DETALLE { get; set; }
-        public virtual DbSet<DAT_DOCUMENTO_DHCPA_DETALLE> DAT_DOCUMENTO_DHCPA_DETALLE { get; set; }
         public virtual DbSet<DAT_ESPECIES_HABILITACIONES> DAT_ESPECIES_HABILITACIONES { get; set; }
         public virtual DbSet<DAT_LOG_DESARCHIVO_DESATENDIDO> DAT_LOG_DESARCHIVO_DESATENDIDO { get; set; }
         public virtual DbSet<DAT_PROTOCOLO_ALMACEN> DAT_PROTOCOLO_ALMACEN { get; set; }
@@ -49,7 +47,6 @@ namespace SIGESDOC.Contexto
         public virtual DbSet<MAE_ARCHIVADOR_DHCPA> MAE_ARCHIVADOR_DHCPA { get; set; }
         public virtual DbSet<MAE_CLASIFICACION_TRAMITE> MAE_CLASIFICACION_TRAMITE { get; set; }
         public virtual DbSet<MAE_CONSTANCIA_HACCP> MAE_CONSTANCIA_HACCP { get; set; }
-        public virtual DbSet<MAE_DOCUMENTO_DHCPA> MAE_DOCUMENTO_DHCPA { get; set; }
         public virtual DbSet<MAE_DOCUMENTO_INDICADOR> MAE_DOCUMENTO_INDICADOR { get; set; }
         public virtual DbSet<MAE_ESTADO_SEGUIMIENTO_DHCPA> MAE_ESTADO_SEGUIMIENTO_DHCPA { get; set; }
         public virtual DbSet<MAE_ESTADO_TRAMITE> MAE_ESTADO_TRAMITE { get; set; }
@@ -154,6 +151,10 @@ namespace SIGESDOC.Contexto
         public virtual DbSet<MAE_DOCUMENTO_ANEXO> MAE_DOCUMENTO_ANEXO { get; set; }
         public virtual DbSet<VW_CONSULTA_EXPEDIENTE_X_EXPEDIENTE> VW_CONSULTA_EXPEDIENTE_X_EXPEDIENTE { get; set; }
         public virtual DbSet<LOG_UID_ALFRESCO> LOG_UID_ALFRESCO { get; set; }
+        public virtual DbSet<DAT_DOCUMENTO_DETALLE> DAT_DOCUMENTO_DETALLE { get; set; }
+        public virtual DbSet<MAE_DOCUMENTO_DHCPA> MAE_DOCUMENTO_DHCPA { get; set; }
+        public virtual DbSet<DAT_DOCUMENTO_DHCPA_DETALLE> DAT_DOCUMENTO_DHCPA_DETALLE { get; set; }
+        public virtual DbSet<Consulta_Detalle_Mae_Documento> Consulta_Detalle_Mae_Documento { get; set; }
     
         public virtual ObjectResult<p_MODIFICAR_CONTRASEÑA_Result> p_MODIFICAR_CONTRASEÑA(string ruc, string dni, string clave_ini, string clave_fin)
         {
@@ -1765,27 +1766,6 @@ namespace SIGESDOC.Contexto
                 new ObjectParameter("dni", typeof(string));
     
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<Nullable<int>>("SP_OBTENER_DNI", dniParameter, msg);
-        }
-    
-        public virtual int SP_VALIDA_UID_ALFRESCO(string nOM_DOC, string tIPO_DOC, Nullable<int> vERSION_DOCUMENTO, string uID_ALFRESCO, ObjectParameter mSG, ObjectParameter sALIDA_UID_ALFRESCO)
-        {
-            var nOM_DOCParameter = nOM_DOC != null ?
-                new ObjectParameter("NOM_DOC", nOM_DOC) :
-                new ObjectParameter("NOM_DOC", typeof(string));
-    
-            var tIPO_DOCParameter = tIPO_DOC != null ?
-                new ObjectParameter("TIPO_DOC", tIPO_DOC) :
-                new ObjectParameter("TIPO_DOC", typeof(string));
-    
-            var vERSION_DOCUMENTOParameter = vERSION_DOCUMENTO.HasValue ?
-                new ObjectParameter("VERSION_DOCUMENTO", vERSION_DOCUMENTO) :
-                new ObjectParameter("VERSION_DOCUMENTO", typeof(int));
-    
-            var uID_ALFRESCOParameter = uID_ALFRESCO != null ?
-                new ObjectParameter("UID_ALFRESCO", uID_ALFRESCO) :
-                new ObjectParameter("UID_ALFRESCO", typeof(string));
-    
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("SP_VALIDA_UID_ALFRESCO", nOM_DOCParameter, tIPO_DOCParameter, vERSION_DOCUMENTOParameter, uID_ALFRESCOParameter, mSG, sALIDA_UID_ALFRESCO);
         }
     }
 }

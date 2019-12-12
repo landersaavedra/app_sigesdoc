@@ -24,7 +24,7 @@ namespace SIGESDOC.Request
         public string usuario_desactivo { get; set; }
         public string observacion { get; set; }
     
-        public virtual DocumentoDetalleRequest documento_detalle { get; set; }
         public virtual EstadoTramiteRequest estado_tramite { get; set; }
+        public virtual DocumentoDetalleRequest documento_detalle { get; set; }
     }
 }

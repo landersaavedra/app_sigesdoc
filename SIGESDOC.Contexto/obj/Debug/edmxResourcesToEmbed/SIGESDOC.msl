@@ -512,66 +512,6 @@
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
-    <EntitySetMapping Name="DAT_DOCUMENTO_DETALLE">
-      <EntityTypeMapping TypeName="DB_GESDOCModel.DAT_DOCUMENTO_DETALLE">
-        <MappingFragment StoreEntitySet="DAT_DOCUMENTO_DETALLE">
-          <ScalarProperty Name="FLAG_TIPO_MEMORANDO" ColumnName="FLAG_TIPO_MEMORANDO" />
-          <ScalarProperty Name="NOM_OFICINA_DESTINO" ColumnName="NOM_OFICINA_DESTINO" />
-          <ScalarProperty Name="NOM_OFICINA_CREA" ColumnName="NOM_OFICINA_CREA" />
-          <ScalarProperty Name="OBSERVACION_ATENDIDO" ColumnName="OBSERVACION_ATENDIDO" />
-          <ScalarProperty Name="OBSERVACION_ARCHIVO" ColumnName="OBSERVACION_ARCHIVO" />
-          <ScalarProperty Name="FECHA_CANCELAR" ColumnName="FECHA_CANCELAR" />
-          <ScalarProperty Name="USUARIO_CANCELAR" ColumnName="USUARIO_CANCELAR" />
-          <ScalarProperty Name="OFICINA_CREA" ColumnName="OFICINA_CREA" />
-          <ScalarProperty Name="FECHA_CREA" ColumnName="FECHA_CREA" />
-          <ScalarProperty Name="USUARIO_CREA" ColumnName="USUARIO_CREA" />
-          <ScalarProperty Name="USUARIO_DERIVADO" ColumnName="USUARIO_DERIVADO" />
-          <ScalarProperty Name="FECHA_DERIVADO" ColumnName="FECHA_DERIVADO" />
-          <ScalarProperty Name="USUARIO_ARCHIVO" ColumnName="USUARIO_ARCHIVO" />
-          <ScalarProperty Name="FECHA_ARCHIVO" ColumnName="FECHA_ARCHIVO" />
-          <ScalarProperty Name="USUARIO_ATENDIDO" ColumnName="USUARIO_ATENDIDO" />
-          <ScalarProperty Name="FECHA_ATENDIDO" ColumnName="FECHA_ATENDIDO" />
-          <ScalarProperty Name="USUARIO_RECEPCION" ColumnName="USUARIO_RECEPCION" />
-          <ScalarProperty Name="FECHA_RECEPCION" ColumnName="FECHA_RECEPCION" />
-          <ScalarProperty Name="INDICADORES" ColumnName="INDICADORES" />
-          <ScalarProperty Name="IND_11" ColumnName="IND_11" />
-          <ScalarProperty Name="IND_10" ColumnName="IND_10" />
-          <ScalarProperty Name="IND_09" ColumnName="IND_09" />
-          <ScalarProperty Name="IND_08" ColumnName="IND_08" />
-          <ScalarProperty Name="IND_07" ColumnName="IND_07" />
-          <ScalarProperty Name="IND_06" ColumnName="IND_06" />
-          <ScalarProperty Name="IND_05" ColumnName="IND_05" />
-          <ScalarProperty Name="IND_04" ColumnName="IND_04" />
-          <ScalarProperty Name="IND_03" ColumnName="IND_03" />
-          <ScalarProperty Name="IND_02" ColumnName="IND_02" />
-          <ScalarProperty Name="IND_01" ColumnName="IND_01" />
-          <ScalarProperty Name="persona_num_documento" ColumnName="persona_num_documento" />
-          <ScalarProperty Name="ID_EST_TRAMITE" ColumnName="ID_EST_TRAMITE" />
-          <ScalarProperty Name="OBSERVACION" ColumnName="OBSERVACION" />
-          <ScalarProperty Name="OFICINA_DESTINO" ColumnName="OFICINA_DESTINO" />
-          <ScalarProperty Name="ID_CAB_DET_DOCUMENTO" ColumnName="ID_CAB_DET_DOCUMENTO" />
-          <ScalarProperty Name="ID_DOCUMENTO" ColumnName="ID_DOCUMENTO" />
-          <ScalarProperty Name="ID_DET_DOCUMENTO" ColumnName="ID_DET_DOCUMENTO" />
-        </MappingFragment>
-      </EntityTypeMapping>
-    </EntitySetMapping>
-    <EntitySetMapping Name="DAT_DOCUMENTO_DHCPA_DETALLE">
-      <EntityTypeMapping TypeName="DB_GESDOCModel.DAT_DOCUMENTO_DHCPA_DETALLE">
-        <MappingFragment StoreEntitySet="DAT_DOCUMENTO_DHCPA_DETALLE">
-          <ScalarProperty Name="FLAG_TIPO_CARTA" ColumnName="FLAG_TIPO_CARTA" />
-          <ScalarProperty Name="NOMBRE_PERSONA_DESTINO" ColumnName="NOMBRE_PERSONA_DESTINO" />
-          <ScalarProperty Name="FECHA_MODIFICA" ColumnName="FECHA_MODIFICA" />
-          <ScalarProperty Name="USUARIO_MODIFICA" ColumnName="USUARIO_MODIFICA" />
-          <ScalarProperty Name="FECHA_REGISTRO" ColumnName="FECHA_REGISTRO" />
-          <ScalarProperty Name="USUARIO_REGISTRO" ColumnName="USUARIO_REGISTRO" />
-          <ScalarProperty Name="ACTIVO" ColumnName="ACTIVO" />
-          <ScalarProperty Name="PERSONA_DESTINO" ColumnName="PERSONA_DESTINO" />
-          <ScalarProperty Name="ID_OFICINA_DIRECCION_DESTINO" ColumnName="ID_OFICINA_DIRECCION_DESTINO" />
-          <ScalarProperty Name="ID_DOC_DHCPA" ColumnName="ID_DOC_DHCPA" />
-          <ScalarProperty Name="ID_DOC_DHCPA_DET" ColumnName="ID_DOC_DHCPA_DET" />
-        </MappingFragment>
-      </EntityTypeMapping>
-    </EntitySetMapping>
     <EntitySetMapping Name="DAT_ESPECIES_HABILITACIONES">
       <EntityTypeMapping TypeName="DB_GESDOCModel.DAT_ESPECIES_HABILITACIONES">
         <MappingFragment StoreEntitySet="DAT_ESPECIES_HABILITACIONES">
@@ -737,35 +677,6 @@
           <ScalarProperty Name="NOMBRE" ColumnName="NOMBRE" />
           <ScalarProperty Name="ID_SEGUIMIENTO" ColumnName="ID_SEGUIMIENTO" />
           <ScalarProperty Name="ID_CONSTANCIA_HACCP" ColumnName="ID_CONSTANCIA_HACCP" />
-        </MappingFragment>
-      </EntityTypeMapping>
-    </EntitySetMapping>
-    <EntitySetMapping Name="MAE_DOCUMENTO_DHCPA">
-      <EntityTypeMapping TypeName="DB_GESDOCModel.MAE_DOCUMENTO_DHCPA">
-        <MappingFragment StoreEntitySet="MAE_DOCUMENTO_DHCPA">
-          <ScalarProperty Name="ID_DET_DOCUMENTO" ColumnName="ID_DET_DOCUMENTO" />
-          <ScalarProperty Name="RUC" ColumnName="RUC" />
-          <ScalarProperty Name="EXP_O_HT_N_CDL_NOTIF" ColumnName="EXP_O_HT_N_CDL_NOTIF" />
-          <ScalarProperty Name="EXP_O_HT_CDL_NOTIF" ColumnName="EXP_O_HT_CDL_NOTIF" />
-          <ScalarProperty Name="DOC_NOTIFICAR_CDL_NOTIF" ColumnName="DOC_NOTIFICAR_CDL_NOTIF" />
-          <ScalarProperty Name="FOLIA_CDL_NOTIF" ColumnName="FOLIA_CDL_NOTIF" />
-          <ScalarProperty Name="EMPRESA_CDL_NOTIF" ColumnName="EMPRESA_CDL_NOTIF" />
-          <ScalarProperty Name="DIRECCION_CDL_NOTIF" ColumnName="DIRECCION_CDL_NOTIF" />
-          <ScalarProperty Name="EVALUADOR_CDL_NOTIF" ColumnName="EVALUADOR_CDL_NOTIF" />
-          <ScalarProperty Name="ID_OFICINA_DIRECCION" ColumnName="ID_OFICINA_DIRECCION" />
-          <ScalarProperty Name="PDF" ColumnName="PDF" />
-          <ScalarProperty Name="NUMERO_HT" ColumnName="NUMERO_HT" />
-          <ScalarProperty Name="ID_FILIAL" ColumnName="ID_FILIAL" />
-          <ScalarProperty Name="ID_ARCHIVADOR" ColumnName="ID_ARCHIVADOR" />
-          <ScalarProperty Name="USUARIO_REGISTRO" ColumnName="USUARIO_REGISTRO" />
-          <ScalarProperty Name="FECHA_REGISTRO" ColumnName="FECHA_REGISTRO" />
-          <ScalarProperty Name="ANEXOS" ColumnName="ANEXOS" />
-          <ScalarProperty Name="ASUNTO" ColumnName="ASUNTO" />
-          <ScalarProperty Name="FECHA_DOC" ColumnName="FECHA_DOC" />
-          <ScalarProperty Name="NOM_DOC" ColumnName="NOM_DOC" />
-          <ScalarProperty Name="NUM_DOC" ColumnName="NUM_DOC" />
-          <ScalarProperty Name="ID_TIPO_DOCUMENTO" ColumnName="ID_TIPO_DOCUMENTO" />
-          <ScalarProperty Name="ID_DOC_DHCPA" ColumnName="ID_DOC_DHCPA" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
@@ -2745,7 +2656,6 @@
         </ComplexTypeMapping>
       </ResultMapping>
     </FunctionImportMapping>
-    <FunctionImportMapping FunctionImportName="SP_OBTENER_DNI" FunctionName="DB_GESDOCModel.Store.SP_OBTENER_DNI" />
     <EntitySetMapping Name="VW_CONSULTA_EXPEDIENTE_X_EXPEDIENTE">
       <EntityTypeMapping TypeName="DB_GESDOCModel.VW_CONSULTA_EXPEDIENTE_X_EXPEDIENTE">
         <MappingFragment StoreEntitySet="VW_CONSULTA_EXPEDIENTE_X_EXPEDIENTE">
@@ -2771,6 +2681,111 @@
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>
-    <FunctionImportMapping FunctionImportName="SP_VALIDA_UID_ALFRESCO" FunctionName="DB_GESDOCModel.Store.SP_VALIDA_UID_ALFRESCO" />
+    <EntitySetMapping Name="DAT_DOCUMENTO_DETALLE">
+      <EntityTypeMapping TypeName="DB_GESDOCModel.DAT_DOCUMENTO_DETALLE">
+        <MappingFragment StoreEntitySet="DAT_DOCUMENTO_DETALLE">
+          <ScalarProperty Name="FLAG_DESTINO_PRINCIPAL" ColumnName="FLAG_DESTINO_PRINCIPAL" />
+          <ScalarProperty Name="FLAG_TIPO_MEMORANDO" ColumnName="FLAG_TIPO_MEMORANDO" />
+          <ScalarProperty Name="NOM_OFICINA_DESTINO" ColumnName="NOM_OFICINA_DESTINO" />
+          <ScalarProperty Name="NOM_OFICINA_CREA" ColumnName="NOM_OFICINA_CREA" />
+          <ScalarProperty Name="OBSERVACION_ATENDIDO" ColumnName="OBSERVACION_ATENDIDO" />
+          <ScalarProperty Name="OBSERVACION_ARCHIVO" ColumnName="OBSERVACION_ARCHIVO" />
+          <ScalarProperty Name="FECHA_CANCELAR" ColumnName="FECHA_CANCELAR" />
+          <ScalarProperty Name="USUARIO_CANCELAR" ColumnName="USUARIO_CANCELAR" />
+          <ScalarProperty Name="OFICINA_CREA" ColumnName="OFICINA_CREA" />
+          <ScalarProperty Name="FECHA_CREA" ColumnName="FECHA_CREA" />
+          <ScalarProperty Name="USUARIO_CREA" ColumnName="USUARIO_CREA" />
+          <ScalarProperty Name="USUARIO_DERIVADO" ColumnName="USUARIO_DERIVADO" />
+          <ScalarProperty Name="FECHA_DERIVADO" ColumnName="FECHA_DERIVADO" />
+          <ScalarProperty Name="USUARIO_ARCHIVO" ColumnName="USUARIO_ARCHIVO" />
+          <ScalarProperty Name="FECHA_ARCHIVO" ColumnName="FECHA_ARCHIVO" />
+          <ScalarProperty Name="USUARIO_ATENDIDO" ColumnName="USUARIO_ATENDIDO" />
+          <ScalarProperty Name="FECHA_ATENDIDO" ColumnName="FECHA_ATENDIDO" />
+          <ScalarProperty Name="USUARIO_RECEPCION" ColumnName="USUARIO_RECEPCION" />
+          <ScalarProperty Name="FECHA_RECEPCION" ColumnName="FECHA_RECEPCION" />
+          <ScalarProperty Name="INDICADORES" ColumnName="INDICADORES" />
+          <ScalarProperty Name="IND_11" ColumnName="IND_11" />
+          <ScalarProperty Name="IND_10" ColumnName="IND_10" />
+          <ScalarProperty Name="IND_09" ColumnName="IND_09" />
+          <ScalarProperty Name="IND_08" ColumnName="IND_08" />
+          <ScalarProperty Name="IND_07" ColumnName="IND_07" />
+          <ScalarProperty Name="IND_06" ColumnName="IND_06" />
+          <ScalarProperty Name="IND_05" ColumnName="IND_05" />
+          <ScalarProperty Name="IND_04" ColumnName="IND_04" />
+          <ScalarProperty Name="IND_03" ColumnName="IND_03" />
+          <ScalarProperty Name="IND_02" ColumnName="IND_02" />
+          <ScalarProperty Name="IND_01" ColumnName="IND_01" />
+          <ScalarProperty Name="persona_num_documento" ColumnName="persona_num_documento" />
+          <ScalarProperty Name="ID_EST_TRAMITE" ColumnName="ID_EST_TRAMITE" />
+          <ScalarProperty Name="OBSERVACION" ColumnName="OBSERVACION" />
+          <ScalarProperty Name="OFICINA_DESTINO" ColumnName="OFICINA_DESTINO" />
+          <ScalarProperty Name="ID_CAB_DET_DOCUMENTO" ColumnName="ID_CAB_DET_DOCUMENTO" />
+          <ScalarProperty Name="ID_DOCUMENTO" ColumnName="ID_DOCUMENTO" />
+          <ScalarProperty Name="ID_DET_DOCUMENTO" ColumnName="ID_DET_DOCUMENTO" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="MAE_DOCUMENTO_DHCPA">
+      <EntityTypeMapping TypeName="DB_GESDOCModel.MAE_DOCUMENTO_DHCPA">
+        <MappingFragment StoreEntitySet="MAE_DOCUMENTO_DHCPA">
+          <ScalarProperty Name="ID_DET_DOCUMENTO" ColumnName="ID_DET_DOCUMENTO" />
+          <ScalarProperty Name="RUC" ColumnName="RUC" />
+          <ScalarProperty Name="EXP_O_HT_N_CDL_NOTIF" ColumnName="EXP_O_HT_N_CDL_NOTIF" />
+          <ScalarProperty Name="EXP_O_HT_CDL_NOTIF" ColumnName="EXP_O_HT_CDL_NOTIF" />
+          <ScalarProperty Name="DOC_NOTIFICAR_CDL_NOTIF" ColumnName="DOC_NOTIFICAR_CDL_NOTIF" />
+          <ScalarProperty Name="FOLIA_CDL_NOTIF" ColumnName="FOLIA_CDL_NOTIF" />
+          <ScalarProperty Name="EMPRESA_CDL_NOTIF" ColumnName="EMPRESA_CDL_NOTIF" />
+          <ScalarProperty Name="DIRECCION_CDL_NOTIF" ColumnName="DIRECCION_CDL_NOTIF" />
+          <ScalarProperty Name="EVALUADOR_CDL_NOTIF" ColumnName="EVALUADOR_CDL_NOTIF" />
+          <ScalarProperty Name="ID_OFICINA_DIRECCION" ColumnName="ID_OFICINA_DIRECCION" />
+          <ScalarProperty Name="PDF" ColumnName="PDF" />
+          <ScalarProperty Name="NUMERO_HT" ColumnName="NUMERO_HT" />
+          <ScalarProperty Name="ID_FILIAL" ColumnName="ID_FILIAL" />
+          <ScalarProperty Name="ID_ARCHIVADOR" ColumnName="ID_ARCHIVADOR" />
+          <ScalarProperty Name="USUARIO_REGISTRO" ColumnName="USUARIO_REGISTRO" />
+          <ScalarProperty Name="FECHA_REGISTRO" ColumnName="FECHA_REGISTRO" />
+          <ScalarProperty Name="ANEXOS" ColumnName="ANEXOS" />
+          <ScalarProperty Name="ASUNTO" ColumnName="ASUNTO" />
+          <ScalarProperty Name="FECHA_DOC" ColumnName="FECHA_DOC" />
+          <ScalarProperty Name="NOM_DOC" ColumnName="NOM_DOC" />
+          <ScalarProperty Name="NUM_DOC" ColumnName="NUM_DOC" />
+          <ScalarProperty Name="ID_TIPO_DOCUMENTO" ColumnName="ID_TIPO_DOCUMENTO" />
+          <ScalarProperty Name="ID_DOC_DHCPA" ColumnName="ID_DOC_DHCPA" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="DAT_DOCUMENTO_DHCPA_DETALLE">
+      <EntityTypeMapping TypeName="DB_GESDOCModel.DAT_DOCUMENTO_DHCPA_DETALLE">
+        <MappingFragment StoreEntitySet="DAT_DOCUMENTO_DHCPA_DETALLE">
+          <ScalarProperty Name="FLAG_TIPO_CARTA" ColumnName="FLAG_TIPO_CARTA" />
+          <ScalarProperty Name="NOMBRE_PERSONA_DESTINO" ColumnName="NOMBRE_PERSONA_DESTINO" />
+          <ScalarProperty Name="FECHA_MODIFICA" ColumnName="FECHA_MODIFICA" />
+          <ScalarProperty Name="USUARIO_MODIFICA" ColumnName="USUARIO_MODIFICA" />
+          <ScalarProperty Name="FECHA_REGISTRO" ColumnName="FECHA_REGISTRO" />
+          <ScalarProperty Name="USUARIO_REGISTRO" ColumnName="USUARIO_REGISTRO" />
+          <ScalarProperty Name="ACTIVO" ColumnName="ACTIVO" />
+          <ScalarProperty Name="PERSONA_DESTINO" ColumnName="PERSONA_DESTINO" />
+          <ScalarProperty Name="ID_OFICINA_DIRECCION_DESTINO" ColumnName="ID_OFICINA_DIRECCION_DESTINO" />
+          <ScalarProperty Name="ID_DOC_DHCPA" ColumnName="ID_DOC_DHCPA" />
+          <ScalarProperty Name="ID_DOC_DHCPA_DET" ColumnName="ID_DOC_DHCPA_DET" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Consulta_Detalle_Mae_Documento">
+      <EntityTypeMapping TypeName="DB_GESDOCModel.Consulta_Detalle_Mae_Documento">
+        <MappingFragment StoreEntitySet="Consulta_Detalle_Mae_Documento">
+          <ScalarProperty Name="ASUNTO" ColumnName="ASUNTO" />
+          <ScalarProperty Name="NOM_DOC" ColumnName="NOM_DOC" />
+          <ScalarProperty Name="NUMERO_DOCUMENTO" ColumnName="NUMERO_DOCUMENTO" />
+          <ScalarProperty Name="FLAG_DESTINO_PRINCIPAL" ColumnName="FLAG_DESTINO_PRINCIPAL" />
+          <ScalarProperty Name="OFICINA_CREA" ColumnName="OFICINA_CREA" />
+          <ScalarProperty Name="ID_CAB_DET_DOCUMENTO" ColumnName="ID_CAB_DET_DOCUMENTO" />
+          <ScalarProperty Name="OBSERVACION" ColumnName="OBSERVACION" />
+          <ScalarProperty Name="OFICINA_DESTINO" ColumnName="OFICINA_DESTINO" />
+          <ScalarProperty Name="ID_DOCUMENTO" ColumnName="ID_DOCUMENTO" />
+          <ScalarProperty Name="NOMBRES" ColumnName="NOMBRES" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
   </EntityContainerMapping>
 </Mapping>

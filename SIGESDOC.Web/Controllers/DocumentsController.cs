@@ -1,9 +1,11 @@
-﻿using System;
+﻿using SIGESDOC.IAplicacionService;
+using SIGESDOC.Response;
+using SIGESDOC.Request;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
-using SIGESDOC.Request;
 using DocumentFormat.OpenXml.Packaging;
 using DocumentFormat.OpenXml.Wordprocessing;
 using System.Configuration;
@@ -14,12 +16,21 @@ using System.Text;
 using Newtonsoft.Json;
 using System.Net;
 using Newtonsoft.Json.Linq;
+using System.Net.Http;
+
 
 namespace SIGESDOC.Web.Controllers
 {
     public class DocumentsController : Controller
     {
-        // GET: Documents
+        private readonly IHojaTramiteService _HojaTramiteService;
+
+        public DocumentsController(IHojaTramiteService HojaTramiteService)
+        {
+            _HojaTramiteService = HojaTramiteService;
+        }
+
+        [AllowAnonymous]
         public ActionResult Index()
         {
             return View();
@@ -30,12 +41,12 @@ namespace SIGESDOC.Web.Controllers
         {
             DateTime fecha_PATH = DateTime.Now;
             //DESARROLLO
-            // string path = @"C:\Users\PSSPERU069\Documents\Proyecto\sigesdoc_sanipes\sigesdoc\documentos externos";
+            string path = @"C:\Users\PSSERU-TI\Source\Repos\landersaavedra\sigesdoc\documentos externos";
 
             //alterar en web.config para pre-produccion o/u produccion
-            string path = ConfigurationManager.AppSettings["cedula"];
+            //string path = ConfigurationManager.AppSettings["cedula"];
 
-            byte[] byteArray = System.IO.File.ReadAllBytes(path + @"/CÉDULANOTIFICACIÓN.docx");
+            byte[] byteArray = System.IO.File.ReadAllBytes(path + @"\CÉDULANOTIFICACIÓN.docx");
 
             using (MemoryStream stream = new MemoryStream())
             {
@@ -139,14 +150,30 @@ namespace SIGESDOC.Web.Controllers
                     wordDocument.MainDocumentPart.Document.Save();
                     wordDocument.Close();
                 }
-                string nuevopath = Path.Combine(path, "CEDULA_NOTIFICACION_" + fecha_PATH.ToString("ddMMyy") + ".docx");
-                stream.Close();
-                System.IO.File.WriteAllBytes(nuevopath, stream.ToArray());
+                string path_word = @"C:\SIGESDOC\WORD\";
+                string path_pdf = @"C:\SIGESDOC\PDF\";
 
-                //Process process = new Process();
-                // process.StartInfo.FileName = Server.MapPath(nuevopath);
-                // process.Start();
-                Process.Start(nuevopath);
+                if (!Directory.Exists(path_word) && !Directory.Exists(path_pdf))
+                {
+                    Directory.CreateDirectory(path_word);
+                    Directory.CreateDirectory(path_pdf);
+
+                }
+                else
+                {
+                    string nuevoWord = Path.Combine(path_word, "CEDULA_NOTIFICACION_" + fecha_PATH.ToString("ddMMyy_HHMMSS") + ".docx");
+                    string nuevoPDF = Path.Combine(path_pdf, "CEDULA_NOTIFICACION_" + fecha_PATH.ToString("ddMMyy_HHMMSS") + ".pdf");
+
+                    stream.Close();
+                    System.IO.File.WriteAllBytes(nuevoWord, stream.ToArray());
+                    System.IO.File.WriteAllBytes(nuevoPDF, stream.ToArray());
+
+
+                    //Process process = new Process();
+                    // process.StartInfo.FileName = Server.MapPath(nuevopath);
+                    // process.Start();
+                    Process.Start(nuevoWord);
+                }
 
             }
         }
@@ -162,10 +189,10 @@ namespace SIGESDOC.Web.Controllers
             DateTime fecha = DateTime.Now;
             tableData.FECHA_ACTUAL = fecha.ToString("dd MMMM yyyy");
             //desarrollo
-            //string path  = @"C:\Users\PSSPERU069\Documents\Proyecto\sigesdoc_sanipes\sigesdoc\documentos externos";
+            string path  = @"C:\Users\PSSERU-TI\Source\Repos\landersaavedra\sigesdoc\documentos externos";
 
-            string path = ConfigurationManager.AppSettings["resoluciondirectoral"];
-            byte[] byteArray = System.IO.File.ReadAllBytes(path + @"/RESOLUCION_DIRECTORAL.docx");
+           // string path = ConfigurationManager.AppSettings["resoluciondirectoral"];
+            byte[] byteArray = System.IO.File.ReadAllBytes(path + @"\RESOLUCION_DIRECTORAL.docx");
 
             using (MemoryStream stream = new MemoryStream())
             {
@@ -217,14 +244,30 @@ namespace SIGESDOC.Web.Controllers
                     wordDocument.Close();
                 }
 
-                // string nuevopath = path + @"\RESOLUCION_DIRECTORAL_"+fecha_PATH.ToString("ddMMyy")+".docx";
-                string nuevopath = Path.Combine(path, "RESOLUCION_DIRECTORAL_" + fecha_PATH.ToString("ddMMyy") + ".docx");
+                string path_word = @"C:\SIGESDOC\WORD\";
+                string path_pdf = @"C:\SIGESDOC\PDF\";
 
-                System.IO.File.WriteAllBytes(nuevopath, stream.ToArray());
-                //Process process = new Process();
-                //process.StartInfo.FileName = nuevopath;
-                //process.Start();
-                Process.Start("WINWORD.EXE", nuevopath);
+                if (!Directory.Exists(path_word) && !Directory.Exists(path_pdf))
+                {
+                    Directory.CreateDirectory(path_word);
+                    Directory.CreateDirectory(path_pdf);
+
+                }
+                else
+                {
+                    string nuevoWord = Path.Combine(path_word, "RESOLUCION_DIRECTORAL_" + fecha_PATH.ToString("ddMMyy_HHMMSS") + ".docx");
+                    string nuevoPDF = Path.Combine(path_pdf, "RESOLUCION_DIRECTORAL_" + fecha_PATH.ToString("ddMMyy_HHMMSS") + ".pdf");
+
+                    stream.Close();
+                    System.IO.File.WriteAllBytes(nuevoWord, stream.ToArray());
+                    System.IO.File.WriteAllBytes(nuevoPDF, stream.ToArray());
+
+
+                    //Process process = new Process();
+                    // process.StartInfo.FileName = Server.MapPath(nuevopath);
+                    // process.Start();
+                    Process.Start(nuevoWord);
+                }
             }
         }
         #endregion
@@ -237,10 +280,10 @@ namespace SIGESDOC.Web.Controllers
             DateTime fecha = DateTime.Now;
             //tableData.FECHA_ACTUAL = fecha.ToString("dd MMMM yyyy");
             //desarrollo
-            //string path  = @"C:\Users\PSSPERU069\Documents\Proyecto\sigesdoc_sanipes\sigesdoc\documentos externos";
+            string path  = @"C:\Users\PSSERU-TI\Source\Repos\landersaavedra\sigesdoc\documentos externos";
 
-            string path = ConfigurationManager.AppSettings["informe"];
-            byte[] byteArray = System.IO.File.ReadAllBytes(path + @"/RESOLUCION_DIRECTORAL.docx");
+           // string path = ConfigurationManager.AppSettings["informe"];
+            byte[] byteArray = System.IO.File.ReadAllBytes(path + @"\RESOLUCION_DIRECTORAL.docx");
 
             using (MemoryStream stream = new MemoryStream())
             {
@@ -272,10 +315,10 @@ namespace SIGESDOC.Web.Controllers
             DateTime fecha = DateTime.Now;
             tableData.FECHA_ACTUAL = fecha.ToString("dd MMMM yyyy");
             //desarrollo
-            //string path  = @"C:\Users\PSSPERU069\Documents\Proyecto\sigesdoc_sanipes\sigesdoc\documentos externos";
+            string path  = @"C:\Users\PSSERU-TI\Source\Repos\landersaavedra\sigesdoc\documentos externos";
 
-            string path = ConfigurationManager.AppSettings["oficio"];
-            byte[] byteArray = System.IO.File.ReadAllBytes(path + @"/MODELO_OFICIO.docx");
+            //string path = ConfigurationManager.AppSettings["oficio"];
+            byte[] byteArray = System.IO.File.ReadAllBytes(path + @"\MODELO_OFICIO.docx");
 
             using (MemoryStream stream = new MemoryStream())
             {
@@ -317,17 +360,31 @@ namespace SIGESDOC.Web.Controllers
                     wordDocument.Close();
                 }
 
-                string nuevopath = Path.Combine(path, "OFICIO_"+fecha_PATH.ToString("ddMMyy")+".docx");
-                stream.Close();
-                System.IO.File.WriteAllBytes(nuevopath, stream.ToArray());
+                string path_word = @"C:\SIGESDOC\WORD\";
+                string path_pdf = @"C:\SIGESDOC\PDF\";
 
-                //Process process = new Process();
-                // process.StartInfo.FileName = Server.MapPath(nuevopath);
-                // process.Start();
-                Process.Start(nuevopath);
+                if (!Directory.Exists(path_word) && !Directory.Exists(path_pdf))
+                {
+                    Directory.CreateDirectory(path_word);
+                    Directory.CreateDirectory(path_pdf);
+
+                }
+                else
+                {
+                    string nuevoWord = Path.Combine(path_word, "OFICIO_" + fecha_PATH.ToString("ddMMyy_HHMMSS") + ".docx");
+                    string nuevoPDF = Path.Combine(path_pdf, "OFICIO_" + fecha_PATH.ToString("ddMMyy_HHMMSS") + ".pdf");
+
+                    stream.Close();
+                    System.IO.File.WriteAllBytes(nuevoWord, stream.ToArray());
+                    System.IO.File.WriteAllBytes(nuevoPDF, stream.ToArray());
+
+
+                    //Process process = new Process();
+                    // process.StartInfo.FileName = Server.MapPath(nuevopath);
+                    // process.Start();
+                    Process.Start(nuevoWord);
+                }
             }
-
-
         }
 
         #endregion
@@ -343,10 +400,10 @@ namespace SIGESDOC.Web.Controllers
             DateTime fecha = DateTime.Now;
             //tableData.FECHA_ACTUAL = fecha.ToString("dd MMMM yyyy");
             //desarrollo
-            //string path  = @"C:\Users\PSSPERU069\Documents\Proyecto\sigesdoc_sanipes\sigesdoc\documentos externos";
+            string path  = @"C:\Users\PSSERU-TI\Source\Repos\landersaavedra\sigesdoc\documentos externos";
 
-            string path = ConfigurationManager.AppSettings["invitacion"];
-            byte[] byteArray = System.IO.File.ReadAllBytes(path + @"/MODELO_DE_INVITACION.docx");
+           // string path = ConfigurationManager.AppSettings["invitacion"];
+            byte[] byteArray = System.IO.File.ReadAllBytes(path + @"\MODELO_DE_INVITACION.docx");
 
             using (MemoryStream stream = new MemoryStream())
             {
@@ -376,16 +433,31 @@ namespace SIGESDOC.Web.Controllers
                     wordDocument.Close();
 
                 }
-                string nuevopath = Path.Combine(path, "INVITACION_" + fecha_PATH.ToString("ddMMyy") + ".docx");
-                stream.Close();
-                System.IO.File.WriteAllBytes(nuevopath, stream.ToArray());
+                string path_word = @"C:\SIGESDOC\WORD\";
+                string path_pdf = @"C:\SIGESDOC\PDF\";
 
-                //Process process = new Process();
-                // process.StartInfo.FileName = Server.MapPath(nuevopath);
-                // process.Start();
-                Process.Start(nuevopath);
+                if (!Directory.Exists(path_word) && !Directory.Exists(path_pdf))
+                {
+                    Directory.CreateDirectory(path_word);
+                    Directory.CreateDirectory(path_pdf);
+
+                }
+                else
+                {
+                    string nuevoWord = Path.Combine(path_word, "INVITACION_" + fecha_PATH.ToString("ddMMyy_HHMMSS") + ".docx");
+                    string nuevoPDF = Path.Combine(path_pdf, "INVITACION_" + fecha_PATH.ToString("ddMMyy_HHMMSS") + ".pdf");
+
+                    stream.Close();
+                    System.IO.File.WriteAllBytes(nuevoWord, stream.ToArray());
+                    System.IO.File.WriteAllBytes(nuevoPDF, stream.ToArray());
+
+
+                    //Process process = new Process();
+                    // process.StartInfo.FileName = Server.MapPath(nuevopath);
+                    // process.Start();
+                    Process.Start(nuevoWord);
+                }
             }
-
         }
 
         #endregion
@@ -400,10 +472,10 @@ namespace SIGESDOC.Web.Controllers
             DateTime fecha = DateTime.Now;
             tableData.FECHA_ACTUAL = fecha.ToString("dd MMMM yyyy");
             //desarrollo
-            //string path  = @"C:\Users\PSSPERU069\Documents\Proyecto\sigesdoc_sanipes\sigesdoc\documentos externos";
+            string path  = @"C:\Users\PSSERU-TI\Source\Repos\landersaavedra\sigesdoc\documentos externos";
 
-            string path = ConfigurationManager.AppSettings["resolucion"];
-            byte[] byteArray = System.IO.File.ReadAllBytes(path + @"/MODELO_DE_RESOLUCION.docx");
+           // string path = ConfigurationManager.AppSettings["resolucion"];
+            byte[] byteArray = System.IO.File.ReadAllBytes(path + @"\MODELO_DE_RESOLUCION.docx");
 
             using (MemoryStream stream = new MemoryStream())
             {
@@ -431,17 +503,27 @@ namespace SIGESDOC.Web.Controllers
                     wordDocument.Close();
 
                 }
-                string nuevopath = Path.Combine(path, "RESOLUCION_" + fecha_PATH.ToString("ddMMyy") + ".docx");
-                stream.Close();
-                System.IO.File.WriteAllBytes(nuevopath, stream.ToArray());
 
-                //Process process = new Process();
-                // process.StartInfo.FileName = Server.MapPath(nuevopath);
-                // process.Start();
-                Process.Start(nuevopath);
+                string path_word = @"C:\SIGESDOC\WORD\";
+                string path_pdf = @"C:\SIGESDOC\PDF\";
+
+                if (!Directory.Exists(path_word) && !Directory.Exists(path_pdf))
+                {
+                    Directory.CreateDirectory(path_word);
+                    Directory.CreateDirectory(path_pdf);
+
+                }
+                else
+                {
+                    string nuevoWord = Path.Combine(path_word, "RESOLUCION_" + fecha_PATH.ToString("ddMMyy_HHMMSS") + ".docx");
+                    string nuevoPDF = Path.Combine(path_pdf, "RESOLUCION_" + fecha_PATH.ToString("ddMMyy_HHMMSS") + ".pdf");
+
+                    stream.Close();
+                    System.IO.File.WriteAllBytes(nuevoWord, stream.ToArray());
+                    System.IO.File.WriteAllBytes(nuevoPDF, stream.ToArray());
+                    Process.Start(nuevoWord);
+                }
             }
-
-
         }
 
         #endregion
@@ -456,10 +538,10 @@ namespace SIGESDOC.Web.Controllers
             DateTime fecha = DateTime.Now;
             tableData.FECHA_ACTUAL = fecha.ToString("dd MMMM yyyy");
             //desarrollo
-            //string path  = @"C:\Users\PSSPERU069\Documents\Proyecto\sigesdoc_sanipes\sigesdoc\documentos externos";
+            string path  = @"C:\Users\PSSERU-TI\Source\Repos\landersaavedra\sigesdoc\documentos externos";
 
-            string path = ConfigurationManager.AppSettings["informe"];
-            byte[] byteArray = System.IO.File.ReadAllBytes(path + @"/MODELO_DE_INFORME.docx");
+          //  string path = ConfigurationManager.AppSettings["informe"];
+            byte[] byteArray = System.IO.File.ReadAllBytes(path + @"\MODELO_DE_INFORME.docx");
 
             using (MemoryStream stream = new MemoryStream())
             {
@@ -497,14 +579,30 @@ namespace SIGESDOC.Web.Controllers
                     
                 }
 
-                string nuevopath = Path.Combine(path, "INFORME_" + fecha_PATH.ToString("ddMMyy") + ".docx");
-                stream.Close();
-                System.IO.File.WriteAllBytes(nuevopath, stream.ToArray());
+                string path_word = @"C:\SIGESDOC\WORD\";
+                string path_pdf = @"C:\SIGESDOC\PDF\";
 
-                //Process process = new Process();
-                // process.StartInfo.FileName = Server.MapPath(nuevopath);
-                // process.Start();
-                Process.Start(nuevopath);
+                if (!Directory.Exists(path_word) && !Directory.Exists(path_pdf))
+                {
+                    Directory.CreateDirectory(path_word);
+                    Directory.CreateDirectory(path_pdf);
+
+                }
+                else
+                {
+                    string nuevoWord = Path.Combine(path_word, "INFORME_" + fecha_PATH.ToString("ddMMyy_HHMMSS") + ".docx");
+                    string nuevoPDF = Path.Combine(path_word, "INFORME_" + fecha_PATH.ToString("ddMMyy_HHMMSS") + ".pdf");
+
+                    stream.Close();
+                    System.IO.File.WriteAllBytes(nuevoWord, stream.ToArray());
+                    System.IO.File.WriteAllBytes(nuevoPDF, stream.ToArray());
+
+
+                    //Process process = new Process();
+                    // process.StartInfo.FileName = Server.MapPath(nuevopath);
+                    // process.Start();
+                    Process.Start(nuevoWord);
+                }
             }
             
           }
@@ -517,14 +615,15 @@ namespace SIGESDOC.Web.Controllers
         public void ComunicadoWord(CargaComunicadoWord tableData)
         {
             DateTime fecha_PATH = DateTime.Now;
-
             DateTime fecha = DateTime.Now;
             tableData.FECHA_ACTUAL = fecha.ToString("dd MMMM yyyy");
-            //desarrollo
-            //string path  = @"C:\Users\PSSPERU069\Documents\Proyecto\sigesdoc_sanipes\sigesdoc\documentos externos";
 
-            string path = ConfigurationManager.AppSettings["comunicado"];
-            byte[] byteArray = System.IO.File.ReadAllBytes(path + @"/MODELO_DE_COMUNICADO.docx");
+            //desarrollo variables de alfresco
+            DocExtGetProperties docExt = new DocExtGetProperties();
+            string uuidCarta = ConfigurationManager.AppSettings["templateComunicado"].ToString();
+
+            // string path = ConfigurationManager.AppSettings["comunicado"];
+            byte[] byteArray = System.IO.File.ReadAllBytes(uuidCarta + @"\MODELO_DE_COMUNICADO.docx");
 
             using (MemoryStream stream = new MemoryStream())
             {
@@ -551,16 +650,31 @@ namespace SIGESDOC.Web.Controllers
                     wordDocument.Close();
 
                 }
-                string nuevopath = Path.Combine(path, "COMUNICADO_" + fecha_PATH.ToString("ddMMyy") + ".docx");
-                stream.Close();
-                System.IO.File.WriteAllBytes(nuevopath, stream.ToArray());
+                string path_word = @"C:\SIGESDOC\WORD\";
+                string path_pdf = @"C:\SIGESDOC\PDF\";
 
-                //Process process = new Process();
-                // process.StartInfo.FileName = Server.MapPath(nuevopath);
-                // process.Start();
-                Process.Start(nuevopath);
+                if (!Directory.Exists(path_word) && !Directory.Exists(path_pdf))
+                {
+                    Directory.CreateDirectory(path_word);
+                    Directory.CreateDirectory(path_pdf);
+
+                }
+                else
+                {
+                    string nuevoWord = Path.Combine(path_word, "COMUNICADO_" + fecha_PATH.ToString("ddMMyy_HHMMSS") + ".docx");
+                    string nuevoPDF = Path.Combine(path_pdf, "COMUNICADO_" + fecha_PATH.ToString("ddMMyy_HHMMSS") + ".pdf");
+
+                    stream.Close();
+                    System.IO.File.WriteAllBytes(nuevoWord, stream.ToArray());
+                    System.IO.File.WriteAllBytes(nuevoPDF, stream.ToArray());
+
+
+                    //Process process = new Process();
+                    // process.StartInfo.FileName = Server.MapPath(nuevopath);
+                    // process.Start();
+                    Process.Start(nuevoWord);
+                }
             }
-
         }
 
         #endregion
@@ -571,14 +685,38 @@ namespace SIGESDOC.Web.Controllers
         public void CartaMultipleWord(CargaCartaMultipleWord tableData)
         {
             DateTime fecha_PATH = DateTime.Now;
-
             DateTime fecha = DateTime.Now;
             tableData.FECHA_ACTUAL = fecha.ToString("dd MMMM yyyy");
-            //desarrollo
-            //string path  = @"C:\Users\PSSPERU069\Documents\Proyecto\sigesdoc_sanipes\sigesdoc\documentos externos";
 
-            string path = ConfigurationManager.AppSettings["cartamultiple"];
-            byte[] byteArray = System.IO.File.ReadAllBytes(path + @"/MODELO_DE_CARTA_MULTIPLE.docx");
+            //desarrollo
+            DocExtGetProperties docExt = new DocExtGetProperties();
+            string uuidCartaMultiple = ConfigurationManager.AppSettings["templateCartaMultiple"].ToString();
+
+            //conexion a alfresco
+            string login = "login";
+            string ticket = DevuelveTicket(login);
+
+            string pathAlfresco = ConfigurationManager.AppSettings["alfresco"];
+            string metodoAlfresco = @"/getProperties";
+            string json = POSTFormDataAlfresco(uuidCartaMultiple, pathAlfresco, metodoAlfresco, ticket);
+
+            docExt = new System.Web.Script.Serialization.JavaScriptSerializer().Deserialize<DocExtGetProperties>(json);
+
+            int id_documento = Convert.ToInt32(tableData.ID_DOCUMENTO);
+
+            IEnumerable<DetalleMaeDocumentoResponse> documentoRequest = new List<DetalleMaeDocumentoResponse>();
+
+            //desarrollo
+            string path = ConfigurationManager.AppSettings["UriAlfresco"];
+            string filename = System.IO.Path.Combine(path + docExt.urlDownload);
+
+            WebClient web = new WebClient();
+            web.Credentials = CredentialCache.DefaultCredentials;
+            web.Credentials = CredentialCache.DefaultNetworkCredentials;
+            web.UseDefaultCredentials = true;
+            string ticket2 = DevuelveTicket(login);
+            string down = filename + "?alf_ticket=" + ticket2;
+            byte[] byteArray = web.DownloadData(down);
 
             using (MemoryStream stream = new MemoryStream())
             {
@@ -593,12 +731,64 @@ namespace SIGESDOC.Web.Controllers
                     {
                         bookmarkMaps[bookmarkStart.Name] = bookmarkStart;
                     }
+                    documentoRequest = _HojaTramiteService.Listar_Detalle_Documento_Interno(id_documento);
+
+                    Run NOM_DOC = bookmarkMaps["NOM_DOC"].NextSibling<Run>();
+                    NOM_DOC.GetFirstChild<Text>().Text = documentoRequest.First().nom_doc;
+
+                    Run ASUNTO = bookmarkMaps["ASUNTO"].NextSibling<Run>();
+                    ASUNTO.GetFirstChild<Text>().Text = documentoRequest.First().asunto;
+
+                    Run FECHA_ACTUAL = bookmarkMaps["FECHA_ACTUAL"].NextSibling<Run>();
+                    FECHA_ACTUAL.GetFirstChild<Text>().Text = tableData.FECHA_ACTUAL;
+
+
+                    foreach (var memorandomultiple in documentoRequest)
+                    {
+                        Body body = wordDocument.MainDocumentPart.Document.GetFirstChild<Body>();
+                        Run UNO = bookmarkMaps["NOMBRES_1"].NextSibling<Run>();
+                        UNO.GetFirstChild<Text>().Text = memorandomultiple.nombres;
+
+                        Paragraph para = body.AppendChild(new Paragraph());
+                        Run run = para.AppendChild(new Run());
+                        run.AppendChild(new Text(memorandomultiple.nombres));
+                    }
+
+                    wordDocument.MainDocumentPart.Document.Save();
+                    wordDocument.Close();
+                }
+
+                string path_word = @"C:\SIGESDOC\WORD\";
+                string path_pdf = @"C:\SIGESDOC\PDF\";
+
+                if (!Directory.Exists(path_word) && !Directory.Exists(path_pdf))
+                {
+                    Directory.CreateDirectory(path_word);
+                    Directory.CreateDirectory(path_pdf);
+
+                    string nuevoWord = Path.Combine(path_word, "CARTA_MULTIPLE_" + fecha_PATH.ToString("ddMMyy_HHMMss") + ".docx");
+                    string nuevoPDF = Path.Combine(path_pdf, "CARTA_MULTIPLE_" + fecha_PATH.ToString("ddMMyy_HHMMss") + ".pdf");
+
+                    stream.Close();
+                    System.IO.File.WriteAllBytes(nuevoWord, stream.ToArray());
+                    System.IO.File.WriteAllBytes(nuevoPDF, stream.ToArray());
+
+                    Process.Start(nuevoWord);
+
+                }
+                else
+                {
+                    string nuevoWord = Path.Combine(path_word, "CARTA_MULTIPLE_" + fecha_PATH.ToString("ddMMyy_HHMMss") + ".docx");
+                    string nuevoPDF = Path.Combine(path_pdf, "CARTA_MULTIPLE_" + fecha_PATH.ToString("ddMMyy_HHMMss") + ".pdf");
+
+                    stream.Close();
+                    System.IO.File.WriteAllBytes(nuevoWord, stream.ToArray());
+                    System.IO.File.WriteAllBytes(nuevoPDF, stream.ToArray());
+
+                    Process.Start(nuevoWord);
                 }
             }
-
-
         }
-
         #endregion
 
         #region OFICIO MULTIPLE
@@ -607,14 +797,40 @@ namespace SIGESDOC.Web.Controllers
         public void OficioMultipleWord(CargaOficioMultipleWord tableData)
         {
             DateTime fecha_PATH = DateTime.Now;
-
             DateTime fecha = DateTime.Now;
             tableData.FECHA_ACTUAL = fecha.ToString("dd MMMM yyyy");
-            //desarrollo
-            //string path  = @"C:\Users\PSSPERU069\Documents\Proyecto\sigesdoc_sanipes\sigesdoc\documentos externos";
 
-            string path = ConfigurationManager.AppSettings["oficiomultiple"];
-            byte[] byteArray = System.IO.File.ReadAllBytes(path + @"/MODELO_OFICIO_MULTIPLE.docx");
+            //desarrollo
+            DocExtGetProperties docExt = new DocExtGetProperties();
+            string uuidOficioMultiple = ConfigurationManager.AppSettings["templateOficioMultiple"].ToString();
+            
+            //conexion de acceso con alfresco
+            string login = "login";
+            string ticket = DevuelveTicket(login);
+
+            // para obtener el documento modelo
+            string pathAlfresco = ConfigurationManager.AppSettings["alfresco"];
+            string metodoAlfresco = @"/getProperties";
+            string json = POSTFormDataAlfresco(uuidOficioMultiple, pathAlfresco, metodoAlfresco, ticket);
+
+            docExt = new System.Web.Script.Serialization.JavaScriptSerializer().Deserialize<DocExtGetProperties>(json);
+
+            int id_documento = Convert.ToInt32(tableData.ID_DOCUMENTO);
+
+            IEnumerable<DetalleMaeDocumentoResponse> documentoRequest = new List<DetalleMaeDocumentoResponse>();
+
+            //Desarrollo Uri Alfresco
+            string path = ConfigurationManager.AppSettings["UriAlfresco"];
+            string filename = System.IO.Path.Combine(path + docExt.urlDownload);
+
+            WebClient web = new WebClient();
+            web.Credentials = CredentialCache.DefaultCredentials;
+            web.Credentials = CredentialCache.DefaultNetworkCredentials;
+            web.UseDefaultCredentials = true;
+            string ticket2 = DevuelveTicket(login);
+            string down = filename + "?alf_ticket=" + ticket2;
+
+            byte[] byteArray = web.DownloadData(down);
 
             using (MemoryStream stream = new MemoryStream())
             {
@@ -629,10 +845,63 @@ namespace SIGESDOC.Web.Controllers
                     {
                         bookmarkMaps[bookmarkStart.Name] = bookmarkStart;
                     }
+
+                    documentoRequest = _HojaTramiteService.Listar_Detalle_Documento_Interno(id_documento);
+                    Run NOM_DOC = bookmarkMaps["NOM_DOC"].NextSibling<Run>();
+                    NOM_DOC.GetFirstChild<Text>().Text = documentoRequest.First().nom_doc;
+
+                    Run ASUNTO = bookmarkMaps["ASUNTO"].NextSibling<Run>();
+                    ASUNTO.GetFirstChild<Text>().Text = documentoRequest.First().asunto;
+
+                    Run FECHA_ACTUAL = bookmarkMaps["FECHA_ACTUAL"].NextSibling<Run>();
+                    FECHA_ACTUAL.GetFirstChild<Text>().Text = tableData.FECHA_ACTUAL;
+
+
+                    foreach (var memorandomultiple in documentoRequest)
+                    {
+                        Body body = wordDocument.MainDocumentPart.Document.GetFirstChild<Body>();
+                        Run UNO = bookmarkMaps["NOMBRES_1"].NextSibling<Run>();
+                        UNO.GetFirstChild<Text>().Text = memorandomultiple.nombres;
+
+                        Paragraph para = body.AppendChild(new Paragraph());
+                        Run run = para.AppendChild(new Run());
+                        run.AppendChild(new Text(memorandomultiple.nombres));
+                    }
+
+                    wordDocument.MainDocumentPart.Document.Save();
+                    wordDocument.Close();
+
+                }
+                string path_word = @"C:\SIGESDOC\WORD\";
+                string path_pdf = @"C:\SIGESDOC\PDF\";
+
+                if (!Directory.Exists(path_word) && !Directory.Exists(path_pdf))
+                {
+                    Directory.CreateDirectory(path_word);
+                    Directory.CreateDirectory(path_pdf);
+
+                    string nuevoWord = Path.Combine(path_word, "OFICIO_MULTIPLE_" + fecha_PATH.ToString("ddMMyy_HHMMss") + ".docx");
+                    string nuevoPDF = Path.Combine(path_pdf, "OFICIO_MULTIPLE_" + fecha_PATH.ToString("ddMMyy_HHMMss") + ".pdf");
+
+                    stream.Close();
+                    System.IO.File.WriteAllBytes(nuevoWord, stream.ToArray());
+                    System.IO.File.WriteAllBytes(nuevoPDF, stream.ToArray());
+
+                    Process.Start(nuevoWord);
+
+                }
+                else
+                {
+                    string nuevoWord = Path.Combine(path_word, "OFICIO_MULTIPLE_" + fecha_PATH.ToString("ddMMyy_HHMMss") + ".docx");
+                    string nuevoPDF = Path.Combine(path_pdf, "OFICIO_MULTIPLE_" + fecha_PATH.ToString("ddMMyy_HHMMss") + ".pdf");
+
+                    stream.Close();
+                    System.IO.File.WriteAllBytes(nuevoWord, stream.ToArray());
+                    System.IO.File.WriteAllBytes(nuevoPDF, stream.ToArray());
+
+                    Process.Start(nuevoWord);
                 }
             }
-
-
         }
 
         #endregion
@@ -642,86 +911,104 @@ namespace SIGESDOC.Web.Controllers
         [HttpGet]
         public void MemorandoWord(CargaMemorandoWord tableData)
         {
+            
             DateTime fecha_PATH = DateTime.Now;
-            DocExtGetProperties docExt = new DocExtGetProperties();
-
             DateTime fecha = DateTime.Now;
             tableData.FECHA_ACTUAL = fecha.ToString("dd MMMM yyyy");
 
-            //conexion a alfresco
+            //desarrollo variables de alfresco
+            DocExtGetProperties docExt = new DocExtGetProperties();
+            string uuidMemorando = ConfigurationManager.AppSettings["templateMemorando"].ToString();
+
+            //conexion con alfresco
             string login = "login";
             string ticket = DevuelveTicket(login);
-                                   
-            //string path = ConfigurationManager.AppSettings["memorando"];
+
+
+            //para obtener el documento modelo 
             string pathAlfresco = ConfigurationManager.AppSettings["alfresco"];
-            
-            string uuid = @"45036dfe-8cfe-4099-a531-49218df2212f";
-            var servicio = pathAlfresco+ "getProperties?alf_ticket="+ticket;
+            string metodoAlfresco = @"/getProperties";
+            string json = POSTFormDataAlfresco(uuidMemorando, pathAlfresco, metodoAlfresco, ticket);
 
-            HttpWebRequest request = (HttpWebRequest)WebRequest.Create(servicio);
-            request.KeepAlive = true;
-            request.Method = "POST";
-            byte[] postbytes = Encoding.UTF8.GetBytes(uuid);
-            //request.Accept = "application/json";
-            request.ContentType = "multipart/form-data; uuid="+ uuid;
-            //request.MediaType = "application/json";
-            request.ContentLength = postbytes.Length;
-            Stream requestStream = request.GetRequestStream();
-            requestStream.Write(postbytes, 0, postbytes.Length);
-            requestStream.Close();
-            HttpWebResponse response = (HttpWebResponse)request.GetResponse();
+            docExt = new System.Web.Script.Serialization.JavaScriptSerializer().Deserialize<DocExtGetProperties>(json);
 
-            if(response.StatusCode == HttpStatusCode.OK)
-            {
-                Stream resStream = response.GetResponseStream();
-                var sr = new StreamReader(response.GetResponseStream());
-                string responseText = sr.ReadToEnd();
-            }
+            //Desarrollo Uri Alfresco
+            string path = ConfigurationManager.AppSettings["UriAlfresco"];
+            string filename = System.IO.Path.Combine(path + docExt.urlDownload);
 
+            //Instancio Llamada por WebClient
+            WebClient web = new WebClient();
+            web.Credentials = CredentialCache.DefaultCredentials;
+            web.Credentials = CredentialCache.DefaultNetworkCredentials;
+            web.UseDefaultCredentials = true;
 
-            byte[] byteArray = System.IO.File.ReadAllBytes(pathAlfresco + @"MODELO_DE_MEMORANDO.docx");
+            //Llamo otro ticket de Permiso de acceso a Alfresco sin Usuario y Contraseña
+            string ticket2 = DevuelveTicket(login);
+            string down = filename + "?alf_ticket=" + ticket2;
+
+            byte[] byteArray = web.DownloadData(down);
 
             using (MemoryStream stream = new MemoryStream())
-            {
-                stream.Write(byteArray, 0, (int)byteArray.Length);
-
-                using (WordprocessingDocument wordDocument = WordprocessingDocument.Open(stream, true))
                 {
+                    stream.Write(byteArray, 0, (int)byteArray.Length);
 
-                    IDictionary<String, BookmarkStart> bookmarkMaps = new Dictionary<String, BookmarkStart>();
-
-                    foreach (BookmarkStart bookmarkStart in wordDocument.MainDocumentPart.RootElement.Descendants<BookmarkStart>())
+                    using (WordprocessingDocument wordDocument = WordprocessingDocument.Open(stream, true))
                     {
-                        bookmarkMaps[bookmarkStart.Name] = bookmarkStart;
+
+                        IDictionary<String, BookmarkStart> bookmarkMaps = new Dictionary<String, BookmarkStart>();
+
+                        foreach (BookmarkStart bookmarkStart in wordDocument.MainDocumentPart.RootElement.Descendants<BookmarkStart>())
+                        {
+                            bookmarkMaps[bookmarkStart.Name] = bookmarkStart;
+                        }
+
+                        Run NOM_DOC = bookmarkMaps["NOM_DOC"].NextSibling<Run>();
+                        NOM_DOC.GetFirstChild<Text>().Text = tableData.NOM_DOC;
+
+                        Run ASUNTO = bookmarkMaps["ASUNTO"].NextSibling<Run>();
+                        ASUNTO.GetFirstChild<Text>().Text = tableData.ASUNTO;
+
+                        Run REFERENCIA = bookmarkMaps["REFERENCIA"].NextSibling<Run>();
+                        REFERENCIA.GetFirstChild<Text>().Text = tableData.REFERENCIA;
+
+                        Run NOMBRES = bookmarkMaps["NOMBRES"].NextSibling<Run>();
+                        NOMBRES.GetFirstChild<Text>().Text = tableData.NOMBRES;
+
+                        Run FECHA_ACTUAL = bookmarkMaps["FECHA_ACTUAL"].NextSibling<Run>();
+                        FECHA_ACTUAL.GetFirstChild<Text>().Text = tableData.FECHA_ACTUAL;
+
+                        wordDocument.MainDocumentPart.Document.Save();
+                        wordDocument.Close();
                     }
 
-                    Run NOM_DOC = bookmarkMaps["NOM_DOC"].NextSibling<Run>();
-                    NOM_DOC.GetFirstChild<Text>().Text = tableData.NOM_DOC;
+                string path_word = @"C:\SIGESDOC\WORD\";
+                string path_pdf = @"C:\SIGESDOC\PDF\";
 
-                    Run ASUNTO = bookmarkMaps["ASUNTO"].NextSibling<Run>();
-                    ASUNTO.GetFirstChild<Text>().Text = tableData.ASUNTO;
+                if (!Directory.Exists(path_word) && !Directory.Exists(path_pdf))
+                {
+                    Directory.CreateDirectory(path_word);
+                    Directory.CreateDirectory(path_pdf);
 
-                    Run REFERENCIA = bookmarkMaps["REFERENCIA"].NextSibling<Run>();
-                    REFERENCIA.GetFirstChild<Text>().Text = tableData.REFERENCIA;
+                    string nuevoWord = Path.Combine(path_word, "MEMORANDO_" + fecha_PATH.ToString("ddMMyy_HHMMss") + ".docx");
+                    string nuevoPDF = Path.Combine(path_pdf, "MEMORANDO_" + fecha_PATH.ToString("ddMMyy_HHMMss") + ".pdf");
 
-                    Run NOMBRES = bookmarkMaps["NOMBRES"].NextSibling<Run>();
-                    NOMBRES.GetFirstChild<Text>().Text = tableData.NOMBRES;
+                    stream.Close();
+                    System.IO.File.WriteAllBytes(nuevoWord, stream.ToArray());
+                    System.IO.File.WriteAllBytes(nuevoPDF, stream.ToArray());
+                    Process.Start(nuevoWord);
 
-                    Run FECHA_ACTUAL = bookmarkMaps["FECHA_ACTUAL"].NextSibling<Run>();
-                    FECHA_ACTUAL.GetFirstChild<Text>().Text = tableData.FECHA_ACTUAL;
+                }
+                else
+                {
+                    string nuevoWord = Path.Combine(path_word, "MEMORANDO_" + fecha_PATH.ToString("ddMMyy_HHMMss") + ".docx");
+                    string nuevoPDF = Path.Combine(path_pdf, "MEMORANDO_" + fecha_PATH.ToString("ddMMyy_HHMMss") + ".pdf");
 
-                    wordDocument.MainDocumentPart.Document.Save();
-                    wordDocument.Close();
+                    stream.Close();
+                    System.IO.File.WriteAllBytes(nuevoWord, stream.ToArray());
+                    System.IO.File.WriteAllBytes(nuevoPDF, stream.ToArray());
+                    Process.Start(nuevoWord);
                 }
 
-                string nuevopath = Path.Combine(servicio, "MEMORANDO_" + fecha_PATH.ToString("ddMMyy") + ".docx");
-                stream.Close();
-                System.IO.File.WriteAllBytes(nuevopath, stream.ToArray());
-
-                //Process process = new Process();
-                // process.StartInfo.FileName = Server.MapPath(nuevopath);
-                // process.Start();
-                Process.Start(nuevopath);
             }
         }
 
@@ -729,6 +1016,7 @@ namespace SIGESDOC.Web.Controllers
 
         #region MEMORANDO MULTIPLE
 
+        [AllowAnonymous]
         [HttpGet]
         public void MemorandoMultipleWord(CargaMemorandoMultipleWord tableData)
         {
@@ -737,11 +1025,43 @@ namespace SIGESDOC.Web.Controllers
 
             DateTime fecha = DateTime.Now;
             tableData.FECHA_ACTUAL = fecha.ToString("dd MMMM yyyy");
-            //desarrollo
-            //string path  = @"C:\Users\PSSPERU069\Documents\Proyecto\sigesdoc_sanipes\sigesdoc\documentos externos";
 
-            string path = ConfigurationManager.AppSettings["memorandomultiple"];
-            byte[] byteArray = System.IO.File.ReadAllBytes(path + @"/MODELO_DE_MEMORANDO_MULTIPLE.docx");
+            DocExtGetProperties docExt = new DocExtGetProperties();
+            string uuidMemorandoMultiple = ConfigurationManager.AppSettings["templateMemorandoMultiple"].ToString();
+
+            //conexion a alfresco
+            string login = "login";
+            string ticket = DevuelveTicket(login);
+
+            //string path = ConfigurationManager.AppSettings["memorando"];
+            string pathAlfresco = ConfigurationManager.AppSettings["alfresco"];
+            string metodoAlfresco = @"/getProperties";
+            string json = POSTFormDataAlfresco(uuidMemorandoMultiple, pathAlfresco, metodoAlfresco, ticket);
+
+            docExt = new System.Web.Script.Serialization.JavaScriptSerializer().Deserialize<DocExtGetProperties>(json);
+
+
+            int id_documento = Convert.ToInt32(tableData.ID_DOCUMENTO);
+
+            IEnumerable<DetalleMaeDocumentoResponse> documentoRequest = new List<DetalleMaeDocumentoResponse>();
+
+            //desarrollo
+            // string path  = @"C:\Users\PSSERU-TI\Source\Repos\landersaavedra\sigesdoc\documentos externos";
+
+            string path = ConfigurationManager.AppSettings["UriAlfresco"];
+
+            string filename = System.IO.Path.Combine(path + docExt.urlDownload);
+           // string path2 = System.IO.Path.GetFullPath(path);
+           // string descFilePathAndName = System.IO.Path.Combine(path2, filename);
+
+            WebClient web = new WebClient();
+            web.Credentials = CredentialCache.DefaultCredentials;
+            web.Credentials = CredentialCache.DefaultNetworkCredentials;
+            web.UseDefaultCredentials = true;
+            string ticket2 = DevuelveTicket(login);
+            string down = filename + "?alf_ticket=" + ticket2;
+            //byte[] byteArray = System.IO.File.ReadAllBytes(request.Address.OriginalString);
+            byte[] byteArray = web.DownloadData(down);
 
             using (MemoryStream stream = new MemoryStream())
             {
@@ -754,11 +1074,67 @@ namespace SIGESDOC.Web.Controllers
 
                     foreach (BookmarkStart bookmarkStart in wordDocument.MainDocumentPart.RootElement.Descendants<BookmarkStart>())
                     {
+
                         bookmarkMaps[bookmarkStart.Name] = bookmarkStart;
                     }
-                }
-            }
 
+                    documentoRequest = _HojaTramiteService.Listar_Detalle_Documento_Interno(id_documento);
+
+                    Run NOM_DOC = bookmarkMaps["NOM_DOC"].NextSibling<Run>();
+                    NOM_DOC.GetFirstChild<Text>().Text = documentoRequest.First().nom_doc;
+
+                    Run ASUNTO = bookmarkMaps["ASUNTO"].NextSibling<Run>();
+                    ASUNTO.GetFirstChild<Text>().Text = documentoRequest.First().asunto;
+
+                    Run FECHA_ACTUAL = bookmarkMaps["FECHA_ACTUAL"].NextSibling<Run>();
+                    FECHA_ACTUAL.GetFirstChild<Text>().Text = tableData.FECHA_ACTUAL;
+
+
+                    foreach (var memorandomultiple in documentoRequest)
+                    {
+                        Body body = wordDocument.MainDocumentPart.Document.GetFirstChild<Body>();
+                        Run UNO = bookmarkMaps["NOMBRES_1"].NextSibling<Run>();
+                        UNO.GetFirstChild<Text>().Text = memorandomultiple.nombres;
+
+                        Paragraph para = body.AppendChild(new Paragraph());
+                        Run run = para.AppendChild(new Run());
+                        run.AppendChild(new Text(memorandomultiple.nombres));
+                    }
+     
+                    wordDocument.MainDocumentPart.Document.Save();
+                    wordDocument.Close();
+                }
+
+                    string path_word = @"C:\SIGESDOC\WORD\";
+                    string path_pdf = @"C:\SIGESDOC\PDF\";
+
+                    if (!Directory.Exists(path_word) && !Directory.Exists(path_pdf))
+                    {
+                        Directory.CreateDirectory(path_word);
+                        Directory.CreateDirectory(path_pdf);
+
+                        string nuevoWord = Path.Combine(path_word, "MEMORANDO_MULTIPLE_" + fecha_PATH.ToString("ddMMyy_HHMMSS") + ".docx");
+                        string nuevoPDF = Path.Combine(path_pdf, "MEMORANDO_MULTIPLE_" + fecha_PATH.ToString("ddMMyy_HHMMSS") + ".pdf");
+
+                        stream.Close();
+                        System.IO.File.WriteAllBytes(nuevoWord, stream.ToArray());
+                        System.IO.File.WriteAllBytes(nuevoPDF, stream.ToArray());
+
+                        Process.Start(nuevoWord);
+
+                    }
+                    else
+                    {
+                        string nuevoWord = Path.Combine(path_word, "MEMORANDO_MULTIPLE_" + fecha_PATH.ToString("ddMMyy_HHMMSS") + ".docx");
+                        string nuevoPDF = Path.Combine(path_pdf, "MEMORANDO_MULTIPLE_" + fecha_PATH.ToString("ddMMyy_HHMMSS") + ".pdf");
+
+                        stream.Close();
+                        System.IO.File.WriteAllBytes(nuevoWord, stream.ToArray());
+                        System.IO.File.WriteAllBytes(nuevoPDF, stream.ToArray());
+
+                        Process.Start(nuevoWord);
+                    }
+             }
         }
 
         #endregion
@@ -772,11 +1148,35 @@ namespace SIGESDOC.Web.Controllers
 
             DateTime fecha = DateTime.Now;
             tableData.FECHA_ACTUAL = fecha.ToString("dd MMMM yyyy");
-            //desarrollo
-            //string path  = @"C:\Users\PSSPERU069\Documents\Proyecto\sigesdoc_sanipes\sigesdoc\documentos externos";
+            //desarrollo variables de alfresco
+            DocExtGetProperties docExt = new DocExtGetProperties();
+            string uuidCarta = ConfigurationManager.AppSettings["templateCarta"].ToString();
+            //conexion con alfresco
+            string login = "login";
+            string ticket = DevuelveTicket(login);
 
-            string path = ConfigurationManager.AppSettings["carta"];
-            byte[] byteArray = System.IO.File.ReadAllBytes(path + @"/MODELO_DE_CARTA.docx");
+            //para obtener el documento modelo 
+            string pathAlfresco = ConfigurationManager.AppSettings["alfresco"];
+            string metodoAlfresco = @"/getProperties";
+            string json = POSTFormDataAlfresco(uuidCarta, pathAlfresco, metodoAlfresco, ticket);
+
+            docExt = new System.Web.Script.Serialization.JavaScriptSerializer().Deserialize<DocExtGetProperties>(json);
+
+            //Desarrollo Uri Alfresco
+            string path =  ConfigurationManager.AppSettings["UriAlfresco"];
+            string filename = System.IO.Path.Combine(path + docExt.urlDownload);
+
+            //Instancio Llamada por WebClient
+            WebClient web = new WebClient();
+            web.Credentials = CredentialCache.DefaultCredentials;
+            web.Credentials = CredentialCache.DefaultNetworkCredentials;
+            web.UseDefaultCredentials = true;
+
+            //Llamo otro ticket de Permiso de acceso a Alfresco sin Usuario y Contraseña
+            string ticket2 = DevuelveTicket(login);
+            string down = filename + "?alf_ticket=" + ticket2;
+
+            byte[] byteArray = web.DownloadData(down);
 
             using (MemoryStream stream = new MemoryStream())
             {
@@ -813,14 +1213,32 @@ namespace SIGESDOC.Web.Controllers
                     wordDocument.Close();
 
                 }
-                string nuevopath = Path.Combine(path, "CARTA_" + fecha_PATH.ToString("ddMMyy") + ".docx");
-                stream.Close();
-                System.IO.File.WriteAllBytes(nuevopath, stream.ToArray());
+                string path_word = @"C:\SIGESDOC\WORD\";
+                string path_pdf = @"C:\SIGESDOC\PDF\";
 
-                //Process process = new Process();
-                // process.StartInfo.FileName = Server.MapPath(nuevopath);
-                // process.Start();
-                Process.Start(nuevopath);
+                if (!Directory.Exists(path_word) && !Directory.Exists(path_pdf))
+                {
+                    Directory.CreateDirectory(path_word);
+                    Directory.CreateDirectory(path_pdf);
+
+                    string nuevoWord = Path.Combine(path_word, "CARTA_" + fecha_PATH.ToString("ddMMyy_HHMMss") + ".docx");
+                    string nuevoPDF = Path.Combine(path_pdf, "CARTA_" + fecha_PATH.ToString("ddMMyy_HHMMss") + ".pdf");
+
+                    stream.Close();
+                    System.IO.File.WriteAllBytes(nuevoWord, stream.ToArray());
+                    System.IO.File.WriteAllBytes(nuevoPDF, stream.ToArray());
+                    Process.Start(nuevoWord);
+
+                }
+                else {
+                    string nuevoWord = Path.Combine(path_word, "CARTA_" + fecha_PATH.ToString("ddMMyy_HHMMss") + ".docx");
+                    string nuevoPDF = Path.Combine(path_pdf, "CARTA_" + fecha_PATH.ToString("ddMMyy_HHMMss") + ".pdf");
+
+                    stream.Close();
+                    System.IO.File.WriteAllBytes(nuevoWord, stream.ToArray());
+                    System.IO.File.WriteAllBytes(nuevoPDF, stream.ToArray());
+                    Process.Start(nuevoWord);
+                }
             }
         }
 
@@ -841,7 +1259,7 @@ namespace SIGESDOC.Web.Controllers
             string connectAlfresco = ConfigurationManager.AppSettings["Alfresco"].ToString();
 
             //path de llamado Alfresco para token
-            string pathAlfresco = connectAlfresco + "api/login";
+            string pathAlfresco = connectAlfresco + "/api/login";
 
             //configuracion de llamado de servicio 
             HttpWebRequest request = (HttpWebRequest)WebRequest.Create(pathAlfresco);
@@ -908,6 +1326,49 @@ namespace SIGESDOC.Web.Controllers
             }
         }
 
+       private string POSTFormDataAlfresco(string uuid, string url, string method, string ticket)
+        {
 
+            string JsonSalida = string.Empty;
+            string remoteURL = url + method + "?alf_ticket=" + ticket;
+            string boundary = "---------------------------" + DateTime.Now.Ticks.ToString("x");
+            byte[] boundaryBytes = System.Text.Encoding.ASCII.GetBytes("\r\n--" + boundary + "\r\n");
+
+            string posString = String.Format("{0}", uuid);
+
+            HttpWebRequest request = (HttpWebRequest)WebRequest.Create(remoteURL);
+
+            request.Method = "POST";
+            request.ContentType = "multipart/form-data; boundary=" + boundary;
+            request.Method = "POST";
+            request.KeepAlive = true;
+            request.Credentials = System.Net.CredentialCache.DefaultCredentials;
+
+            using (Stream requestStream = request.GetRequestStream())
+            {
+                requestStream.Write(boundaryBytes, 0, boundaryBytes.Length);
+                string data = "Content-Disposition: form-data; name=\"" + "uuid" + "\"\r\n\r\n" + uuid;
+                byte[] bytes = System.Text.Encoding.UTF8.GetBytes(data);
+                requestStream.Write(bytes, 0, bytes.Length);
+                byte[] trailer = System.Text.Encoding.ASCII.GetBytes("\r\n--" + boundary + "--\r\n");
+                requestStream.Write(trailer, 0, trailer.Length);
+                requestStream.Close();
+            }
+
+            using (WebResponse response = request.GetResponse())
+            {
+                System.Text.StringBuilder sb = new StringBuilder();
+                using (Stream responseStream = response.GetResponseStream())
+
+                using (StreamReader reader = new StreamReader(responseStream, System.Text.Encoding.UTF8))
+                {
+                    return reader.ReadToEnd();
+                }
+            }
+        }
+
+        
     }
 }
+
+

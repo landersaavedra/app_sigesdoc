@@ -16,8 +16,8 @@ namespace SIGESDOC.Entidades
     {
         public DAT_DOCUMENTO_DETALLE()
         {
-            this.DAT_LOG_DESARCHIVO_DESATENDIDO = new HashSet<DAT_LOG_DESARCHIVO_DESATENDIDO>();
             this.DAT_DOC_DET_OBSERVACIONES = new HashSet<DAT_DOC_DET_OBSERVACIONES>();
+            this.DAT_LOG_DESARCHIVO_DESATENDIDO = new HashSet<DAT_LOG_DESARCHIVO_DESATENDIDO>();
         }
     
         public int ID_DET_DOCUMENTO { get; set; }
@@ -57,10 +57,11 @@ namespace SIGESDOC.Entidades
         public string NOM_OFICINA_CREA { get; set; }
         public string NOM_OFICINA_DESTINO { get; set; }
         public Nullable<bool> FLAG_TIPO_MEMORANDO { get; set; }
+        public Nullable<bool> FLAG_DESTINO_PRINCIPAL { get; set; }
     
-        public virtual MAE_ESTADO_TRAMITE MAE_ESTADO_TRAMITE { get; set; }
-        public virtual ICollection<DAT_LOG_DESARCHIVO_DESATENDIDO> DAT_LOG_DESARCHIVO_DESATENDIDO { get; set; }
         public virtual ICollection<DAT_DOC_DET_OBSERVACIONES> DAT_DOC_DET_OBSERVACIONES { get; set; }
         public virtual MAE_DOCUMENTO MAE_DOCUMENTO { get; set; }
+        public virtual MAE_ESTADO_TRAMITE MAE_ESTADO_TRAMITE { get; set; }
+        public virtual ICollection<DAT_LOG_DESARCHIVO_DESATENDIDO> DAT_LOG_DESARCHIVO_DESATENDIDO { get; set; }
     }
 }

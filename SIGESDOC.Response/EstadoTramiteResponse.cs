@@ -17,7 +17,7 @@ namespace SIGESDOC.Response
         public byte id_est_tramite { get; set; }
         public string nombre { get; set; }
     
-        public virtual List<DocumentoDetalleResponse> documento_detalle { get; set; }
         public virtual List<LogDesarchivoDesatendidoResponse> log_desarchivo_desatendido { get; set; }
+        public virtual List<DocumentoDetalleResponse> documento_detalle { get; set; }
     }
 }

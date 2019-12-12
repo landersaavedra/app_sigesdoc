@@ -231,6 +231,9 @@
     <Compile Include="DestinoSolicitudInspeccionRequest.cs">
       <DependentUpon>RequestObjects.tt</DependentUpon>
     </Compile>
+    <Compile Include="DetalleMaeDocumentoRequest.cs">
+      <DependentUpon>RequestObjects.tt</DependentUpon>
+    </Compile>
     <Compile Include="DetDocFactRequest.cs">
       <DependentUpon>RequestObjects.tt</DependentUpon>
     </Compile>
@@ -298,6 +301,7 @@
     <Compile Include="FirmasSdhpaRequest.cs">
       <DependentUpon>RequestObjects.tt</DependentUpon>
     </Compile>
+    <Compile Include="FormFile.cs" />
     <Compile Include="HojaTramiteRequest.cs">
       <DependentUpon>RequestObjects.tt</DependentUpon>
     </Compile>

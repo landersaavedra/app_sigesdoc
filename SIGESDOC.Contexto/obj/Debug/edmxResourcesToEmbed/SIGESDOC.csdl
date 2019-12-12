@@ -210,8 +210,6 @@
     <EntitySet Name="DAT_DET_SEG_DOC" EntityType="DB_GESDOCModel.DAT_DET_SEG_DOC" />
     <EntitySet Name="DAT_DET_SEG_DOC_DHCPA" EntityType="DB_GESDOCModel.DAT_DET_SEG_DOC_DHCPA" />
     <EntitySet Name="DAT_DET_SEG_EVALUADOR" EntityType="DB_GESDOCModel.DAT_DET_SEG_EVALUADOR" />
-    <EntitySet Name="DAT_DOCUMENTO_DETALLE" EntityType="DB_GESDOCModel.DAT_DOCUMENTO_DETALLE" />
-    <EntitySet Name="DAT_DOCUMENTO_DHCPA_DETALLE" EntityType="DB_GESDOCModel.DAT_DOCUMENTO_DHCPA_DETALLE" />
     <EntitySet Name="DAT_ESPECIES_HABILITACIONES" EntityType="DB_GESDOCModel.DAT_ESPECIES_HABILITACIONES" />
     <EntitySet Name="DAT_LOG_DESARCHIVO_DESATENDIDO" EntityType="DB_GESDOCModel.DAT_LOG_DESARCHIVO_DESATENDIDO" />
     <EntitySet Name="DAT_PROTOCOLO_ALMACEN" EntityType="DB_GESDOCModel.DAT_PROTOCOLO_ALMACEN" />
@@ -225,7 +223,6 @@
     <EntitySet Name="MAE_ARCHIVADOR_DHCPA" EntityType="DB_GESDOCModel.MAE_ARCHIVADOR_DHCPA" />
     <EntitySet Name="MAE_CLASIFICACION_TRAMITE" EntityType="DB_GESDOCModel.MAE_CLASIFICACION_TRAMITE" />
     <EntitySet Name="MAE_CONSTANCIA_HACCP" EntityType="DB_GESDOCModel.MAE_CONSTANCIA_HACCP" />
-    <EntitySet Name="MAE_DOCUMENTO_DHCPA" EntityType="DB_GESDOCModel.MAE_DOCUMENTO_DHCPA" />
     <EntitySet Name="MAE_DOCUMENTO_INDICADOR" EntityType="DB_GESDOCModel.MAE_DOCUMENTO_INDICADOR" />
     <EntitySet Name="MAE_ESTADO_SEGUIMIENTO_DHCPA" EntityType="DB_GESDOCModel.MAE_ESTADO_SEGUIMIENTO_DHCPA" />
     <EntitySet Name="MAE_ESTADO_TRAMITE" EntityType="DB_GESDOCModel.MAE_ESTADO_TRAMITE" />
@@ -281,22 +278,6 @@
     <EntitySet Name="VW_DB_GENERAL_MAE_CODIGO_DESEMBARCADERO" EntityType="DB_GESDOCModel.VW_DB_GENERAL_MAE_CODIGO_DESEMBARCADERO" />
     <EntitySet Name="VW_DB_GENERAL_MAE_DESEMBARCADERO" EntityType="DB_GESDOCModel.VW_DB_GENERAL_MAE_DESEMBARCADERO" />
     <EntitySet Name="VW_DB_GENERAL_MAE_TIPO_DESEMBARCADERO" EntityType="DB_GESDOCModel.VW_DB_GENERAL_MAE_TIPO_DESEMBARCADERO" />
-    <AssociationSet Name="FK_DAT_DET_SEG_DOC_DHCPA_MAE_DOCUMENTO_DHCPA" Association="DB_GESDOCModel.FK_DAT_DET_SEG_DOC_DHCPA_MAE_DOCUMENTO_DHCPA">
-      <End Role="MAE_DOCUMENTO_DHCPA" EntitySet="MAE_DOCUMENTO_DHCPA" />
-      <End Role="DAT_DET_SEG_DOC_DHCPA" EntitySet="DAT_DET_SEG_DOC_DHCPA" />
-    </AssociationSet>
-    <AssociationSet Name="FK_DAT_DOCUMENTO_DETALLE_MAE_ESTADO_TRAMITE" Association="DB_GESDOCModel.FK_DAT_DOCUMENTO_DETALLE_MAE_ESTADO_TRAMITE">
-      <End Role="MAE_ESTADO_TRAMITE" EntitySet="MAE_ESTADO_TRAMITE" />
-      <End Role="DAT_DOCUMENTO_DETALLE" EntitySet="DAT_DOCUMENTO_DETALLE" />
-    </AssociationSet>
-    <AssociationSet Name="FK_DAT_LOG_DESARCHIVO_DESATENDIDO_DAT_DOCUMENTO_DETALLE" Association="DB_GESDOCModel.FK_DAT_LOG_DESARCHIVO_DESATENDIDO_DAT_DOCUMENTO_DETALLE">
-      <End Role="DAT_DOCUMENTO_DETALLE" EntitySet="DAT_DOCUMENTO_DETALLE" />
-      <End Role="DAT_LOG_DESARCHIVO_DESATENDIDO" EntitySet="DAT_LOG_DESARCHIVO_DESATENDIDO" />
-    </AssociationSet>
-    <AssociationSet Name="FK_DAT_DOCUMENTO_DHCPA_DETALLE_MAE_DOCUMENTO_DHCPA" Association="DB_GESDOCModel.FK_DAT_DOCUMENTO_DHCPA_DETALLE_MAE_DOCUMENTO_DHCPA">
-      <End Role="MAE_DOCUMENTO_DHCPA" EntitySet="MAE_DOCUMENTO_DHCPA" />
-      <End Role="DAT_DOCUMENTO_DHCPA_DETALLE" EntitySet="DAT_DOCUMENTO_DHCPA_DETALLE" />
-    </AssociationSet>
     <AssociationSet Name="FK_DAT_PROTOCOLO_ESPECIE_DAT_ESPECIES_HABILITACIONES" Association="DB_GESDOCModel.FK_DAT_PROTOCOLO_ESPECIE_DAT_ESPECIES_HABILITACIONES">
       <End Role="DAT_ESPECIES_HABILITACIONES" EntitySet="DAT_ESPECIES_HABILITACIONES" />
       <End Role="DAT_PROTOCOLO_ESPECIE" EntitySet="DAT_PROTOCOLO_ESPECIE" />
@@ -479,10 +460,6 @@
     </FunctionImport>
     <FunctionImport Name="SP_GENERA_CLAVE" ReturnType="Collection(DB_GESDOCModel.SP_GENERA_CLAVE_Result)" />
     <EntitySet Name="DAT_DOC_DET_OBSERVACIONES" EntityType="DB_GESDOCModel.DAT_DOC_DET_OBSERVACIONES" />
-    <AssociationSet Name="FK_DAT_DOC_DET_OBSERVACIONES_DAT_DOCUMENTO_DETALLE" Association="DB_GESDOCModel.FK_DAT_DOC_DET_OBSERVACIONES_DAT_DOCUMENTO_DETALLE">
-      <End Role="DAT_DOCUMENTO_DETALLE" EntitySet="DAT_DOCUMENTO_DETALLE" />
-      <End Role="DAT_DOC_DET_OBSERVACIONES" EntitySet="DAT_DOC_DET_OBSERVACIONES" />
-    </AssociationSet>
     <FunctionImport Name="SP_CONSULTAR_TRANSPORTES_CON_PROTOCOLO_HABILITADO" ReturnType="Collection(DB_GESDOCModel.SP_CONSULTAR_TRANSPORTES_CON_PROTOCOLO_HABILITADO_Result)" />
     <FunctionImport Name="SP_CONSULTA_HISTORIAL_EVALUADOR" ReturnType="Collection(DB_GESDOCModel.SP_CONSULTA_HISTORIAL_EVALUADOR_Result)">
       <Parameter Name="ID_SEGUIMIENTO" Mode="In" Type="Int32" />
@@ -543,10 +520,6 @@
     <EntitySet Name="MAE_TIPO_TUPA" EntityType="DB_GESDOCModel.MAE_TIPO_TUPA" />
     <EntitySet Name="VW_CONSULTA_FACTURAS" EntityType="DB_GESDOCModel.VW_CONSULTA_FACTURAS" />
     <EntitySet Name="MAE_DOCUMENTO" EntityType="DB_GESDOCModel.MAE_DOCUMENTO" />
-    <AssociationSet Name="FK_DAT_DOCUMENTO_DETALLE_MAE_DOCUMENTO" Association="DB_GESDOCModel.FK_DAT_DOCUMENTO_DETALLE_MAE_DOCUMENTO">
-      <End Role="MAE_DOCUMENTO" EntitySet="MAE_DOCUMENTO" />
-      <End Role="DAT_DOCUMENTO_DETALLE" EntitySet="DAT_DOCUMENTO_DETALLE" />
-    </AssociationSet>
     <AssociationSet Name="FK_MAE_DOCUMENTO_MAE_DOCUMENTO_INDICADOR" Association="DB_GESDOCModel.FK_MAE_DOCUMENTO_MAE_DOCUMENTO_INDICADOR">
       <End Role="MAE_DOCUMENTO_INDICADOR" EntitySet="MAE_DOCUMENTO_INDICADOR" />
       <End Role="MAE_DOCUMENTO" EntitySet="MAE_DOCUMENTO" />
@@ -784,14 +757,34 @@
     </FunctionImport>
     <EntitySet Name="VW_CONSULTA_EXPEDIENTE_X_EXPEDIENTE" EntityType="DB_GESDOCModel.VW_CONSULTA_EXPEDIENTE_X_EXPEDIENTE" />
     <EntitySet Name="LOG_UID_ALFRESCO" EntityType="DB_GESDOCModel.LOG_UID_ALFRESCO" />
-    <FunctionImport Name="SP_VALIDA_UID_ALFRESCO">
-      <Parameter Name="NOM_DOC" Mode="In" Type="String" />
-      <Parameter Name="TIPO_DOC" Mode="In" Type="String" />
-      <Parameter Name="VERSION_DOCUMENTO" Mode="In" Type="Int32" />
-      <Parameter Name="UID_ALFRESCO" Mode="In" Type="String" />
-      <Parameter Name="MSG" Mode="InOut" Type="Int32" />
-      <Parameter Name="SALIDA_UID_ALFRESCO" Mode="InOut" Type="String" />
-    </FunctionImport>
+    <EntitySet Name="DAT_DOCUMENTO_DETALLE" EntityType="DB_GESDOCModel.DAT_DOCUMENTO_DETALLE" />
+    <AssociationSet Name="FK_DAT_DOC_DET_OBSERVACIONES_DAT_DOCUMENTO_DETALLE" Association="DB_GESDOCModel.FK_DAT_DOC_DET_OBSERVACIONES_DAT_DOCUMENTO_DETALLE">
+      <End Role="DAT_DOCUMENTO_DETALLE" EntitySet="DAT_DOCUMENTO_DETALLE" />
+      <End Role="DAT_DOC_DET_OBSERVACIONES" EntitySet="DAT_DOC_DET_OBSERVACIONES" />
+    </AssociationSet>
+    <AssociationSet Name="FK_DAT_DOCUMENTO_DETALLE_MAE_DOCUMENTO" Association="DB_GESDOCModel.FK_DAT_DOCUMENTO_DETALLE_MAE_DOCUMENTO">
+      <End Role="MAE_DOCUMENTO" EntitySet="MAE_DOCUMENTO" />
+      <End Role="DAT_DOCUMENTO_DETALLE" EntitySet="DAT_DOCUMENTO_DETALLE" />
+    </AssociationSet>
+    <AssociationSet Name="FK_DAT_DOCUMENTO_DETALLE_MAE_ESTADO_TRAMITE" Association="DB_GESDOCModel.FK_DAT_DOCUMENTO_DETALLE_MAE_ESTADO_TRAMITE">
+      <End Role="MAE_ESTADO_TRAMITE" EntitySet="MAE_ESTADO_TRAMITE" />
+      <End Role="DAT_DOCUMENTO_DETALLE" EntitySet="DAT_DOCUMENTO_DETALLE" />
+    </AssociationSet>
+    <AssociationSet Name="FK_DAT_LOG_DESARCHIVO_DESATENDIDO_DAT_DOCUMENTO_DETALLE" Association="DB_GESDOCModel.FK_DAT_LOG_DESARCHIVO_DESATENDIDO_DAT_DOCUMENTO_DETALLE">
+      <End Role="DAT_DOCUMENTO_DETALLE" EntitySet="DAT_DOCUMENTO_DETALLE" />
+      <End Role="DAT_LOG_DESARCHIVO_DESATENDIDO" EntitySet="DAT_LOG_DESARCHIVO_DESATENDIDO" />
+    </AssociationSet>
+    <EntitySet Name="MAE_DOCUMENTO_DHCPA" EntityType="DB_GESDOCModel.MAE_DOCUMENTO_DHCPA" />
+    <AssociationSet Name="FK_DAT_DET_SEG_DOC_DHCPA_MAE_DOCUMENTO_DHCPA" Association="DB_GESDOCModel.FK_DAT_DET_SEG_DOC_DHCPA_MAE_DOCUMENTO_DHCPA">
+      <End Role="MAE_DOCUMENTO_DHCPA" EntitySet="MAE_DOCUMENTO_DHCPA" />
+      <End Role="DAT_DET_SEG_DOC_DHCPA" EntitySet="DAT_DET_SEG_DOC_DHCPA" />
+    </AssociationSet>
+    <EntitySet Name="DAT_DOCUMENTO_DHCPA_DETALLE" EntityType="DB_GESDOCModel.DAT_DOCUMENTO_DHCPA_DETALLE" />
+    <AssociationSet Name="FK_DAT_DOCUMENTO_DHCPA_DETALLE_MAE_DOCUMENTO_DHCPA" Association="DB_GESDOCModel.FK_DAT_DOCUMENTO_DHCPA_DETALLE_MAE_DOCUMENTO_DHCPA">
+      <End Role="MAE_DOCUMENTO_DHCPA" EntitySet="MAE_DOCUMENTO_DHCPA" />
+      <End Role="DAT_DOCUMENTO_DHCPA_DETALLE" EntitySet="DAT_DOCUMENTO_DHCPA_DETALLE" />
+    </AssociationSet>
+    <EntitySet Name="Consulta_Detalle_Mae_Documento" EntityType="DB_GESDOCModel.Consulta_Detalle_Mae_Documento" />
   </EntityContainer>
   <ComplexType Name="p_MODIFICAR_CONTRASEÑA_Result">
     <Property Type="String" Name="ruc" Nullable="false" MaxLength="11" />
@@ -1208,8 +1201,8 @@
     <Property Name="ID_SEGUIMIENTO" Type="Int32" Nullable="false" />
     <Property Name="ID_DOC_DHCPA" Type="Int32" Nullable="false" />
     <Property Name="ACTIVO" Type="String" Nullable="false" MaxLength="1" FixedLength="true" Unicode="false" />
-    <NavigationProperty Name="MAE_DOCUMENTO_DHCPA" Relationship="DB_GESDOCModel.FK_DAT_DET_SEG_DOC_DHCPA_MAE_DOCUMENTO_DHCPA" FromRole="DAT_DET_SEG_DOC_DHCPA" ToRole="MAE_DOCUMENTO_DHCPA" />
     <NavigationProperty Name="MAE_SEGUIMIENTO_DHCPA" Relationship="DB_GESDOCModel.FK_DAT_DET_SEG_DOC_DHCPA_MAE_SEGUIMIENTO_DHCPA" FromRole="DAT_DET_SEG_DOC_DHCPA" ToRole="MAE_SEGUIMIENTO_DHCPA" />
+    <NavigationProperty Name="MAE_DOCUMENTO_DHCPA" Relationship="DB_GESDOCModel.FK_DAT_DET_SEG_DOC_DHCPA_MAE_DOCUMENTO_DHCPA" FromRole="DAT_DET_SEG_DOC_DHCPA" ToRole="MAE_DOCUMENTO_DHCPA" />
   </EntityType>
   <EntityType Name="DAT_DET_SEG_EVALUADOR">
     <Key>
@@ -1222,69 +1215,6 @@
     <Property Name="FECHA_RECIBIDO" Type="DateTime" Precision="3" />
     <Property Name="FECHA_DERIVADO" Type="DateTime" Precision="3" />
     <NavigationProperty Name="MAE_SEGUIMIENTO_DHCPA" Relationship="DB_GESDOCModel.FK_DAT_DET_SEG_EVALUADOR_MAE_SEGUIMIENTO_DHCPA" FromRole="DAT_DET_SEG_EVALUADOR" ToRole="MAE_SEGUIMIENTO_DHCPA" />
-  </EntityType>
-  <EntityType Name="DAT_DOCUMENTO_DETALLE">
-    <Key>
-      <PropertyRef Name="ID_DET_DOCUMENTO" />
-    </Key>
-    <Property Name="ID_DET_DOCUMENTO" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-    <Property Name="ID_DOCUMENTO" Type="Int32" Nullable="false" />
-    <Property Name="ID_CAB_DET_DOCUMENTO" Type="Int32" />
-    <Property Name="OFICINA_DESTINO" Type="Int32" Nullable="false" />
-    <Property Name="OBSERVACION" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
-    <Property Name="ID_EST_TRAMITE" Type="Byte" Nullable="false" />
-    <Property Name="persona_num_documento" Type="String" Nullable="false" MaxLength="20" FixedLength="false" Unicode="false" />
-    <Property Name="IND_01" Type="Boolean" />
-    <Property Name="IND_02" Type="Boolean" />
-    <Property Name="IND_03" Type="Boolean" />
-    <Property Name="IND_04" Type="Boolean" />
-    <Property Name="IND_05" Type="Boolean" />
-    <Property Name="IND_06" Type="Boolean" />
-    <Property Name="IND_07" Type="Boolean" />
-    <Property Name="IND_08" Type="Boolean" />
-    <Property Name="IND_09" Type="Boolean" />
-    <Property Name="IND_10" Type="Boolean" />
-    <Property Name="IND_11" Type="Boolean" />
-    <Property Name="INDICADORES" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
-    <Property Name="FECHA_RECEPCION" Type="DateTime" Precision="3" />
-    <Property Name="USUARIO_RECEPCION" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-    <Property Name="FECHA_ATENDIDO" Type="DateTime" Precision="3" />
-    <Property Name="USUARIO_ATENDIDO" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-    <Property Name="FECHA_ARCHIVO" Type="DateTime" Precision="3" />
-    <Property Name="USUARIO_ARCHIVO" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-    <Property Name="FECHA_DERIVADO" Type="DateTime" Precision="3" />
-    <Property Name="USUARIO_DERIVADO" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-    <Property Name="USUARIO_CREA" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
-    <Property Name="FECHA_CREA" Type="DateTime" Nullable="false" Precision="3" />
-    <Property Name="OFICINA_CREA" Type="Int32" Nullable="false" />
-    <Property Name="USUARIO_CANCELAR" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-    <Property Name="FECHA_CANCELAR" Type="DateTime" Precision="3" />
-    <Property Name="OBSERVACION_ARCHIVO" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
-    <Property Name="OBSERVACION_ATENDIDO" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
-    <NavigationProperty Name="MAE_ESTADO_TRAMITE" Relationship="DB_GESDOCModel.FK_DAT_DOCUMENTO_DETALLE_MAE_ESTADO_TRAMITE" FromRole="DAT_DOCUMENTO_DETALLE" ToRole="MAE_ESTADO_TRAMITE" />
-    <NavigationProperty Name="DAT_LOG_DESARCHIVO_DESATENDIDO" Relationship="DB_GESDOCModel.FK_DAT_LOG_DESARCHIVO_DESATENDIDO_DAT_DOCUMENTO_DETALLE" FromRole="DAT_DOCUMENTO_DETALLE" ToRole="DAT_LOG_DESARCHIVO_DESATENDIDO" />
-    <NavigationProperty Name="DAT_DOC_DET_OBSERVACIONES" Relationship="DB_GESDOCModel.FK_DAT_DOC_DET_OBSERVACIONES_DAT_DOCUMENTO_DETALLE" FromRole="DAT_DOCUMENTO_DETALLE" ToRole="DAT_DOC_DET_OBSERVACIONES" />
-    <NavigationProperty Name="MAE_DOCUMENTO" Relationship="DB_GESDOCModel.FK_DAT_DOCUMENTO_DETALLE_MAE_DOCUMENTO" FromRole="DAT_DOCUMENTO_DETALLE" ToRole="MAE_DOCUMENTO" />
-    <Property Name="NOM_OFICINA_CREA" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
-    <Property Name="NOM_OFICINA_DESTINO" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
-    <Property Name="FLAG_TIPO_MEMORANDO" Type="Boolean" />
-  </EntityType>
-  <EntityType Name="DAT_DOCUMENTO_DHCPA_DETALLE">
-    <Key>
-      <PropertyRef Name="ID_DOC_DHCPA_DET" />
-    </Key>
-    <Property Name="ID_DOC_DHCPA_DET" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-    <Property Name="ID_DOC_DHCPA" Type="Int32" />
-    <Property Name="ID_OFICINA_DIRECCION_DESTINO" Type="Int32" />
-    <Property Name="PERSONA_DESTINO" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
-    <Property Name="ACTIVO" Type="String" MaxLength="1" FixedLength="false" Unicode="false" />
-    <Property Name="USUARIO_REGISTRO" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-    <Property Name="FECHA_REGISTRO" Type="DateTime" Precision="3" />
-    <Property Name="USUARIO_MODIFICA" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-    <Property Name="FECHA_MODIFICA" Type="DateTime" Precision="3" />
-    <Property Name="NOMBRE_PERSONA_DESTINO" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
-    <NavigationProperty Name="MAE_DOCUMENTO_DHCPA" Relationship="DB_GESDOCModel.FK_DAT_DOCUMENTO_DHCPA_DETALLE_MAE_DOCUMENTO_DHCPA" FromRole="DAT_DOCUMENTO_DHCPA_DETALLE" ToRole="MAE_DOCUMENTO_DHCPA" />
-    <Property Name="FLAG_TIPO_CARTA" Type="Boolean" />
   </EntityType>
   <EntityType Name="DAT_ESPECIES_HABILITACIONES">
     <Key>
@@ -1308,8 +1238,8 @@
     <Property Name="FECHA_DESACTIVO" Type="DateTime" Precision="3" />
     <Property Name="USUARIO_DESACTIVO" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
     <Property Name="OBSERVACION" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
-    <NavigationProperty Name="DAT_DOCUMENTO_DETALLE" Relationship="DB_GESDOCModel.FK_DAT_LOG_DESARCHIVO_DESATENDIDO_DAT_DOCUMENTO_DETALLE" FromRole="DAT_LOG_DESARCHIVO_DESATENDIDO" ToRole="DAT_DOCUMENTO_DETALLE" />
     <NavigationProperty Name="MAE_ESTADO_TRAMITE" Relationship="DB_GESDOCModel.FK_DAT_LOG_DESARCHIVO_DESATENDIDO_OLD_MAE_ESTADO_TRAMITE" FromRole="DAT_LOG_DESARCHIVO_DESATENDIDO" ToRole="MAE_ESTADO_TRAMITE" />
+    <NavigationProperty Name="DAT_DOCUMENTO_DETALLE" Relationship="DB_GESDOCModel.FK_DAT_LOG_DESARCHIVO_DESATENDIDO_DAT_DOCUMENTO_DETALLE" FromRole="DAT_LOG_DESARCHIVO_DESATENDIDO" ToRole="DAT_DOCUMENTO_DETALLE" />
   </EntityType>
   <EntityType Name="DAT_PROTOCOLO_ALMACEN">
     <Key>
@@ -1458,36 +1388,6 @@
     <Property Name="USUARIO_REGISTRO" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
     <NavigationProperty Name="MAE_SEGUIMIENTO_DHCPA" Relationship="DB_GESDOCModel.FK_MAE_CONSTANCIA_HACCP_MAE_SEGUIMIENTO_DHCPA" FromRole="MAE_CONSTANCIA_HACCP" ToRole="MAE_SEGUIMIENTO_DHCPA" />
   </EntityType>
-  <EntityType Name="MAE_DOCUMENTO_DHCPA">
-    <Key>
-      <PropertyRef Name="ID_DOC_DHCPA" />
-    </Key>
-    <Property Name="ID_DOC_DHCPA" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-    <Property Name="ID_TIPO_DOCUMENTO" Type="Int32" />
-    <Property Name="NUM_DOC" Type="Int32" Nullable="false" />
-    <Property Name="NOM_DOC" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
-    <Property Name="FECHA_DOC" Type="DateTime" Precision="3" />
-    <Property Name="ASUNTO" Type="String" MaxLength="1000" FixedLength="false" Unicode="false" />
-    <Property Name="ANEXOS" Type="String" MaxLength="1000" FixedLength="false" Unicode="false" />
-    <Property Name="FECHA_REGISTRO" Type="DateTime" Precision="3" />
-    <Property Name="USUARIO_REGISTRO" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-    <Property Name="ID_ARCHIVADOR" Type="Int32" />
-    <Property Name="ID_FILIAL" Type="Int32" />
-    <Property Name="NUMERO_HT" Type="Int32" />
-    <NavigationProperty Name="DAT_DET_SEG_DOC_DHCPA" Relationship="DB_GESDOCModel.FK_DAT_DET_SEG_DOC_DHCPA_MAE_DOCUMENTO_DHCPA" FromRole="MAE_DOCUMENTO_DHCPA" ToRole="DAT_DET_SEG_DOC_DHCPA" />
-    <NavigationProperty Name="DAT_DOCUMENTO_DHCPA_DETALLE" Relationship="DB_GESDOCModel.FK_DAT_DOCUMENTO_DHCPA_DETALLE_MAE_DOCUMENTO_DHCPA" FromRole="MAE_DOCUMENTO_DHCPA" ToRole="DAT_DOCUMENTO_DHCPA_DETALLE" />
-    <Property Name="PDF" Type="String" MaxLength="1" FixedLength="true" Unicode="false" />
-    <Property Name="ID_OFICINA_DIRECCION" Type="Int32" />
-    <Property Name="EVALUADOR_CDL_NOTIF" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
-    <Property Name="DIRECCION_CDL_NOTIF" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
-    <Property Name="EMPRESA_CDL_NOTIF" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
-    <Property Name="FOLIA_CDL_NOTIF" Type="Int32" />
-    <Property Name="DOC_NOTIFICAR_CDL_NOTIF" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
-    <Property Name="EXP_O_HT_CDL_NOTIF" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-    <Property Name="EXP_O_HT_N_CDL_NOTIF" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-    <Property Name="RUC" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-    <Property Name="ID_DET_DOCUMENTO" Type="Int32" />
-  </EntityType>
   <EntityType Name="MAE_DOCUMENTO_INDICADOR">
     <Key>
       <PropertyRef Name="ID_INDICADOR_DOCUMENTO" />
@@ -1509,8 +1409,8 @@
     </Key>
     <Property Name="ID_EST_TRAMITE" Type="Byte" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
     <Property Name="NOMBRE" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-    <NavigationProperty Name="DAT_DOCUMENTO_DETALLE" Relationship="DB_GESDOCModel.FK_DAT_DOCUMENTO_DETALLE_MAE_ESTADO_TRAMITE" FromRole="MAE_ESTADO_TRAMITE" ToRole="DAT_DOCUMENTO_DETALLE" />
     <NavigationProperty Name="DAT_LOG_DESARCHIVO_DESATENDIDO" Relationship="DB_GESDOCModel.FK_DAT_LOG_DESARCHIVO_DESATENDIDO_OLD_MAE_ESTADO_TRAMITE" FromRole="MAE_ESTADO_TRAMITE" ToRole="DAT_LOG_DESARCHIVO_DESATENDIDO" />
+    <NavigationProperty Name="DAT_DOCUMENTO_DETALLE" Relationship="DB_GESDOCModel.FK_DAT_DOCUMENTO_DETALLE_MAE_ESTADO_TRAMITE" FromRole="MAE_ESTADO_TRAMITE" ToRole="DAT_DOCUMENTO_DETALLE" />
   </EntityType>
   <EntityType Name="MAE_EXPEDIENTES">
     <Key>
@@ -2144,54 +2044,6 @@
     <Property Name="RUTA_PDF" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
     <Property Name="ACTIVO" Type="String" MaxLength="1" FixedLength="true" Unicode="false" />
   </EntityType>
-  <Association Name="FK_DAT_DET_SEG_DOC_DHCPA_MAE_DOCUMENTO_DHCPA">
-    <End Type="DB_GESDOCModel.MAE_DOCUMENTO_DHCPA" Role="MAE_DOCUMENTO_DHCPA" Multiplicity="1" />
-    <End Type="DB_GESDOCModel.DAT_DET_SEG_DOC_DHCPA" Role="DAT_DET_SEG_DOC_DHCPA" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="MAE_DOCUMENTO_DHCPA">
-        <PropertyRef Name="ID_DOC_DHCPA" />
-      </Principal>
-      <Dependent Role="DAT_DET_SEG_DOC_DHCPA">
-        <PropertyRef Name="ID_DOC_DHCPA" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
-  <Association Name="FK_DAT_DOCUMENTO_DETALLE_MAE_ESTADO_TRAMITE">
-    <End Type="DB_GESDOCModel.MAE_ESTADO_TRAMITE" Role="MAE_ESTADO_TRAMITE" Multiplicity="1" />
-    <End Type="DB_GESDOCModel.DAT_DOCUMENTO_DETALLE" Role="DAT_DOCUMENTO_DETALLE" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="MAE_ESTADO_TRAMITE">
-        <PropertyRef Name="ID_EST_TRAMITE" />
-      </Principal>
-      <Dependent Role="DAT_DOCUMENTO_DETALLE">
-        <PropertyRef Name="ID_EST_TRAMITE" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
-  <Association Name="FK_DAT_LOG_DESARCHIVO_DESATENDIDO_DAT_DOCUMENTO_DETALLE">
-    <End Type="DB_GESDOCModel.DAT_DOCUMENTO_DETALLE" Role="DAT_DOCUMENTO_DETALLE" Multiplicity="0..1" />
-    <End Type="DB_GESDOCModel.DAT_LOG_DESARCHIVO_DESATENDIDO" Role="DAT_LOG_DESARCHIVO_DESATENDIDO" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="DAT_DOCUMENTO_DETALLE">
-        <PropertyRef Name="ID_DET_DOCUMENTO" />
-      </Principal>
-      <Dependent Role="DAT_LOG_DESARCHIVO_DESATENDIDO">
-        <PropertyRef Name="ID_DET_DOCUMENTO" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
-  <Association Name="FK_DAT_DOCUMENTO_DHCPA_DETALLE_MAE_DOCUMENTO_DHCPA">
-    <End Type="DB_GESDOCModel.MAE_DOCUMENTO_DHCPA" Role="MAE_DOCUMENTO_DHCPA" Multiplicity="0..1" />
-    <End Type="DB_GESDOCModel.DAT_DOCUMENTO_DHCPA_DETALLE" Role="DAT_DOCUMENTO_DHCPA_DETALLE" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="MAE_DOCUMENTO_DHCPA">
-        <PropertyRef Name="ID_DOC_DHCPA" />
-      </Principal>
-      <Dependent Role="DAT_DOCUMENTO_DHCPA_DETALLE">
-        <PropertyRef Name="ID_DOC_DHCPA" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
   <Association Name="FK_DAT_PROTOCOLO_ESPECIE_DAT_ESPECIES_HABILITACIONES">
     <End Type="DB_GESDOCModel.DAT_ESPECIES_HABILITACIONES" Role="DAT_ESPECIES_HABILITACIONES" Multiplicity="0..1" />
     <End Type="DB_GESDOCModel.DAT_PROTOCOLO_ESPECIE" Role="DAT_PROTOCOLO_ESPECIE" Multiplicity="*" />
@@ -2859,18 +2711,6 @@
     <Property Name="ACTIVO" Type="String" MaxLength="1" FixedLength="true" Unicode="false" />
     <NavigationProperty Name="DAT_DOCUMENTO_DETALLE" Relationship="DB_GESDOCModel.FK_DAT_DOC_DET_OBSERVACIONES_DAT_DOCUMENTO_DETALLE" FromRole="DAT_DOC_DET_OBSERVACIONES" ToRole="DAT_DOCUMENTO_DETALLE" />
   </EntityType>
-  <Association Name="FK_DAT_DOC_DET_OBSERVACIONES_DAT_DOCUMENTO_DETALLE">
-    <End Type="DB_GESDOCModel.DAT_DOCUMENTO_DETALLE" Role="DAT_DOCUMENTO_DETALLE" Multiplicity="0..1" />
-    <End Type="DB_GESDOCModel.DAT_DOC_DET_OBSERVACIONES" Role="DAT_DOC_DET_OBSERVACIONES" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="DAT_DOCUMENTO_DETALLE">
-        <PropertyRef Name="ID_DET_DOCUMENTO" />
-      </Principal>
-      <Dependent Role="DAT_DOC_DET_OBSERVACIONES">
-        <PropertyRef Name="ID_DET_DOCUMENTO" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
   <ComplexType Name="SP_CONSULTAR_TRANSPORTES_CON_PROTOCOLO_HABILITADO_Result">
     <Property Type="String" Name="EXTERNO" Nullable="true" MaxLength="255" />
     <Property Type="String" Name="PLACA" Nullable="true" MaxLength="50" />
@@ -3212,25 +3052,13 @@
     <Property Name="ID_INDICADOR_DOCUMENTO" Type="Byte" />
     <Property Name="RUTA_PDF" Type="String" MaxLength="1500" FixedLength="false" Unicode="false" />
     <Property Name="NUM_EXT" Type="Int32" />
-    <NavigationProperty Name="DAT_DOCUMENTO_DETALLE" Relationship="DB_GESDOCModel.FK_DAT_DOCUMENTO_DETALLE_MAE_DOCUMENTO" FromRole="MAE_DOCUMENTO" ToRole="DAT_DOCUMENTO_DETALLE" />
     <NavigationProperty Name="MAE_DOCUMENTO_INDICADOR" Relationship="DB_GESDOCModel.FK_MAE_DOCUMENTO_MAE_DOCUMENTO_INDICADOR" FromRole="MAE_DOCUMENTO" ToRole="MAE_DOCUMENTO_INDICADOR" />
     <NavigationProperty Name="MAE_HOJA_TRAMITE" Relationship="DB_GESDOCModel.FK_MAE_DOCUMENTO_MAE_HOJA_TRAMITE" FromRole="MAE_DOCUMENTO" ToRole="MAE_HOJA_TRAMITE" />
     <NavigationProperty Name="MAE_TIPO_DOCUMENTO" Relationship="DB_GESDOCModel.FK_MAE_DOCUMENTO_MAE_TIPO_DOCUMENTO" FromRole="MAE_DOCUMENTO" ToRole="MAE_TIPO_DOCUMENTO" />
     <Property Name="NOM_OFICINA_CREA" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
     <NavigationProperty Name="MAE_DOCUMENTO_ANEXO" Relationship="DB_GESDOCModel.FK_MAE_DOCUMENTO_ANEXO_MAE_DOCUMENTO" FromRole="MAE_DOCUMENTO" ToRole="MAE_DOCUMENTO_ANEXO" />
+    <NavigationProperty Name="DAT_DOCUMENTO_DETALLE" Relationship="DB_GESDOCModel.FK_DAT_DOCUMENTO_DETALLE_MAE_DOCUMENTO" FromRole="MAE_DOCUMENTO" ToRole="DAT_DOCUMENTO_DETALLE" />
   </EntityType>
-  <Association Name="FK_DAT_DOCUMENTO_DETALLE_MAE_DOCUMENTO">
-    <End Type="DB_GESDOCModel.MAE_DOCUMENTO" Role="MAE_DOCUMENTO" Multiplicity="1" />
-    <End Type="DB_GESDOCModel.DAT_DOCUMENTO_DETALLE" Role="DAT_DOCUMENTO_DETALLE" Multiplicity="*" />
-    <ReferentialConstraint>
-      <Principal Role="MAE_DOCUMENTO">
-        <PropertyRef Name="ID_DOCUMENTO" />
-      </Principal>
-      <Dependent Role="DAT_DOCUMENTO_DETALLE">
-        <PropertyRef Name="ID_DOCUMENTO" />
-      </Dependent>
-    </ReferentialConstraint>
-  </Association>
   <Association Name="FK_MAE_DOCUMENTO_MAE_DOCUMENTO_INDICADOR">
     <End Type="DB_GESDOCModel.MAE_DOCUMENTO_INDICADOR" Role="MAE_DOCUMENTO_INDICADOR" Multiplicity="0..1" />
     <End Type="DB_GESDOCModel.MAE_DOCUMENTO" Role="MAE_DOCUMENTO" Multiplicity="*" />
@@ -3965,5 +3793,189 @@
     <Property Name="UID_ALFRESCO" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
     <Property Name="VERSION_DOCUMENTO" Type="Int32" Nullable="false" />
     <Property Name="FECHA_REGISTRO" Type="DateTime" Nullable="false" Precision="0" />
+  </EntityType>
+  <EntityType Name="DAT_DOCUMENTO_DETALLE">
+    <Key>
+      <PropertyRef Name="ID_DET_DOCUMENTO" />
+    </Key>
+    <Property Name="ID_DET_DOCUMENTO" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="ID_DOCUMENTO" Type="Int32" Nullable="false" />
+    <Property Name="ID_CAB_DET_DOCUMENTO" Type="Int32" />
+    <Property Name="OFICINA_DESTINO" Type="Int32" Nullable="false" />
+    <Property Name="OBSERVACION" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+    <Property Name="ID_EST_TRAMITE" Type="Byte" Nullable="false" />
+    <Property Name="persona_num_documento" Type="String" Nullable="false" MaxLength="20" FixedLength="false" Unicode="false" />
+    <Property Name="IND_01" Type="Boolean" />
+    <Property Name="IND_02" Type="Boolean" />
+    <Property Name="IND_03" Type="Boolean" />
+    <Property Name="IND_04" Type="Boolean" />
+    <Property Name="IND_05" Type="Boolean" />
+    <Property Name="IND_06" Type="Boolean" />
+    <Property Name="IND_07" Type="Boolean" />
+    <Property Name="IND_08" Type="Boolean" />
+    <Property Name="IND_09" Type="Boolean" />
+    <Property Name="IND_10" Type="Boolean" />
+    <Property Name="IND_11" Type="Boolean" />
+    <Property Name="INDICADORES" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="FECHA_RECEPCION" Type="DateTime" Precision="3" />
+    <Property Name="USUARIO_RECEPCION" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="FECHA_ATENDIDO" Type="DateTime" Precision="3" />
+    <Property Name="USUARIO_ATENDIDO" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="FECHA_ARCHIVO" Type="DateTime" Precision="3" />
+    <Property Name="USUARIO_ARCHIVO" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="FECHA_DERIVADO" Type="DateTime" Precision="3" />
+    <Property Name="USUARIO_DERIVADO" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="USUARIO_CREA" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="FECHA_CREA" Type="DateTime" Nullable="false" Precision="3" />
+    <Property Name="OFICINA_CREA" Type="Int32" Nullable="false" />
+    <Property Name="USUARIO_CANCELAR" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="FECHA_CANCELAR" Type="DateTime" Precision="3" />
+    <Property Name="OBSERVACION_ARCHIVO" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+    <Property Name="OBSERVACION_ATENDIDO" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+    <Property Name="NOM_OFICINA_CREA" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+    <Property Name="NOM_OFICINA_DESTINO" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+    <Property Name="FLAG_TIPO_MEMORANDO" Type="Boolean" />
+    <Property Name="FLAG_DESTINO_PRINCIPAL" Type="Boolean" />
+    <NavigationProperty Name="DAT_DOC_DET_OBSERVACIONES" Relationship="DB_GESDOCModel.FK_DAT_DOC_DET_OBSERVACIONES_DAT_DOCUMENTO_DETALLE" FromRole="DAT_DOCUMENTO_DETALLE" ToRole="DAT_DOC_DET_OBSERVACIONES" />
+    <NavigationProperty Name="MAE_DOCUMENTO" Relationship="DB_GESDOCModel.FK_DAT_DOCUMENTO_DETALLE_MAE_DOCUMENTO" FromRole="DAT_DOCUMENTO_DETALLE" ToRole="MAE_DOCUMENTO" />
+    <NavigationProperty Name="MAE_ESTADO_TRAMITE" Relationship="DB_GESDOCModel.FK_DAT_DOCUMENTO_DETALLE_MAE_ESTADO_TRAMITE" FromRole="DAT_DOCUMENTO_DETALLE" ToRole="MAE_ESTADO_TRAMITE" />
+    <NavigationProperty Name="DAT_LOG_DESARCHIVO_DESATENDIDO" Relationship="DB_GESDOCModel.FK_DAT_LOG_DESARCHIVO_DESATENDIDO_DAT_DOCUMENTO_DETALLE" FromRole="DAT_DOCUMENTO_DETALLE" ToRole="DAT_LOG_DESARCHIVO_DESATENDIDO" />
+  </EntityType>
+  <Association Name="FK_DAT_DOC_DET_OBSERVACIONES_DAT_DOCUMENTO_DETALLE">
+    <End Type="DB_GESDOCModel.DAT_DOCUMENTO_DETALLE" Role="DAT_DOCUMENTO_DETALLE" Multiplicity="0..1" />
+    <End Type="DB_GESDOCModel.DAT_DOC_DET_OBSERVACIONES" Role="DAT_DOC_DET_OBSERVACIONES" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="DAT_DOCUMENTO_DETALLE">
+        <PropertyRef Name="ID_DET_DOCUMENTO" />
+      </Principal>
+      <Dependent Role="DAT_DOC_DET_OBSERVACIONES">
+        <PropertyRef Name="ID_DET_DOCUMENTO" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_DAT_DOCUMENTO_DETALLE_MAE_DOCUMENTO">
+    <End Type="DB_GESDOCModel.MAE_DOCUMENTO" Role="MAE_DOCUMENTO" Multiplicity="1" />
+    <End Type="DB_GESDOCModel.DAT_DOCUMENTO_DETALLE" Role="DAT_DOCUMENTO_DETALLE" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="MAE_DOCUMENTO">
+        <PropertyRef Name="ID_DOCUMENTO" />
+      </Principal>
+      <Dependent Role="DAT_DOCUMENTO_DETALLE">
+        <PropertyRef Name="ID_DOCUMENTO" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_DAT_DOCUMENTO_DETALLE_MAE_ESTADO_TRAMITE">
+    <End Type="DB_GESDOCModel.MAE_ESTADO_TRAMITE" Role="MAE_ESTADO_TRAMITE" Multiplicity="1" />
+    <End Type="DB_GESDOCModel.DAT_DOCUMENTO_DETALLE" Role="DAT_DOCUMENTO_DETALLE" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="MAE_ESTADO_TRAMITE">
+        <PropertyRef Name="ID_EST_TRAMITE" />
+      </Principal>
+      <Dependent Role="DAT_DOCUMENTO_DETALLE">
+        <PropertyRef Name="ID_EST_TRAMITE" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_DAT_LOG_DESARCHIVO_DESATENDIDO_DAT_DOCUMENTO_DETALLE">
+    <End Type="DB_GESDOCModel.DAT_DOCUMENTO_DETALLE" Role="DAT_DOCUMENTO_DETALLE" Multiplicity="0..1" />
+    <End Type="DB_GESDOCModel.DAT_LOG_DESARCHIVO_DESATENDIDO" Role="DAT_LOG_DESARCHIVO_DESATENDIDO" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="DAT_DOCUMENTO_DETALLE">
+        <PropertyRef Name="ID_DET_DOCUMENTO" />
+      </Principal>
+      <Dependent Role="DAT_LOG_DESARCHIVO_DESATENDIDO">
+        <PropertyRef Name="ID_DET_DOCUMENTO" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityType Name="MAE_DOCUMENTO_DHCPA">
+    <Key>
+      <PropertyRef Name="ID_DOC_DHCPA" />
+    </Key>
+    <Property Name="ID_DOC_DHCPA" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="ID_TIPO_DOCUMENTO" Type="Int32" />
+    <Property Name="NUM_DOC" Type="Int32" Nullable="false" />
+    <Property Name="NOM_DOC" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+    <Property Name="FECHA_DOC" Type="DateTime" Precision="3" />
+    <Property Name="ASUNTO" Type="String" MaxLength="1000" FixedLength="false" Unicode="false" />
+    <Property Name="ANEXOS" Type="String" MaxLength="1000" FixedLength="false" Unicode="false" />
+    <Property Name="FECHA_REGISTRO" Type="DateTime" Precision="3" />
+    <Property Name="USUARIO_REGISTRO" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="ID_ARCHIVADOR" Type="Int32" />
+    <Property Name="ID_FILIAL" Type="Int32" />
+    <Property Name="NUMERO_HT" Type="Int32" />
+    <Property Name="PDF" Type="String" MaxLength="1" FixedLength="true" Unicode="false" />
+    <Property Name="ID_OFICINA_DIRECCION" Type="Int32" />
+    <Property Name="EVALUADOR_CDL_NOTIF" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+    <Property Name="DIRECCION_CDL_NOTIF" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
+    <Property Name="EMPRESA_CDL_NOTIF" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
+    <Property Name="FOLIA_CDL_NOTIF" Type="Int32" />
+    <Property Name="DOC_NOTIFICAR_CDL_NOTIF" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
+    <Property Name="EXP_O_HT_CDL_NOTIF" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="EXP_O_HT_N_CDL_NOTIF" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="RUC" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="ID_DET_DOCUMENTO" Type="Int32" />
+    <NavigationProperty Name="DAT_DET_SEG_DOC_DHCPA" Relationship="DB_GESDOCModel.FK_DAT_DET_SEG_DOC_DHCPA_MAE_DOCUMENTO_DHCPA" FromRole="MAE_DOCUMENTO_DHCPA" ToRole="DAT_DET_SEG_DOC_DHCPA" />
+    <NavigationProperty Name="DAT_DOCUMENTO_DHCPA_DETALLE" Relationship="DB_GESDOCModel.FK_DAT_DOCUMENTO_DHCPA_DETALLE_MAE_DOCUMENTO_DHCPA" FromRole="MAE_DOCUMENTO_DHCPA" ToRole="DAT_DOCUMENTO_DHCPA_DETALLE" />
+  </EntityType>
+  <Association Name="FK_DAT_DET_SEG_DOC_DHCPA_MAE_DOCUMENTO_DHCPA">
+    <End Type="DB_GESDOCModel.MAE_DOCUMENTO_DHCPA" Role="MAE_DOCUMENTO_DHCPA" Multiplicity="1" />
+    <End Type="DB_GESDOCModel.DAT_DET_SEG_DOC_DHCPA" Role="DAT_DET_SEG_DOC_DHCPA" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="MAE_DOCUMENTO_DHCPA">
+        <PropertyRef Name="ID_DOC_DHCPA" />
+      </Principal>
+      <Dependent Role="DAT_DET_SEG_DOC_DHCPA">
+        <PropertyRef Name="ID_DOC_DHCPA" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityType Name="DAT_DOCUMENTO_DHCPA_DETALLE">
+    <Key>
+      <PropertyRef Name="ID_DOC_DHCPA_DET" />
+    </Key>
+    <Property Name="ID_DOC_DHCPA_DET" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="ID_DOC_DHCPA" Type="Int32" />
+    <Property Name="ID_OFICINA_DIRECCION_DESTINO" Type="Int32" />
+    <Property Name="PERSONA_DESTINO" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+    <Property Name="ACTIVO" Type="String" MaxLength="1" FixedLength="false" Unicode="false" />
+    <Property Name="USUARIO_REGISTRO" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="FECHA_REGISTRO" Type="DateTime" Precision="3" />
+    <Property Name="USUARIO_MODIFICA" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="FECHA_MODIFICA" Type="DateTime" Precision="3" />
+    <Property Name="NOMBRE_PERSONA_DESTINO" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
+    <Property Name="FLAG_TIPO_CARTA" Type="Boolean" />
+    <NavigationProperty Name="MAE_DOCUMENTO_DHCPA" Relationship="DB_GESDOCModel.FK_DAT_DOCUMENTO_DHCPA_DETALLE_MAE_DOCUMENTO_DHCPA" FromRole="DAT_DOCUMENTO_DHCPA_DETALLE" ToRole="MAE_DOCUMENTO_DHCPA" />
+  </EntityType>
+  <Association Name="FK_DAT_DOCUMENTO_DHCPA_DETALLE_MAE_DOCUMENTO_DHCPA">
+    <End Type="DB_GESDOCModel.MAE_DOCUMENTO_DHCPA" Role="MAE_DOCUMENTO_DHCPA" Multiplicity="0..1" />
+    <End Type="DB_GESDOCModel.DAT_DOCUMENTO_DHCPA_DETALLE" Role="DAT_DOCUMENTO_DHCPA_DETALLE" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="MAE_DOCUMENTO_DHCPA">
+        <PropertyRef Name="ID_DOC_DHCPA" />
+      </Principal>
+      <Dependent Role="DAT_DOCUMENTO_DHCPA_DETALLE">
+        <PropertyRef Name="ID_DOC_DHCPA" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityType Name="Consulta_Detalle_Mae_Documento">
+    <Key>
+      <PropertyRef Name="ID_DOCUMENTO" />
+      <PropertyRef Name="OFICINA_DESTINO" />
+      <PropertyRef Name="OFICINA_CREA" />
+      <PropertyRef Name="NOM_DOC" />
+    </Key>
+    <Property Name="NOMBRES" Type="String" MaxLength="153" FixedLength="false" Unicode="false" />
+    <Property Name="ID_DOCUMENTO" Type="Int32" Nullable="false" />
+    <Property Name="OFICINA_DESTINO" Type="Int32" Nullable="false" />
+    <Property Name="OBSERVACION" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+    <Property Name="ID_CAB_DET_DOCUMENTO" Type="Int32" />
+    <Property Name="OFICINA_CREA" Type="Int32" Nullable="false" />
+    <Property Name="FLAG_DESTINO_PRINCIPAL" Type="Boolean" />
+    <Property Name="NUMERO_DOCUMENTO" Type="Int32" />
+    <Property Name="NOM_DOC" Type="String" Nullable="false" MaxLength="250" FixedLength="false" Unicode="false" />
+    <Property Name="ASUNTO" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
   </EntityType>
 </Schema>

@@ -16,8 +16,8 @@ namespace SIGESDOC.Entidades
     {
         public MAE_DOCUMENTO()
         {
-            this.DAT_DOCUMENTO_DETALLE = new HashSet<DAT_DOCUMENTO_DETALLE>();
             this.MAE_DOCUMENTO_ANEXO = new HashSet<MAE_DOCUMENTO_ANEXO>();
+            this.DAT_DOCUMENTO_DETALLE = new HashSet<DAT_DOCUMENTO_DETALLE>();
         }
     
         public int ID_DOCUMENTO { get; set; }
@@ -36,10 +36,10 @@ namespace SIGESDOC.Entidades
         public Nullable<int> NUM_EXT { get; set; }
         public string NOM_OFICINA_CREA { get; set; }
     
-        public virtual ICollection<DAT_DOCUMENTO_DETALLE> DAT_DOCUMENTO_DETALLE { get; set; }
         public virtual MAE_DOCUMENTO_INDICADOR MAE_DOCUMENTO_INDICADOR { get; set; }
         public virtual MAE_HOJA_TRAMITE MAE_HOJA_TRAMITE { get; set; }
         public virtual MAE_TIPO_DOCUMENTO MAE_TIPO_DOCUMENTO { get; set; }
         public virtual ICollection<MAE_DOCUMENTO_ANEXO> MAE_DOCUMENTO_ANEXO { get; set; }
+        public virtual ICollection<DAT_DOCUMENTO_DETALLE> DAT_DOCUMENTO_DETALLE { get; set; }
     }
 }

@@ -29,13 +29,11 @@ namespace SIGESDOC.Response
         public string ruta_pdf { get; set; }
         public Nullable<int> num_ext { get; set; }
         public string nom_oficina_crea { get; set; }
-
-        public string nombre_tipo_documento { get; set; }
     
-        public virtual List<DocumentoDetalleResponse> documento_detalle { get; set; }
         public virtual DocumentoIndicadorResponse documento_indicador { get; set; }
         public virtual HojaTramiteResponse hoja_tramite { get; set; }
         public virtual TipoDocumentoResponse tipo_documento { get; set; }
         public virtual List<DocumentoAnexoResponse> documento_anexo { get; set; }
+        public virtual List<DocumentoDetalleResponse> documento_detalle { get; set; }
     }
 }

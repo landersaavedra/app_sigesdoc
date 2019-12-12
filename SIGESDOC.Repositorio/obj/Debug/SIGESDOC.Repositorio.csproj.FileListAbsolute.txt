@@ -85,3 +85,4 @@ C:\Users\PSSPERU069\Documents\Proyecto\sigesdoc_sanipes\sigesdoc\SIGESDOC.Reposi
 C:\Users\PSSPERU069\Documents\Proyecto\sigesdoc_sanipes\sigesdoc\SIGESDOC.Repositorio\obj\Debug\SIGESDOC.Repositorio.csproj.CopyComplete
 C:\Users\PSSPERU069\Documents\Proyecto\sigesdoc_sanipes\sigesdoc\SIGESDOC.Repositorio\obj\Debug\SIGESDOC.Repositorio.dll
 C:\Users\PSSPERU069\Documents\Proyecto\sigesdoc_sanipes\sigesdoc\SIGESDOC.Repositorio\obj\Debug\SIGESDOC.Repositorio.pdb
+C:\Users\PSSERU-TI\Source\Repos\bkp\app_sigesdoc\SIGESDOC.Repositorio\obj\Debug\SIGESDOC.Repositorio.csprojAssemblyReference.cache

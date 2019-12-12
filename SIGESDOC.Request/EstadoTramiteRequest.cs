@@ -17,7 +17,7 @@ namespace SIGESDOC.Request
         public byte id_est_tramite { get; set; }
         public string nombre { get; set; }
     
-        public virtual List<DocumentoDetalleRequest> documento_detalle { get; set; }
         public virtual List<LogDesarchivoDesatendidoRequest> log_desarchivo_desatendido { get; set; }
+        public virtual List<DocumentoDetalleRequest> documento_detalle { get; set; }
     }
 }

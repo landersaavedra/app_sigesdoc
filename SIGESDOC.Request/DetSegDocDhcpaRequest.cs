@@ -19,7 +19,7 @@ namespace SIGESDOC.Request
         public int id_doc_dhcpa { get; set; }
         public string activo { get; set; }
     
-        public virtual DocumentoDhcpaRequest documento_dhcpa { get; set; }
         public virtual SeguimientoDhcpaRequest seguimiento_dhcpa { get; set; }
+        public virtual DocumentoDhcpaRequest documento_dhcpa { get; set; }
     }
 }

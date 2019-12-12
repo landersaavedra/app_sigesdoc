@@ -19,7 +19,7 @@ namespace SIGESDOC.Entidades
         public int ID_DOC_DHCPA { get; set; }
         public string ACTIVO { get; set; }
     
-        public virtual MAE_DOCUMENTO_DHCPA MAE_DOCUMENTO_DHCPA { get; set; }
         public virtual MAE_SEGUIMIENTO_DHCPA MAE_SEGUIMIENTO_DHCPA { get; set; }
+        public virtual MAE_DOCUMENTO_DHCPA MAE_DOCUMENTO_DHCPA { get; set; }
     }
 }
