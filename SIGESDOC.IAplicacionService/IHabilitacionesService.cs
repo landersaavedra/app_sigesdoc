@@ -437,10 +437,10 @@ namespace SIGESDOC.IAplicacionService
         void InserirNuevoUIIDALfresco(UidAlfrescoRequest objeto);
 
         [OperationContract]
-        void ActualizarUIIDALfresco(UidAlfrescoRequest objeto);
+        void ActualizarUIIDALFRESCO(UidAlfrescoRequest objeto);
 
         [OperationContract]
-        IEnumerable<UidAlfrescoResponse> BuscarNuevoUIIDALfresco(string NOM_DOC);
+        IEnumerable<UidAlfrescoResponse> BuscarNuevoUIIDALfresco(string NOM_DOC, string TIPO_DOC, string UIIDALFRESCO);
 
     }
 }

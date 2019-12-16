@@ -2358,10 +2358,10 @@ namespace SIGESDOC.AplicacionService
             }
         }
 
-        public IEnumerable<UidAlfrescoResponse> BuscarNuevoUIIDALfresco(string NOM_DOC)
+        public IEnumerable<UidAlfrescoResponse> BuscarNuevoUIIDALfresco(string NOM_DOC, string TIPO_DOC, string UIIDALFRESCO)
         {
-            var result = (from param in _uidAlfrescoRepositorio.Listar()
-                          where param.NOM_DOC == NOM_DOC
+            var result = (from param in _uidAlfrescoRepositorio.Listar( x => ( x.NOM_DOC == NOM_DOC || x.TIPO_DOC == TIPO_DOC || x.UID_ALFRESCO == UIIDALFRESCO))
+                         
                           select new UidAlfrescoResponse
                           {
                               id_uid_alfresco = param.ID_UID_ALFRESCO,
@@ -2375,7 +2375,7 @@ namespace SIGESDOC.AplicacionService
                               pathdoc_alfresco = param.PATHDOC_ALFRESCO
 
                           });
-            return result;
+            return result.ToList();
         }
     }
 }
