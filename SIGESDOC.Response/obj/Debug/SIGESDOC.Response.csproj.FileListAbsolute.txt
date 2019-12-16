@@ -19,3 +19,4 @@ C:\Users\PSSERU-TI\Source\Repos\bkp\app_sigesdoc\SIGESDOC.Response\bin\Debug\SIG
 C:\Users\PSSERU-TI\Source\Repos\bkp\app_sigesdoc\SIGESDOC.Response\bin\Debug\SIGESDOC.Response.pdb
 C:\Users\PSSERU-TI\Source\Repos\bkp\app_sigesdoc\SIGESDOC.Response\obj\Debug\SIGESDOC.Response.dll
 C:\Users\PSSERU-TI\Source\Repos\bkp\app_sigesdoc\SIGESDOC.Response\obj\Debug\SIGESDOC.Response.pdb
+C:\Users\PSSERU-TI\Source\Repos\bkp\app_sigesdoc\SIGESDOC.Response\obj\Debug\SIGESDOC.Response.csprojAssemblyReference.cache

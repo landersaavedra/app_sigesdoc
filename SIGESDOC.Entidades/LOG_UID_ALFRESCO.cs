@@ -20,5 +20,8 @@ namespace SIGESDOC.Entidades
         public string UID_ALFRESCO { get; set; }
         public int VERSION_DOCUMENTO { get; set; }
         public System.DateTime FECHA_REGISTRO { get; set; }
+        public string ESTADO_DOC { get; set; }
+        public string NUM_DOC { get; set; }
+        public string PATHDOC_ALFRESCO { get; set; }
     }
 }

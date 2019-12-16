@@ -76,8 +76,7 @@ namespace SIGESDOC.AplicacionService
         private readonly IConsultaProtocolosLoRepositorio _ConsultaProtocolosLoRepositorio;
         private readonly IConsultarOficinaRepositorio _ConsultarOficinaRepositorio;
         private readonly IConsultaExpedienteXExpedienteRepositorio _ConsultaExpedienteXExpedienteRepositorio;
-
-
+        private readonly IUidAlfrescoRepositorio _uidAlfrescoRepositorio;
 
 
 
@@ -140,7 +139,10 @@ namespace SIGESDOC.AplicacionService
             IConsultaProtocolosLoRepositorio ConsultaProtocolosLoRepositorio,
             IConsultaProtocolosAiRepositorio ConsultaProtocolosAiRepositorio,
             IConsultarOficinaRepositorio ConsultarOficinaRepositorio,
-            IConsultaExpedienteXExpedienteRepositorio ConsultaExpedienteXExpedienteRepositorio
+            IConsultaExpedienteXExpedienteRepositorio ConsultaExpedienteXExpedienteRepositorio,
+            IUidAlfrescoRepositorio InserirNuevoUIIDALfrescoRepositorio
+
+            
             )
         {
             /*01*/  _DocumentoSeguimientoRepositorio = DocumentoSeguimientoRepositorio;
@@ -186,8 +188,8 @@ namespace SIGESDOC.AplicacionService
             /*40*/  _DbGeneralMaeTransporteRepositorio = DbGeneralMaeTransporteRepositorio;
             _TipoCamaraTransporteRepositorio = TipoCamaraTransporteRepositorio;
             _DbGeneralMaeUnidadMedidaRepositorio = DbGeneralMaeUnidadMedidaRepositorio;
-        _DbGeneralMaeTipoCarroceriaRepositorio = DbGeneralMaeTipoCarroceriaRepositorio;
-        _ConsultarTipoFurgonTransporteRepositorio = ConsultarTipoFurgonTransporteRepositorio;
+            _DbGeneralMaeTipoCarroceriaRepositorio = DbGeneralMaeTipoCarroceriaRepositorio;
+            _ConsultarTipoFurgonTransporteRepositorio = ConsultarTipoFurgonTransporteRepositorio;
             _ProtocoloTransporteRepositorio =ProtocoloTransporteRepositorio;
             _TipoServicioHabilitacionRepositorio = TipoServicioHabilitacionRepositorio;
             _ActividadProtocoloRepositorio = ActividadProtocoloRepositorio;
@@ -202,6 +204,7 @@ namespace SIGESDOC.AplicacionService
             _ConsultaProtocolosAiRepositorio = ConsultaProtocolosAiRepositorio;
             _ConsultarOficinaRepositorio = ConsultarOficinaRepositorio;
             _ConsultaExpedienteXExpedienteRepositorio = ConsultaExpedienteXExpedienteRepositorio;
+            _uidAlfrescoRepositorio = InserirNuevoUIIDALfrescoRepositorio;
         }
 
         public FirmasSdhpaResponse lista_firmas_sdhpa_activas(string persona_num_documento)
@@ -2313,6 +2316,66 @@ namespace SIGESDOC.AplicacionService
         public IEnumerable<DocumentoDhcpaResponse> Lista_Documentos_externos(string evaluador, int tipo_doc_dhcpa, string asunto, int anno, int oficina_direccion)
         {
             return _SeguimientoDhcpaRepositorio.Lista_Documentos_externos(evaluador, tipo_doc_dhcpa, asunto, anno, oficina_direccion);
+        }
+
+        public void InserirNuevoUIIDALfresco(UidAlfrescoRequest objetos)
+        {
+            LOG_UID_ALFRESCO entity = new LOG_UID_ALFRESCO();
+
+            try
+            {
+                using (TransactionScope scope = new TransactionScope())
+                {
+                    _uidAlfrescoRepositorio.Insertar(entity);
+                    _unitOfWork.Guardar();
+                    scope.Complete();
+                }
+               
+            }
+            catch
+            {
+                throw new InvalidOperationException();
+            }
+        }
+
+        public void ActualizarUIIDALFRESCO(UidAlfrescoRequest objetos)
+        {
+            LOG_UID_ALFRESCO entity = new LOG_UID_ALFRESCO();
+
+            try
+            {
+                using (TransactionScope scope = new TransactionScope())
+                {
+                    _uidAlfrescoRepositorio.Actualizar(entity);
+                    _unitOfWork.Guardar();
+                    scope.Complete();
+                }
+
+            }
+            catch
+            {
+                throw new InvalidOperationException();
+            }
+        }
+
+        public IEnumerable<UidAlfrescoResponse> BuscarNuevoUIIDALfresco(string NOM_DOC)
+        {
+            var result = (from param in _uidAlfrescoRepositorio.Listar()
+                          where param.NOM_DOC == NOM_DOC
+                          select new UidAlfrescoResponse
+                          {
+                              id_uid_alfresco = param.ID_UID_ALFRESCO,
+                              nom_doc = param.NOM_DOC,
+                              tipo_doc = param.TIPO_DOC,
+                              uid_alfresco = param.UID_ALFRESCO, 
+                              version_documento = param.VERSION_DOCUMENTO, 
+                              fecha_registro = param.FECHA_REGISTRO, 
+                              estado_doc = param.ESTADO_DOC, 
+                              num_doc = param.NUM_DOC,
+                              pathdoc_alfresco = param.PATHDOC_ALFRESCO
+
+                          });
+            return result;
         }
     }
 }

@@ -20,5 +20,8 @@ namespace SIGESDOC.Request
         public string uid_alfresco { get; set; }
         public int version_documento { get; set; }
         public System.DateTime fecha_registro { get; set; }
+        public string estado_doc { get; set; }
+        public string num_doc { get; set; }
+        public string pathdoc_alfresco { get; set; }
     }
 }

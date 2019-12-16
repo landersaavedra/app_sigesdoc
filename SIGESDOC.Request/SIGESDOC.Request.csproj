@@ -252,6 +252,7 @@
       <DependentUpon>RequestObjects.tt</DependentUpon>
     </Compile>
     <Compile Include="DocExtGetProperties.cs" />
+    <Compile Include="DocExtUpload.cs" />
     <Compile Include="DocumentoAnexoRequest.cs">
       <DependentUpon>RequestObjects.tt</DependentUpon>
     </Compile>
@@ -295,6 +296,7 @@
     <Compile Include="ExpedienteUnicoRequest.cs">
       <DependentUpon>RequestObjects.tt</DependentUpon>
     </Compile>
+    <Compile Include="FileItem.cs" />
     <Compile Include="FilialDhcpaRequest.cs">
       <DependentUpon>RequestObjects.tt</DependentUpon>
     </Compile>

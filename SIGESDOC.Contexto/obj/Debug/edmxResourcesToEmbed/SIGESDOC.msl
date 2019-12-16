@@ -2672,6 +2672,9 @@
     <EntitySetMapping Name="LOG_UID_ALFRESCO">
       <EntityTypeMapping TypeName="DB_GESDOCModel.LOG_UID_ALFRESCO">
         <MappingFragment StoreEntitySet="LOG_UID_ALFRESCO">
+          <ScalarProperty Name="PATHDOC_ALFRESCO" ColumnName="PATHDOC_ALFRESCO" />
+          <ScalarProperty Name="NUM_DOC" ColumnName="NUM_DOC" />
+          <ScalarProperty Name="ESTADO_DOC" ColumnName="ESTADO_DOC" />
           <ScalarProperty Name="FECHA_REGISTRO" ColumnName="FECHA_REGISTRO" />
           <ScalarProperty Name="VERSION_DOCUMENTO" ColumnName="VERSION_DOCUMENTO" />
           <ScalarProperty Name="UID_ALFRESCO" ColumnName="UID_ALFRESCO" />

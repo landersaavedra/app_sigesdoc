@@ -432,6 +432,16 @@ namespace SIGESDOC.IAplicacionService
 
         [OperationContract]
         IEnumerable<DocumentoDhcpaResponse> Lista_Documentos_externos(string evaluador, int tipo_doc_dhcpa, string asunto, int anno, int oficina_direccion);
+
+        [OperationContract]
+        void InserirNuevoUIIDALfresco(UidAlfrescoRequest objeto);
+
+        [OperationContract]
+        void ActualizarUIIDALfresco(UidAlfrescoRequest objeto);
+
+        [OperationContract]
+        IEnumerable<UidAlfrescoResponse> BuscarNuevoUIIDALfresco(string NOM_DOC);
+
     }
 }
 

@@ -306,6 +306,9 @@
           <Property Name="UID_ALFRESCO" Type="varchar" MaxLength="50" />
           <Property Name="VERSION_DOCUMENTO" Type="int" Nullable="false" />
           <Property Name="FECHA_REGISTRO" Type="date" Nullable="false" />
+          <Property Name="ESTADO_DOC" Type="varchar" MaxLength="40" />
+          <Property Name="NUM_DOC" Type="varchar" MaxLength="20" />
+          <Property Name="PATHDOC_ALFRESCO" Type="varchar" MaxLength="250" />
         </EntityType>
         <EntityType Name="MAE_ACTA_INSPECCION_DSFPA">
           <Key>
@@ -936,6 +939,13 @@ advertencia 6002: La tabla o vista 'DB_GESDOC.dbo.Consulta_Detalle_Mae_Documento
           <Property Name="NOM_DOC" Type="varchar" MaxLength="250" Nullable="false" />
           <Property Name="ASUNTO" Type="varchar" MaxLength="500" />
         </EntityType>
+        <!--Errores durante la generación:
+advertencia 6013: La tabla o vista 'DB_GESDOC.dbo.Consulta_Persona' no tiene definida una clave principal y no es posible inferir ninguna clave principal válida. Esta tabla o vista se ha excluido. Para usar la entidad, necesitará revisar el esquema, agregar las claves correctas y quitar sus comentarios.
+        <EntityType Name="Consulta_Persona">
+          <Property Name="nombres" Type="varchar" MaxLength="50" />
+          <Property Name="materno" Type="varchar" MaxLength="50" />
+          <Property Name="paterno" Type="varchar" MaxLength="50" />
+        </EntityType>-->
         <!--Errores durante la generación:
 advertencia 6002: La tabla o vista 'DB_GESDOC.dbo.Consultar_ptocolo_transporte_x_id_transporte_2018_v1' no tiene definida ninguna clave principal. Se ha inferido la clave y la definición se creado como una vista o tabla de solo lectura.-->
         <EntityType Name="Consultar_ptocolo_transporte_x_id_transporte_2018_v1">
@@ -7580,6 +7590,9 @@ advertencia 6002: La tabla o vista 'DB_GESDOC.dbo.VW_VER_PEDIENTES_GESDOC' no ti
           <Property Name="UID_ALFRESCO" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
           <Property Name="VERSION_DOCUMENTO" Type="Int32" Nullable="false" />
           <Property Name="FECHA_REGISTRO" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="ESTADO_DOC" Type="String" MaxLength="40" FixedLength="false" Unicode="false" />
+          <Property Name="NUM_DOC" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="PATHDOC_ALFRESCO" Type="String" MaxLength="250" FixedLength="false" Unicode="false" />
         </EntityType>
         <EntityType Name="DAT_DOCUMENTO_DETALLE">
           <Key>
@@ -10442,6 +10455,9 @@ advertencia 6002: La tabla o vista 'DB_GESDOC.dbo.VW_VER_PEDIENTES_GESDOC' no ti
           <EntitySetMapping Name="LOG_UID_ALFRESCO">
             <EntityTypeMapping TypeName="DB_GESDOCModel.LOG_UID_ALFRESCO">
               <MappingFragment StoreEntitySet="LOG_UID_ALFRESCO">
+                <ScalarProperty Name="PATHDOC_ALFRESCO" ColumnName="PATHDOC_ALFRESCO" />
+                <ScalarProperty Name="NUM_DOC" ColumnName="NUM_DOC" />
+                <ScalarProperty Name="ESTADO_DOC" ColumnName="ESTADO_DOC" />
                 <ScalarProperty Name="FECHA_REGISTRO" ColumnName="FECHA_REGISTRO" />
                 <ScalarProperty Name="VERSION_DOCUMENTO" ColumnName="VERSION_DOCUMENTO" />
                 <ScalarProperty Name="UID_ALFRESCO" ColumnName="UID_ALFRESCO" />

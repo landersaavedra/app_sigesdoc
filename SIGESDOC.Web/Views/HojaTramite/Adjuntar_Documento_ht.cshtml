@@ -12,45 +12,104 @@
 	<p>Use el siguiente formulario para adjuntar archivo pdf al Documento</p>
 </div>
 
+
+<!--MODAL DE indexacion de Visado -->
+<div class="modal fade" id="modal_indexVisado" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+	<div class="modal-dialog modal-width">
+		<div class="modal-content">
+			<div class="modal-header">
+				<button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+				<h4 class="modal-title" id="myModalLabel">Lista para Visado</h4>
+			</div>
+
+			<div class="modal-body">
+				<div class="form-horizontal">
+
+					<div class="row">
+						<div class="input-group">
+							<input type="text" class="form-control" placeholder="busca subordinados" />
+							<span class="input-group-addon"><i class="glyphicon glyphicon-search"></i></span>
+						</div>
+							<select name="transporte" size="22" class="form-control" multiple>
+
+								<option>Coche</option>
+
+								<option>Avión</option>
+
+								<option>Tren</option>
+								<option>Coche</option>
+
+								<option>Avión</option>
+
+								<option>Coche</option>
+
+								<option>Avión</option>
+
+								<option>Tren</option>
+								<option>Coche</option>
+
+								<option>Avión</option>
+
+								<option>Tren</option>
+								<option>Coche</option>
+
+								<option>Avión</option>
+
+								<option>Tren</option>
+								<option>Tren</option>
+
+							</select>
+
+						</div>
+
+					</div>
+			</div>
+		</div>
+	</div>
+</div>
+
+
 @using (Html.BeginForm("Adjuntar_Documento_ht", "HojaTramite", FormMethod.Post, new { @id = "nuevoForm", @enctype = "multipart/form-data" }))
 {
 
 	@Html.AntiForgeryToken()
-<div class="form-horizontal">
+	<div class="form-horizontal">
 
-	<div class="row hidden">
-		@Html.TextBox("lbl_id_documento_ext", (string)ViewBag.var_id_documento_ext)
-	</div>
-
-	<div class="form-group col-md-12">
-		<div class="col-md-3">
-			<input type="file" name="file" accept=".pdf" />
-		</div>
-		<div class="progress col-md-3" style="width:50%">
-			<div class="progress-bar"></div>
-			<div class="percent">0%</div>
+		<div class="row hidden">
+			@Html.TextBox("lbl_id_documento_ext", (string)ViewBag.var_id_documento_ext)
 		</div>
 
-		<div class="col-md-3" id="status"></div>
-	</div>
-	<div></div>
-	<div class="form-group col-md-12">
-		<input id="btnGrabar" type="submit" value="Guardar Archivo" class="btn btn-primary btn-sm" />
-		<button type="button" class="btn btn-default btn-sm regresar">Cancelar</button>
-		<a class="btn btn-primary btn-sm" href="#" role="button" onclick="initInvoker('W');">Firmar Digital</a>
-		<!--<a class="btn btn-default btn-sm" href="#" role="button" onclick="initInvoker('L');">Firmar documento desde mi PC</a>-->
-	</div>
+		<div class="form-group col-md-12">
+			<div class="col-md-3">
+				<input type="file" name="file" accept=".pdf" />
+			</div>
+			<div class="progress col-md-3" style="width:50%">
+				<div class="progress-bar"></div>
+				<div class="percent">0%</div>
+			</div>
 
-	<input type="hidden" id="argumentos" value="" />
-	<div id="addComponent"></div>
-</div>
+			<div class="col-md-3" id="status"></div>
+		</div>
+		<div></div>
+		<div class="form-group col-md-12">
+			<input id="btnmodal_indexVisado" type="button" value="Indexar Visado" class="btn btn-primary" />
+			<input id="btnGrabar" type="submit" value="Guardar Archivo" class="btn btn-primary btn-sm" />
+			<button type="button" class="btn btn-default btn-sm regresar">Cancelar</button>
+			<button type="button" class="btn btn-default btn-sm">Cargar Documento</button>
+			<a class="btn btn-primary btn-sm" href="#" role="button" onclick="initInvoker('W');">Firmar Digital</a>
+			<!--<a class="btn btn-default btn-sm" href="#" role="button" onclick="initInvoker('L');">Firmar documento desde mi PC</a>-->
+		</div>
+
+		<input type="hidden" id="argumentos" value="" />
+		<div id="addComponent"></div>
+	</div>
 }
 
 @section Scripts {
 	@Scripts.Render("~/bundles/jqueryval")
 }
 
-<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7/jquery.js"></script>
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.js"></script>
 <script src="http://malsup.github.com/jquery.form.js"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 
@@ -96,6 +155,13 @@
                 });
             },
         });
+      //  $('#grid_documento tbody').on('click', '#idtipodocumento', function () {
+
+        $('#btnmodal_indexVisado').on('click', function() {
+
+            $('#modal_indexVisado').modal('show');
+			
+        }); 
     });
 </script>
 
@@ -180,6 +246,8 @@
 	function MiFuncionCancel() {
 		alert("El proceso de firma digital fue cancelado.");
 		document.getElementById("signedDocument").href = "#";
-	}
+    }
+
+	
 		//]]>
 </script>

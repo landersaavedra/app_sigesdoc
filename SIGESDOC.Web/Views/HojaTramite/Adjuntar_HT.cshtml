@@ -13,44 +13,49 @@
     <p>Use el siguiente formulario para adjuntar archivo al expediente</p>
 </div>
 
-@using (Html.BeginForm("Adjuntar_HT", "HojaTramite", FormMethod.Post, new { @id = "nuevoForm", @enctype = "multipart/form-data" }))
-{
 
-    @Html.AntiForgeryToken()
-    <div class="form-horizontal">
 
-        <div class="row hidden">
-            @Html.TextBox("lbl_ht", (string)ViewBag.num_HT)
-        </div>
 
-        <div class="form-group col-md-12">
-            <div class="col-md-3">
-                <input type="file" name="file" accept=".pdf" />
-            </div>
-            <div class="progress col-md-3" style="width:50%">
-                <div class="progress-bar"></div>
-                <div class="percent">0%</div>
-            </div>
 
-            <div class="col-md-3" id="status"></div>
-        </div>
 
-        <div class="form-group col-md-12">
-            <input id="btnGrabar" type="submit" value="Guardar Archivo" class="btn btn-primary btn-sm" />
-            <button type="button" class="btn btn-default btn-sm regresar">Cancelar</button>
-        </div>
-    </div>
-}
+            @using (Html.BeginForm("Adjuntar_HT", "HojaTramite", FormMethod.Post, new { @id = "nuevoForm", @enctype = "multipart/form-data" }))
+            {
 
-@section Scripts {
-    @Scripts.Render("~/bundles/jqueryval")
-}
+                @Html.AntiForgeryToken()
+                <div class="form-horizontal">
 
-<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7/jquery.js"></script>
-<script src="http://malsup.github.com/jquery.form.js"></script>
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+                    <div class="row hidden">
+                        @Html.TextBox("lbl_ht", (string)ViewBag.num_HT)
+                    </div>
 
-<script>
+                    <div class="form-group col-md-12">
+                        <div class="col-md-3">
+                            <input type="file" name="file" accept=".pdf" />
+                        </div>
+                        <div class="progress col-md-3" style="width:50%">
+                            <div class="progress-bar"></div>
+                            <div class="percent">0%</div>
+                        </div>
+
+                        <div class="col-md-3" id="status"></div>
+                    </div>
+
+                    <div class="form-group col-md-12">
+                        <input id="btnGrabar" type="submit" value="Guardar Archivo" class="btn btn-primary btn-sm" />
+                        <button type="button" class="btn btn-default btn-sm regresar">Cancelar</button>
+                    </div>
+                </div>
+            }
+
+            @section Scripts {
+                @Scripts.Render("~/bundles/jqueryval")
+            }
+
+            <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7/jquery.js"></script>
+            <script src="http://malsup.github.com/jquery.form.js"></script>
+            <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
+            <script>
     $.noConflict();
     jQuery(document).ready(function ($) {
 
@@ -92,4 +97,7 @@
             },
         });
     });
-</script>
+
+              
+
+    </script>

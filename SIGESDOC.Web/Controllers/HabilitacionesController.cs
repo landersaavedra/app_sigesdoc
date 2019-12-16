@@ -11301,29 +11301,7 @@ namespace SIGESDOC.Web.Controllers
          }
         #endregion
 
-        #region Informe
-        public void informeUTIWord(CargaWordInformeUTI informe)
-        {
-            object missing = System.Reflection.Missing.Value;
-            Word.Application application = new Word.Application();
-            application.Visible = true;
-            Word.Document document = application.Documents.Open(@"C:\Users\PSSPERU069\Documents\Proyecto\sigesdoc\SIGESDOC.INFORMEUTI\bin\Debug\INFORME_UTI.docx", ref missing, false);
-
-        }
-
-        #endregion
-        #region OFICIO
-
-        [HttpGet]
-        public void OficioWord(CargaOficioWord oficioWord)
-        {
-            object missing = System.Reflection.Missing.Value;
-            Word.Application application = new Word.Application();
-            Word.Document document = application.Documents.Open(@"C:\Users\PSSPERU069\Documents\Proyecto\sigesdoc\SIGESDOC.OFICIO\bin\Debug\OFICIO.docx", ref missing);
-
-        }
-
-        #endregion
+  
 
         //Add by HM - 27/11/2019
         [AllowAnonymous]

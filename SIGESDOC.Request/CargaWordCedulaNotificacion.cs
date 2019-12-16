@@ -15,5 +15,6 @@ namespace SIGESDOC.Request
         public string FOLIA_CDL_NOTIF { get; set; }
         public string DOC_NOTIFICAR_CDL_NOTIF { get; set; }
         public string EXP_O_HT_N_CDL_NOTIF { get; set; }
+        public string FECHA_ACTUAL { get; set; }
     }
 }
